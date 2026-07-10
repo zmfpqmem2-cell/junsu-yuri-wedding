@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Junsu & Yuri Wedding</title>
+<style>
+/* =====================================================
+   FONT FACE
+   ===================================================== */
+@font-face{font-family:'MapoGoldenPier';src:url('MapoGoldenPier.ttf') format('truetype');font-weight:400;}
+@font-face{font-family:'EdwardianScript';src:url('edwardianscriptitc.ttf') format('truetype');font-weight:400;}
+@font-face{font-family:'Dutch801';src:url('dutch801bt_roman.ttf') format('truetype');font-weight:400;font-style:normal;}
+@font-face{font-family:'Dutch801';src:url('dutch801bt_bold.ttf') format('truetype');font-weight:700;font-style:normal;}
+@font-face{font-family:'Dutch801';src:url('dutch801bt_italic.ttf') format('truetype');font-weight:400;font-style:italic;}
+@font-face{font-family:'Dutch801';src:url('dutch801bt_bolditalic.ttf') format('truetype');font-weight:700;font-style:italic;}
+
+/* =====================================================
+   RESET & TOKENS
+   ===================================================== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --cream:#FFFDF4;
+  --black:#2B2622;
+  --gray-bg:rgba(120,118,107,0.08);
+  --f-mapo:'MapoGoldenPier',serif;
+  --f-dutch:'Dutch801',serif;
+  --f-script:'EdwardianScript','Edwardian Script ITC','Dancing Script',cursive;
+}
+html{scroll-behavior:auto;}
+body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
+
+/* =====================================================
+   DESKTOP STAGE — vw 기반 플로우 레이아웃
+   ===================================================== */
+.viewport{
+  width:100%;
+  max-width:2560px;
+  margin:0 auto;
+  overflow:hidden;
+  position:relative;
+  --vw:min(0.0520833333vw, 1.333333px);
+}
+.stage{
+  width:calc(1920 * var(--vw));
+  min-height:0;
+  display:flex;
+  flex-direction:column;
+  background:var(--cream);
+  overflow:hidden;
+}
+.stage > *{flex:0 0 auto;}
+.stage-mo .abs{position:absolute !important;}
+
+/* 이미지 슬롯 */
+.slot{background:transparent;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative;}
+.slot::after{content:attr(data-label);font-family:var(--f-mapo);font-size:calc(15 * var(--vw));color:#bbb;letter-spacing:.05em;text-align:center;padding:calc(8 * var(--vw));}
+.slot img{width:100%;height:100%;object-fit:cover;display:block;}
+.slot:has(img)::after{display:none;}
+.parallax-img{position:absolute;left:0;top:50%;width:100%;height:116%;object-fit:cover;display:block;will-change:transform;transform:translate3d(0,calc(-50% + var(--parallax-y,0px)),0);}
+
+/* =====================================================
+   FIXED UI
+   ===================================================== */
+.fixed-ui{position:fixed;top:0;left:0;width:100%;z-index:300;pointer-events:none;}
+.fixed-ui .inner{position:relative;max-width:2560px;margin:0 auto;height:0;}
+.music-bar{position:absolute;top:24px;left:24px;display:flex;gap:6px;align-items:center;pointer-events:auto;transition:opacity .4s;cursor:pointer;}
+.music-bar.hide{opacity:0;}
+.music-bar.paused .music-eq span{animation-play-state:paused;}
+.music-eq{display:flex;align-items:flex-end;gap:2px;height:12px;}
+.music-eq span{display:block;width:1.6px;background:#fff;animation:eq .9s ease-in-out infinite alternate;}
+.music-eq span:nth-child(1){height:5px;animation-delay:0s;}
+.music-eq span:nth-child(2){height:8px;animation-delay:.12s;}
+.music-eq span:nth-child(3){height:12px;animation-delay:.24s;}
+.music-eq span:nth-child(4){height:7px;animation-delay:.36s;}
+@keyframes eq{from{transform:scaleY(.5);}to{transform:scaleY(1);}}
+.music-label{font-family:var(--f-mapo);font-size:14px;color:#fff;white-space:nowrap;line-height:1.2;}
+.lang-toggle{position:absolute;top:21px;right:78px;display:flex;gap:6px;pointer-events:auto;transition:opacity .4s;}
+.lang-toggle.hide{opacity:0;}
+.lang-btn{font-family:var(--f-mapo);font-size:14px;color:#fff;background:transparent;border:1px solid #fff;height:24px;padding:0 12px;cursor:pointer;line-height:1.2;transition:background .2s;}
+.lang-btn:hover{background:rgba(255,255,255,.18);}
+.lang-btn.ghost{border-color:transparent;}
+
+/* =====================================================
+   KV
+   ===================================================== */
+.kv{display:grid;width:100%;height:calc(1080 * var(--vw));overflow:hidden;}
+.kv > *{grid-area:1 / 1;}
+.kv-bg{width:100%;height:100%;overflow:hidden;transform:scale(1.12);transform-origin:center center;transition:transform 2.4s cubic-bezier(.45,.05,.35,1);}
+.kv-bg.in{transform:scale(1);}
+.kv-logo-group{z-index:2;width:100%;min-height:100vh;display:grid;place-items:center;}
+.kv-logo-stack{width:calc(748.768 * var(--vw));height:calc(293 * var(--vw));display:grid;grid-template-columns:calc(514.6 * var(--vw)) 1fr;grid-template-rows:calc(95 * var(--vw)) calc(45 * var(--vw)) calc(113 * var(--vw)) calc(40 * var(--vw));}
+.kv-logo{grid-column:1;grid-row:1;width:calc(340 * var(--vw));height:calc(95 * var(--vw));line-height:0;}
+.kv-logo svg{width:calc(340 * var(--vw));height:calc(95 * var(--vw));display:block;overflow:visible;}
+.kv-logo .wd-reveal{width:0;}
+.kv-logo.in .wd-reveal{animation:wdWipe 2.4s cubic-bezier(.45,.05,.35,1) forwards;}
+@keyframes wdWipe{from{width:0;}to{width:calc(340 * var(--vw));}}
+.kv-names{grid-column:1 / -1;grid-row:2 / 4;width:calc(748.768 * var(--vw));height:calc(140 * var(--vw));opacity:0;filter:blur(calc(16 * var(--vw)));transition:opacity 1.8s ease 2s, filter 2.8s cubic-bezier(.22,.61,.36,1) 2s;}
+.kv-names.in{opacity:1;filter:blur(0);}
+.kv-names .slot{width:100%;height:100%;background:transparent;}
+.kv-names .ph{font-family:var(--f-dutch);font-size:calc(80 * var(--vw));color:var(--cream);white-space:nowrap;}
+.kv-names-blur{position:absolute;top:0;left:0;right:0;bottom:0;filter:blur(calc(4 * var(--vw)));opacity:.4;pointer-events:none;overflow:visible;}
+.kv-names-blur img{width:100%;height:100%;object-fit:contain;object-position:left center;display:block;}
+.kv-names-main{position:absolute;inset:0;justify-content:flex-start;}
+.kv-names-main img{width:auto;height:100%;max-width:100%;object-fit:contain;object-position:left center;}
+.kv-date{grid-column:2;grid-row:4;display:flex;gap:calc(10 * var(--vw));align-items:center;font-family:var(--f-dutch);font-size:calc(26 * var(--vw));color:var(--cream);white-space:nowrap;opacity:0;transition:opacity 1.8s ease 3s;}
+.kv-date.in{opacity:1;}
+.kv-date-pm{display:flex;gap:calc(6 * var(--vw));align-items:center;}
+
+/* =====================================================
+   CONTENT FLOW
+   ===================================================== */
+.info-name{width:calc(720 * var(--vw));margin:calc(160 * var(--vw)) auto 0;display:flex;flex-direction:column;gap:calc(120 * var(--vw));}
+.info{display:flex;flex-direction:column;gap:calc(32 * var(--vw));align-items:center;width:100%;}
+.info-deco{width:calc(80 * var(--vw));height:calc(80 * var(--vw));}
+.info-tit{font-size:calc(24 * var(--vw));line-height:1.2;text-align:center;width:100%;}
+.info-sub{font-size:calc(18 * var(--vw));line-height:1.5;text-align:center;width:100%;white-space:pre-wrap;}
+.name-row{display:flex;height:calc(106 * var(--vw));align-items:center;width:100%;position:relative;}
+.name-set{display:flex;width:100%;align-items:center;}
+.name-col{width:50%;display:flex;flex-direction:column;gap:calc(12 * var(--vw));align-items:center;}
+.name-parents{display:flex;gap:calc(6 * var(--vw));align-items:center;}
+.name-parents p{font-size:calc(18 * var(--vw));line-height:1.2;}
+.name-dot{width:calc(2 * var(--vw));height:calc(2 * var(--vw));border-radius:50%;background:var(--black);}
+.name-role{font-size:calc(12 * var(--vw));line-height:1.2;text-align:center;}
+.name-main{font-size:calc(28 * var(--vw));line-height:1.2;text-align:center;}
+.name-and{width:calc(56 * var(--vw));height:calc(56 * var(--vw));overflow:hidden;display:flex;align-items:center;justify-content:center;position:absolute;left:50%;transform:translateX(-50%);top:calc(24 * var(--vw));z-index:2;}
+.name-and .slot{width:100%;height:100%;background:transparent;}
+.name-and .slot img{width:100%;height:100%;object-fit:contain;}
+
+.bride-seated{width:calc(940 * var(--vw));height:calc(1178 * var(--vw));margin:calc(200 * var(--vw)) calc(120 * var(--vw)) 0 auto;}
+.bride-seated-deco,.deco-flower-1,.deco-flower-2,.pick{display:none;}
+.groom-row{display:flex;gap:calc(48 * var(--vw));align-items:flex-end;margin:calc(200 * var(--vw)) 0 0 calc(120 * var(--vw));}
+.groom-photo{width:calc(940 * var(--vw));height:calc(1178 * var(--vw));}
+.groom-txt{width:calc(692 * var(--vw));display:flex;flex-direction:column;gap:calc(32 * var(--vw));}
+.say-en{font-family:var(--f-dutch);font-size:calc(24 * var(--vw));line-height:1;}
+.say-kr{font-size:calc(20 * var(--vw));line-height:1.6;}
+.say-kr p+p{margin-top:1.6em;}
+.full1,.full2,.full3{width:100%;height:calc(1280 * var(--vw));margin-top:calc(160 * var(--vw));}
+.portrait{width:calc(1080 * var(--vw));height:calc(1620 * var(--vw));margin:calc(204 * var(--vw)) auto 0;}
+.bride-row{display:flex;gap:calc(48 * var(--vw));align-items:flex-end;margin:calc(200 * var(--vw)) calc(120 * var(--vw)) 0 calc(360 * var(--vw));}
+.bride-row .pick{display:none;}
+.bride-photo{order:2;width:calc(943 * var(--vw));height:calc(1181 * var(--vw));}
+.bride-say-en{display:none;}
+.bride-say-kr{order:1;width:calc(449 * var(--vw));font-size:calc(20 * var(--vw));line-height:1.8;text-align:right;white-space:nowrap;margin:0;}
+.bride-say-kr p+p{margin-top:1.8em;}
+.groom-solo{width:calc(943 * var(--vw));height:calc(1181 * var(--vw));margin:calc(200 * var(--vw)) 0 0 calc(120 * var(--vw));}
+.couple-1-wrap,.couple-2-wrap{width:100%;height:auto;}
+.couple-1{width:calc(1406 * var(--vw));height:calc(870 * var(--vw));margin-top:calc(227 * var(--vw));}
+.couple-2{width:calc(1418 * var(--vw));height:calc(877 * var(--vw));margin:calc(200 * var(--vw)) 0 0 auto;}
+.couple-1-deco,.couple-2-deco{display:none;}
+.couple-deco{background:transparent;}
+.gallery{width:100%;height:calc(284 * var(--vw));margin-top:calc(200 * var(--vw));overflow:hidden;}
+.gallery .marquee{display:flex;align-items:center;width:max-content;gap:calc(100 * var(--vw));padding-left:calc(100 * var(--vw));animation:gallery-scroll 40s linear infinite;}
+.gallery .cell{flex:0 0 auto;width:calc(213 * var(--vw));height:calc(284 * var(--vw));opacity:.4;mix-blend-mode:luminosity;transition:opacity .6s ease, mix-blend-mode .6s ease;cursor:pointer;}
+.gallery .cell:hover{opacity:1;mix-blend-mode:normal;}
+@keyframes gallery-scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* =====================================================
+   LOCATION + ACCOUNT
+   ===================================================== */
+.loc-acc{width:calc(720 * var(--vw));margin:calc(200 * var(--vw)) auto 0;display:flex;flex-direction:column;gap:calc(160 * var(--vw));}
+.loc-block{display:flex;flex-direction:column;gap:calc(64 * var(--vw));align-items:center;width:100%;}
+.loc-title{font-size:calc(30 * var(--vw));line-height:1.2;text-align:center;width:100%;}
+.loc-grid{width:100%;height:auto;display:flex;flex-direction:column;align-items:center;}
+.loc-info{width:calc(381 * var(--vw));display:flex;flex-direction:column;gap:calc(32 * var(--vw));align-items:center;text-align:center;}
+.loc-name{font-size:calc(24 * var(--vw));line-height:1.2;width:100%;}
+.loc-addr{display:flex;flex-direction:column;gap:calc(8 * var(--vw));font-size:calc(18 * var(--vw));line-height:1.5;width:100%;}
+.loc-map{width:100%;height:calc(328 * var(--vw));margin-top:calc(64 * var(--vw));}
+.loc-btns{width:100%;display:flex;gap:calc(12 * var(--vw));justify-content:center;margin-top:calc(48 * var(--vw));}
+.map-btn{display:flex;gap:calc(4 * var(--vw));align-items:center;padding:calc(8 * var(--vw)) calc(20 * var(--vw)) calc(8 * var(--vw)) calc(16 * var(--vw));border:calc(1 * var(--vw)) solid var(--black);background:transparent;font-family:var(--f-mapo);font-size:calc(16 * var(--vw));line-height:1.5;color:var(--black);cursor:pointer;transition:background .18s;}
+.map-btn:hover{background:rgba(0,0,0,.05);}
+.map-btn-ic{width:calc(24 * var(--vw));height:calc(24 * var(--vw));display:flex;align-items:center;justify-content:center;}
+.map-btn-ic svg{width:calc(18 * var(--vw));height:calc(18 * var(--vw));}
+.acc-block{display:flex;flex-direction:column;gap:calc(64 * var(--vw));width:100%;}
+.acc-title{font-size:calc(30 * var(--vw));line-height:1.2;text-align:center;width:100%;}
+.acc-desc{display:flex;flex-direction:column;gap:calc(24 * var(--vw));text-align:center;font-size:calc(18 * var(--vw));line-height:1.5;}
+.acc-table{display:flex;flex-direction:column;width:100%;border-bottom:calc(1 * var(--vw)) solid var(--black);}
+.acc-head{display:flex;justify-content:space-between;align-items:center;padding:calc(16 * var(--vw)) 0;border-top:calc(1 * var(--vw)) solid var(--black);cursor:pointer;user-select:none;}
+.acc-head:hover{background:rgba(0,0,0,.015);}
+.acc-head-label{font-size:calc(18 * var(--vw));line-height:1.5;white-space:nowrap;}
+.acc-arrow{width:calc(24 * var(--vw));height:calc(24 * var(--vw));display:flex;align-items:center;justify-content:center;transition:transform .3s;}
+.acc-arrow svg{width:calc(14 * var(--vw));height:calc(14 * var(--vw));}
+.acc-arrow.open{transform:rotate(180deg);}
+.acc-body{max-height:0;overflow:hidden;transition:max-height .4s ease;}
+.acc-body.open{max-height:calc(900 * var(--vw));}
+.acc-row{display:flex;justify-content:space-between;align-items:center;padding:calc(24 * var(--vw)) calc(16 * var(--vw));background:var(--gray-bg);border-bottom:calc(1 * var(--vw)) solid rgba(0,0,0,.1);}
+.acc-row:last-child{border-bottom:none;}
+.acc-info-c{display:flex;flex-direction:column;gap:calc(6 * var(--vw));}
+.acc-name{font-size:calc(16 * var(--vw));line-height:1.5;}
+.acc-bank{display:flex;gap:calc(6 * var(--vw));font-size:calc(16 * var(--vw));line-height:1.5;}
+.copy-btn{border:calc(1 * var(--vw)) solid var(--black);padding:calc(4 * var(--vw)) calc(12 * var(--vw));background:transparent;font-family:var(--f-mapo);font-size:calc(16 * var(--vw));line-height:1.5;color:var(--black);cursor:pointer;white-space:nowrap;transition:background .18s,color .18s;}
+.copy-btn:hover{background:rgba(0,0,0,.06);}
+.copy-btn.done{background:var(--black);color:var(--cream);}
+.qr-block{display:flex;flex-direction:column;gap:calc(16 * var(--vw));align-items:center;width:100%;}
+.qr-slot{width:calc(220 * var(--vw));height:calc(220 * var(--vw));}
+.qr-note{font-size:calc(18 * var(--vw));line-height:1.5;text-align:center;width:100%;}
+.footer-logo{width:calc(1856 * var(--vw));height:calc(347 * var(--vw));display:flex;align-items:center;justify-content:center;margin:calc(240 * var(--vw)) auto calc(32 * var(--vw));}
+.footer-logo .slot{width:100%;height:100%;background:transparent;}
+.footer-logo .slot img{width:100%;height:100%;object-fit:contain;display:block;}
+
+/* =====================================================
+   MOBILE STAGE (≤1024px) — 390 기준 좌표를 vw 단위로 변환
+   플로우 레이아웃
+   ===================================================== */
+.stage-mo{display:none;position:relative;width:100%;background:var(--cream);padding-bottom:calc(60 * var(--mo-vw));--mo-vw:0.2564102564vw;}
+
+/* KV (390×844) */
+.mo-kv{position:relative;width:100%;height:calc(844 * var(--mo-vw));overflow:hidden;}
+.stage-mo .kv-logo{left:calc(12 * var(--mo-vw));top:calc(350 * var(--mo-vw));width:calc(165 * var(--mo-vw));height:calc(46 * var(--mo-vw));margin:0;}
+.stage-mo .kv-logo svg{width:calc(165 * var(--mo-vw));height:calc(46 * var(--mo-vw));}
+.stage-mo .kv-names{left:calc(12 * var(--mo-vw));top:calc(397 * var(--mo-vw));width:calc(366 * var(--mo-vw));height:calc(68.4 * var(--mo-vw));margin:0;overflow:visible;}
+.stage-mo .kv-names-main img,.stage-mo .kv-names-blur img{width:100%;height:auto;max-height:100%;object-fit:contain;object-position:left center;}
+.stage-mo .kv-date{left:auto;right:calc(12 * var(--mo-vw));top:calc(475 * var(--mo-vw));font-size:calc(20 * var(--mo-vw));gap:calc(8 * var(--mo-vw));margin:0;}
+.stage-mo .kv-date-pm{gap:calc(4 * var(--mo-vw));}
+
+/* INFO + NAME */
+.mo-info-name{margin:calc(60 * var(--mo-vw)) calc(12 * var(--mo-vw)) 0;display:flex;flex-direction:column;gap:calc(48 * var(--mo-vw));}
+.mo-info{display:flex;flex-direction:column;gap:calc(16 * var(--mo-vw));align-items:center;width:100%;}
+.mo-info-deco{width:calc(56 * var(--mo-vw));height:calc(56 * var(--mo-vw));margin-bottom:calc(8 * var(--mo-vw));}
+.mo-info-tit{font-size:calc(18 * var(--mo-vw));line-height:1.2;text-align:center;width:100%;}
+.mo-info-sub{font-size:calc(14 * var(--mo-vw));line-height:1.5;text-align:center;width:100%;}
+.mo-name-row{position:relative;display:flex;justify-content:space-between;width:100%;}
+.mo-name-col{width:calc(183 * var(--mo-vw));display:flex;flex-direction:column;gap:calc(10 * var(--mo-vw));align-items:center;}
+.stage-mo .name-parents p{font-size:calc(13 * var(--mo-vw));}
+.mo-name-role{font-size:calc(12 * var(--mo-vw));line-height:1.2;color:#8A8174;text-align:center;}
+.mo-name-main{font-size:calc(18 * var(--mo-vw));line-height:1.2;text-align:center;}
+.mo-name-and{position:absolute;left:50%;transform:translateX(-50%);top:calc(16 * var(--mo-vw));width:calc(40 * var(--mo-vw));height:calc(40 * var(--mo-vw));z-index:2;}
+.mo-name-and .slot{width:calc(40 * var(--mo-vw));height:calc(40 * var(--mo-vw));background:transparent;}
+.mo-name-and .slot img{object-fit:contain;}
+
+/* 사진 배치 */
+.mo-photo-r{width:calc(263 * var(--mo-vw));height:calc(330 * var(--mo-vw));margin:calc(80 * var(--mo-vw)) calc(12 * var(--mo-vw)) 0 auto;}
+.mo-photo-l{width:calc(264 * var(--mo-vw));height:calc(331 * var(--mo-vw));margin:calc(80 * var(--mo-vw)) 0 0 calc(12 * var(--mo-vw));}
+.mo-say{margin:calc(32 * var(--mo-vw)) calc(12 * var(--mo-vw)) 0;display:flex;flex-direction:column;gap:calc(16 * var(--mo-vw));}
+.mo-say-en{font-family:var(--f-dutch);font-size:calc(18 * var(--mo-vw));line-height:1;}
+.mo-say-kr{font-size:calc(15 * var(--mo-vw));line-height:1.6;}
+.mo-say-kr p+p{margin-top:1.6em;}
+.mo-full{width:100%;height:calc(260 * var(--mo-vw));margin-top:calc(80 * var(--mo-vw));}
+.mo-say + .mo-full{margin-top:calc(80 * var(--mo-vw));}
+.mo-portrait{width:calc(320 * var(--mo-vw));height:calc(480 * var(--mo-vw));margin:calc(80 * var(--mo-vw)) auto 0;}
+.mo-couple-1{width:calc(300 * var(--mo-vw));height:calc(200 * var(--mo-vw));margin:calc(80 * var(--mo-vw)) 0 0 calc(12 * var(--mo-vw));}
+.mo-couple-2{width:calc(300 * var(--mo-vw));height:calc(200 * var(--mo-vw));margin:calc(80 * var(--mo-vw)) 0 0 calc(78 * var(--mo-vw));}
+.mo-couple-3{width:100%;height:calc(261 * var(--mo-vw));margin-top:calc(80 * var(--mo-vw));}
+
+/* 갤러리 3×3 */
+.mo-gallery{margin-top:calc(80 * var(--mo-vw));display:flex;flex-direction:column;gap:calc(1 * var(--mo-vw));}
+.mo-g-row{display:flex;gap:calc(1 * var(--mo-vw));}
+.mo-gallery .cell{flex:1;aspect-ratio:129.42/172.57;opacity:.4;mix-blend-mode:luminosity;transition:opacity .6s ease, mix-blend-mode .6s ease;cursor:pointer;}
+.mo-gallery .cell.active,.mo-gallery .cell:hover{opacity:1;mix-blend-mode:normal;}
+
+/* 오시는 길 */
+.mo-loc{margin:calc(100 * var(--mo-vw)) calc(12 * var(--mo-vw)) 0;display:flex;flex-direction:column;align-items:center;text-align:center;}
+.mo-sec-title{font-size:calc(22 * var(--mo-vw));line-height:1.2;text-align:center;width:100%;}
+.mo-loc .mo-sec-title{margin-bottom:calc(36 * var(--mo-vw));}
+.mo-loc-name{font-size:calc(18 * var(--mo-vw));line-height:1.2;margin-bottom:calc(20 * var(--mo-vw));}
+.mo-loc-addr{display:flex;flex-direction:column;gap:calc(6 * var(--mo-vw));font-size:calc(14 * var(--mo-vw));line-height:1.5;color:#736C62;margin-bottom:calc(22 * var(--mo-vw));}
+.mo-loc-map{width:100%;height:calc(167 * var(--mo-vw));margin-bottom:calc(16 * var(--mo-vw));}
+.mo-loc-btns{width:100%;display:flex;flex-direction:column;gap:calc(12 * var(--mo-vw));}
+.stage-mo .map-btn{width:100%;padding:calc(12 * var(--mo-vw));justify-content:flex-start;gap:calc(4 * var(--mo-vw));border:calc(1 * var(--mo-vw)) solid var(--black);font-size:calc(16 * var(--mo-vw));}
+.stage-mo .map-btn-ic{width:calc(24 * var(--mo-vw));height:calc(24 * var(--mo-vw));}
+.stage-mo .map-btn-ic svg{width:calc(18 * var(--mo-vw));height:calc(18 * var(--mo-vw));}
+
+/* 마음 전하실 곳 */
+.mo-acc{margin:calc(100 * var(--mo-vw)) calc(12 * var(--mo-vw)) 0;display:flex;flex-direction:column;}
+.mo-acc .mo-sec-title{margin-bottom:calc(36 * var(--mo-vw));}
+.mo-acc-desc{display:flex;flex-direction:column;gap:calc(10 * var(--mo-vw));text-align:center;font-size:calc(14 * var(--mo-vw));line-height:1.5;margin-bottom:calc(37 * var(--mo-vw));}
+.stage-mo .acc-table{width:100%;border-bottom:calc(1 * var(--mo-vw)) solid var(--black);}
+.stage-mo .acc-head{padding:calc(16 * var(--mo-vw)) 0;border-top:calc(1 * var(--mo-vw)) solid var(--black);}
+.stage-mo .acc-head-label{font-size:calc(15 * var(--mo-vw));}
+.stage-mo .acc-arrow{width:calc(24 * var(--mo-vw));height:calc(24 * var(--mo-vw));}
+.stage-mo .acc-arrow svg{width:calc(14 * var(--mo-vw));height:calc(14 * var(--mo-vw));}
+.stage-mo .acc-body.open{max-height:calc(400 * var(--mo-vw));}
+.stage-mo .acc-row{padding:calc(24 * var(--mo-vw)) calc(12 * var(--mo-vw));}
+.stage-mo .acc-info-c{gap:calc(4 * var(--mo-vw));}
+.stage-mo .acc-name,.stage-mo .acc-bank{font-size:calc(14 * var(--mo-vw));}
+.stage-mo .acc-bank{gap:calc(4 * var(--mo-vw));}
+.stage-mo .copy-btn{font-size:calc(13 * var(--mo-vw));border:calc(1 * var(--mo-vw)) solid var(--black);padding:calc(4 * var(--mo-vw)) calc(12 * var(--mo-vw));}
+
+/* QR + FOOTER */
+.mo-qr{margin-top:calc(48 * var(--mo-vw));display:flex;flex-direction:column;gap:calc(8 * var(--mo-vw));align-items:center;}
+.mo-qr-slot{width:calc(200 * var(--mo-vw));height:calc(200 * var(--mo-vw));}
+.mo-qr-note{font-size:calc(14 * var(--mo-vw));line-height:1.5;text-align:center;}
+.mo-footer-logo{margin:calc(136 * var(--mo-vw)) calc(12 * var(--mo-vw)) 0;}
+.mo-footer-logo .slot{width:100%;height:calc(68.4 * var(--mo-vw));background:transparent;}
+.mo-footer-logo .slot img{object-fit:contain;}
+
+/* ── 1024px 이하: 모바일 스테이지로 전환 ── */
+@media (max-width:1024px){
+  .stage{display:none;}
+  .stage-mo{display:block;}
+  .music-bar{top:20px;left:12px;}
+  .music-label{font-size:13px;}
+  .lang-toggle{top:16px;right:12px;gap:4px;}
+}
+
+/* =====================================================
+   REVEAL — 항상 보이게(콘텐츠 유실 방지).
+   페이드인은 JS가 .visible 부여 시 transition으로만 적용.
+   ===================================================== */
+.reveal{opacity:1;}
+.reveal.pre{opacity:0;transform:translateY(28px);}
+.reveal.visible{opacity:1;transform:none;transition:opacity .8s ease,transform .8s ease;}
+.photo-rise{opacity:0;transform:translate3d(0,calc(36 * var(--vw)),0);transition:opacity 1.15s ease,transform 1.3s cubic-bezier(.22,.61,.36,1);}
+.photo-rise.visible{opacity:1;transform:translate3d(0,0,0);}
+.stage-mo .photo-rise{transform:translate3d(0,calc(18 * var(--mo-vw)),0);transition-duration:1s,1.15s;}
+.stage-mo .photo-rise.visible{transform:translate3d(0,0,0);}
+@media (prefers-reduced-motion:reduce){
+  .photo-rise{opacity:1;transform:none;transition:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- ───── FIXED UI ───── -->
+<div class="fixed-ui">
+  <div class="inner">
+    <div class="music-bar" id="musicBar" onclick="toggleBGM()">
+      <!-- REPLACE: BGM 파일 경로 (mp3 권장, mp4도 가능) -->
+      <audio id="bgm" loop preload="auto">
+        <source src="audio/bgm.mp3" type="audio/mpeg">
+        <source src="audio/bgm.mp4" type="audio/mp4">
+      </audio>
+      <div class="music-eq" id="musicEq"><span></span><span></span><span></span><span></span></div>
+      <div class="music-label">Sweet Pumpkin - Samara Joy</div>
+    </div>
+    <div class="lang-toggle" id="langToggle">
+      <button class="lang-btn" onclick="setLang('KR',this)">KR</button>
+      <button class="lang-btn ghost" onclick="setLang('JP',this)">JP</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ───── 공용 로고 심볼 (Wedding day — 데스크톱/모바일 KV 공용) ───── -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="symWd" viewBox="0 0 340 95"><path d="M340 52.773C340 53.2017 338.427 55.1594 335.279 58.6462C331.789 62.4759 327.239 65.9341 321.631 69.0208L319.528 72.7933C315.379 80.2241 311.045 85.7544 306.524 89.384C301.86 93.128 297.811 95 294.378 95C293.205 95 292.232 94.6285 291.46 93.8854C290.658 93.1423 290.258 92.2277 290.258 91.1417C290.258 85.3971 296.882 79.4525 310.129 73.3078C311.216 72.7647 312.847 72.0074 315.022 71.0356L315.666 70.6498L323.219 57.2315C320.244 61.3184 318.083 64.005 316.738 65.2911C315.394 66.5486 314.035 67.1773 312.661 67.1773C311.488 67.1773 310.458 66.6772 309.571 65.6769C308.713 64.6766 308.284 63.5048 308.284 62.1615C308.284 60.5325 309.299 57.9889 311.331 54.5307L317.94 43.3845C318.598 43.4988 319.357 43.5559 320.215 43.5559C320.959 43.5559 321.989 43.4559 323.305 43.2559L314.85 56.9743C312.447 60.8612 311.245 63.4048 311.245 64.6051C311.245 65.8912 311.831 66.5343 313.005 66.5343C316.095 66.5343 320.844 61.0612 327.254 50.1151L331.202 43.3845C331.86 43.4988 332.661 43.5559 333.605 43.5559C334.378 43.5559 335.336 43.4559 336.481 43.2559C332.933 48.8861 328.126 57.1458 322.06 68.0347C325.551 66.2342 328.498 64.2908 330.902 62.2044C333.305 60.0895 335.995 57.1172 338.97 53.2874C339.371 52.773 339.628 52.5158 339.743 52.5158C339.914 52.5158 340 52.6015 340 52.773ZM315.236 71.3786C314.779 71.6358 313.162 72.4504 310.387 73.8222C297.368 80.2813 290.859 86.083 290.859 91.2274C290.859 93.3709 292.06 94.4427 294.464 94.4427C297.497 94.4427 300.515 92.7993 303.52 89.5126C306.524 86.2259 310.244 80.4671 314.678 72.236C314.678 72.236 314.864 71.9502 315.236 71.3786Z" fill="var(--cream)"/>
+<path d="M312.875 52.7732C312.875 53.3734 310.786 56.1456 306.608 61.09C303.232 65.1483 300.571 67.1775 298.626 67.1775C297.309 67.1775 296.237 66.6917 295.407 65.7199C294.577 64.7196 294.162 63.4764 294.162 61.9903C294.162 60.4469 294.62 58.775 295.536 56.9745C292.674 60.9757 290.485 63.6765 288.969 65.0769C287.453 66.4773 285.979 67.1775 284.548 67.1775C283.032 67.1775 281.759 66.5345 280.729 65.2484C279.699 63.9337 279.184 62.2903 279.184 60.3183C279.184 54.831 283.061 49.9724 290.814 45.7425C294.219 43.8562 296.966 42.9131 299.055 42.9131C300.829 42.9131 301.716 43.7705 301.716 45.4853C301.716 45.9711 301.601 46.6142 301.372 47.4144L303.561 43.256C304.42 43.4561 305.178 43.5561 305.836 43.5561C306.608 43.5561 307.61 43.4561 308.84 43.256L301.244 55.817C298.611 60.2183 297.295 63.1192 297.295 64.5196C297.295 65.8628 297.853 66.5345 298.969 66.5345C300.113 66.5345 301.945 65.2341 304.463 62.6333C306.98 60.0039 309.541 56.7744 312.145 52.9447C312.317 52.6589 312.474 52.516 312.617 52.516C312.789 52.516 312.875 52.6017 312.875 52.7732ZM301.072 45.6568C301.072 44.2563 300.428 43.5561 299.141 43.5561C296.508 43.5561 293.046 46.1283 288.754 51.2727C284.491 56.4171 282.36 60.5755 282.36 63.7479C282.36 65.6056 283.189 66.5345 284.849 66.5345C286.823 66.5345 290.242 63.2621 295.106 56.7172C299.083 51.3442 301.072 47.6574 301.072 45.6568Z" fill="var(--cream)"/>
+<path d="M291.374 22.807C280.644 39.8407 273.878 50.7297 271.074 55.474C268.241 60.304 266.825 63.3478 266.825 64.6053C266.825 65.8914 267.411 66.5345 268.584 66.5345C271.188 66.5345 275.609 62.0045 281.846 52.9447C282.018 52.6589 282.175 52.516 282.318 52.516C282.49 52.516 282.576 52.6017 282.576 52.7732C282.547 52.8589 282.404 53.0876 282.147 53.4591L280.301 55.9884C274.893 63.4478 270.902 67.1775 268.327 67.1775C267.011 67.1775 265.938 66.6917 265.108 65.7199C264.278 64.7196 263.863 63.4478 263.863 61.9045C263.863 60.3612 264.378 58.5749 265.408 56.5457C260.401 63.6336 256.682 67.1775 254.25 67.1775C252.733 67.1775 251.46 66.5345 250.43 65.2484C249.4 63.9337 248.885 62.2903 248.885 60.3183C248.885 55.6026 251.818 51.3299 257.683 47.5002C262.347 44.4421 266.009 42.9131 268.67 42.9131C270.444 42.9131 271.331 43.7705 271.331 45.4853C271.331 46.2855 271.088 47.1858 270.602 48.1861L285.923 22.5498C286.868 22.8356 287.797 22.9785 288.713 22.9785C288.942 22.9785 289.829 22.9213 291.374 22.807ZM270.687 45.8282C270.687 44.3135 269.986 43.5561 268.584 43.5561C266.009 43.5561 262.604 46.1283 258.37 51.2727C254.164 56.3886 252.061 60.5184 252.061 63.6622C252.061 65.577 252.848 66.5345 254.421 66.5345C256.71 66.5345 260.644 62.5618 266.224 54.6166C269.2 50.3296 270.687 47.4001 270.687 45.8282Z" fill="var(--cream)"/>
+<path d="M236.782 52.7732C236.782 53.2305 235.237 55.1882 232.147 58.6464C228.684 62.4761 224.207 65.8914 218.713 68.8923L216.567 72.7935C212.676 79.9671 208.313 85.4973 203.477 89.3842C198.842 93.1282 194.836 95.0002 191.46 95.0002C190.23 95.0002 189.214 94.6286 188.413 93.8856C187.612 93.1425 187.211 92.2279 187.211 91.1419C187.211 85.283 193.835 79.3383 207.082 73.3079C209.943 71.9933 211.789 71.1073 212.619 70.65L219.915 57.2317C216.739 61.4329 214.493 64.148 213.177 65.377C211.889 66.5773 210.559 67.1775 209.185 67.1775C207.697 67.1775 206.424 66.5202 205.365 65.2055C204.335 63.8908 203.82 62.2903 203.82 60.4041C203.82 55.4597 207.054 50.9727 213.52 46.9429C217.84 44.2563 221.231 42.9131 223.692 42.9131C225.408 42.9131 226.267 43.8562 226.267 45.7425C226.267 46.2569 226.138 46.8714 225.88 47.5859L228.284 43.256C229.056 43.4561 229.729 43.5561 230.301 43.5561C231.045 43.5561 232.132 43.4561 233.563 43.256C233.363 43.5133 232.104 45.6568 229.786 49.6866L219.142 68.0349C222.89 65.92 225.88 63.8765 228.112 61.9045C230.373 59.9325 232.919 57.0888 235.752 53.3734C236.181 52.8018 236.467 52.516 236.61 52.516C236.725 52.5446 236.782 52.6303 236.782 52.7732ZM225.795 45.7425C225.795 44.2849 225.094 43.5561 223.692 43.5561C221.117 43.5561 217.697 46.1283 213.434 51.2727C209.199 56.3886 207.082 60.5184 207.082 63.6622C207.082 65.577 207.912 66.5345 209.571 66.5345C211.26 66.5345 214.121 63.9909 218.155 58.9036C223.248 52.4731 225.795 48.0861 225.795 45.7425ZM212.189 71.3788C211.646 71.6932 210.029 72.5077 207.34 73.8224C194.292 80.2815 187.769 86.0832 187.769 91.2276C187.769 92.1136 188.098 92.8567 188.756 93.4569C189.414 94.057 190.258 94.3571 191.288 94.3571C194.436 94.3571 197.497 92.7424 200.473 89.5128C203.448 86.3119 207.182 80.553 211.674 72.2362C211.674 72.2362 211.846 71.9504 212.189 71.3788Z" fill="var(--cream)"/>
+<path d="M207.383 52.7732C207.383 53.3734 205.308 56.1456 201.159 61.09C197.754 65.1483 195.079 67.1775 193.134 67.1775C191.846 67.1775 190.759 66.6774 189.872 65.6771C189.013 64.6768 188.584 63.4478 188.584 61.9903C188.584 60.7042 188.842 59.5181 189.357 58.432C189.9 57.3174 191.288 55.131 193.52 51.8729C195.837 48.4433 196.996 46.2569 196.996 45.3138C196.996 44.142 196.381 43.5561 195.151 43.5561C190.973 43.5561 184.536 51.3013 175.837 66.7917C174.435 66.6774 173.591 66.6202 173.305 66.6202C172.304 66.6202 171.36 66.6774 170.473 66.7917L177.168 56.2028C180.973 50.1438 182.876 46.357 182.876 44.8422C182.876 43.9848 182.518 43.5561 181.803 43.5561C180.344 43.5561 177.468 46.6285 173.177 52.7732C172.919 53.1447 172.719 53.3448 172.576 53.3734C172.433 53.3734 172.347 53.2876 172.318 53.1162C172.347 52.9733 172.404 52.8589 172.49 52.7732L173.305 51.7014C177.683 45.8425 180.63 42.9131 182.146 42.9131C183.119 42.9131 183.949 43.3561 184.636 44.2421C185.322 45.128 185.666 46.1855 185.666 47.4144C185.666 49.2436 184.593 51.7872 182.447 55.0453C185.823 50.3868 188.413 47.2001 190.215 45.4853C192.046 43.7705 193.734 42.9131 195.28 42.9131C196.538 42.9131 197.597 43.4275 198.455 44.4564C199.314 45.4853 199.743 46.7571 199.743 48.2718C199.743 50.1867 198.427 53.1162 195.795 57.0602C193.105 61.09 191.76 63.6622 191.76 64.7768C191.76 65.9486 192.347 66.5345 193.52 66.5345C196.066 66.5345 200.458 62.0045 206.696 52.9447C206.839 52.6589 206.982 52.516 207.125 52.516C207.297 52.516 207.383 52.6017 207.383 52.7732Z" fill="var(--cream)"/>
+<path d="M172.318 35.0251C172.318 36.0254 171.889 36.9685 171.03 37.8545C170.201 38.7119 169.285 39.1406 168.284 39.1406C166.996 39.1406 166.352 38.4975 166.352 37.2114C166.352 36.2683 166.796 35.368 167.683 34.5106C168.57 33.6246 169.5 33.1816 170.472 33.1816C171.703 33.1816 172.318 33.7961 172.318 35.0251ZM172.919 52.7732C172.89 52.859 172.747 53.0876 172.49 53.4592L170.644 55.9885C165.265 63.4479 161.159 67.1776 158.326 67.1776C156.982 67.1776 155.852 66.706 154.936 65.7629C154.049 64.7911 153.605 63.5908 153.605 62.1618C153.605 60.5041 154.593 57.9891 156.567 54.6167L163.262 43.2561C164.149 43.4562 164.85 43.5562 165.365 43.5562C166.138 43.5562 167.225 43.4562 168.627 43.2561L158.884 59.2466C157.482 61.5616 156.781 63.3479 156.781 64.6054C156.781 65.8915 157.454 66.5345 158.799 66.5345C161.345 66.5345 165.823 62.0046 172.232 52.9447C172.375 52.6589 172.518 52.516 172.661 52.516C172.833 52.516 172.919 52.6018 172.919 52.7732Z" fill="var(--cream)"/>
+<path d="M166.909 22.807C156.18 39.8407 149.413 50.7297 146.609 55.474C143.776 60.304 142.36 63.3478 142.36 64.6053C142.36 65.8914 142.946 66.5345 144.119 66.5345C146.723 66.5345 151.144 62.0045 157.381 52.9447C157.553 52.6589 157.71 52.516 157.853 52.516C158.025 52.516 158.111 52.6017 158.111 52.7732C158.082 52.8589 157.939 53.0876 157.682 53.4591L155.836 55.9884C150.429 63.4478 146.437 67.1775 143.862 67.1775C142.546 67.1775 141.473 66.6917 140.643 65.7199C139.813 64.7196 139.398 63.4478 139.398 61.9045C139.398 60.3612 139.913 58.5749 140.944 56.5457C135.936 63.6336 132.217 67.1775 129.785 67.1775C128.268 67.1775 126.995 66.5345 125.965 65.2484C124.935 63.9337 124.42 62.2903 124.42 60.3183C124.42 55.6026 127.353 51.3299 133.218 47.5002C137.882 44.4421 141.544 42.9131 144.205 42.9131C145.979 42.9131 146.866 43.7705 146.866 45.4853C146.866 46.2855 146.623 47.1858 146.137 48.1861L161.459 22.5498C162.403 22.8356 163.333 22.9785 164.248 22.9785C164.477 22.9785 165.364 22.9213 166.909 22.807ZM146.222 45.8282C146.222 44.3135 145.521 43.5561 144.119 43.5561C141.544 43.5561 138.14 46.1283 133.905 51.2727C129.699 56.3886 127.596 60.5184 127.596 63.6622C127.596 65.577 128.383 66.5345 129.956 66.5345C132.245 66.5345 136.18 62.5618 141.759 54.6166C144.735 50.3296 146.222 47.4001 146.222 45.8282Z" fill="var(--cream)"/>
+<path d="M136.61 22.807C125.881 39.8407 119.114 50.7297 116.31 55.474C113.477 60.304 112.061 63.3478 112.061 64.6053C112.061 65.8914 112.648 66.5345 113.821 66.5345C116.424 66.5345 120.845 62.0045 127.082 52.9447C127.254 52.6589 127.412 52.516 127.555 52.516C127.726 52.516 127.812 52.6017 127.812 52.7732C127.783 52.8589 127.64 53.0876 127.383 53.4591L125.537 55.9884C120.13 63.4478 116.138 67.1775 113.563 67.1775C112.247 67.1775 111.174 66.6917 110.344 65.7199C109.515 64.7196 109.1 63.4478 109.1 61.9045C109.1 60.3612 109.615 58.5749 110.645 56.5457C105.638 63.6336 101.918 67.1775 99.4859 67.1775C97.9694 67.1775 96.6962 66.5345 95.6662 65.2484C94.6361 63.9337 94.1211 62.2903 94.1211 60.3183C94.1211 55.6026 97.0539 51.3299 102.919 47.5002C107.583 44.4421 111.246 42.9131 113.907 42.9131C115.68 42.9131 116.567 43.7705 116.567 45.4853C116.567 46.2855 116.324 47.1858 115.838 48.1861L131.16 22.5498C132.104 22.8356 133.034 22.9785 133.949 22.9785C134.178 22.9785 135.065 22.9213 136.61 22.807ZM115.924 45.8282C115.924 44.3135 115.223 43.5561 113.821 43.5561C111.246 43.5561 107.841 46.1283 103.606 51.2727C99.4001 56.3886 97.2971 60.5184 97.2971 63.6622C97.2971 65.577 98.0839 66.5345 99.6576 66.5345C101.947 66.5345 105.881 62.5618 111.46 54.6166C114.436 50.3296 115.924 47.4001 115.924 45.8282Z" fill="var(--cream)"/>
+<path d="M97.6387 52.7732C97.6387 52.8589 97.3812 53.2305 96.8662 53.8878L95.0207 56.2028C89.098 63.5193 84.0193 67.1775 79.7847 67.1775C77.7818 67.1775 76.0937 66.463 74.7203 65.034C73.3755 63.5764 72.7031 61.7616 72.7031 59.5895C72.7031 54.4451 76.294 49.9152 83.4757 45.9997C87.2525 43.942 90.3283 42.9131 92.7031 42.9131C93.7332 42.9131 94.6058 43.2275 95.3212 43.8562C96.0651 44.4564 96.437 45.1995 96.437 46.0855C96.437 48.1432 95.0923 49.9009 92.4027 51.3585C89.7131 52.7875 85.221 54.1307 78.9263 55.3883C76.9807 58.332 76.0078 60.7899 76.0078 62.7619C76.0078 65.2198 77.3383 66.4487 79.9993 66.4487C84.52 66.4487 90.0565 62.0331 96.6087 53.2019C96.9521 52.7446 97.2382 52.516 97.4671 52.516C97.5815 52.5446 97.6387 52.6303 97.6387 52.7732ZM94.0336 44.8422C94.0336 43.9277 93.5329 43.4704 92.5315 43.4704C91.015 43.4704 89.0121 44.5279 86.5229 46.6428C84.0622 48.7291 81.6445 51.4442 79.2696 54.7881C83.3898 53.7306 86.8805 52.2445 89.7418 50.3296C92.603 48.3862 94.0336 46.557 94.0336 44.8422Z" fill="var(--cream)"/>
+<path d="M135.536 1.20036C135.536 1.91486 135.093 2.27211 134.206 2.27211H133.605C132.718 2.15779 131.602 2.10063 130.258 2.10063C123.677 2.10063 115.737 5.05866 106.438 10.9747C101.144 14.3472 96.7096 17.8054 93.1331 21.3493C89.4421 24.9789 83.2189 32.1097 74.4635 42.7414C63.877 55.5739 55.608 64.1764 49.6567 68.5492C47.6824 70.0068 46.5379 70.7356 46.2232 70.7356C46.0801 70.7356 45.9943 70.6784 45.9657 70.5641C45.9657 70.5355 46.3805 70.1068 47.2103 69.278C50.8441 65.5912 54.5923 58.4176 58.4549 47.7572C61.917 38.2401 64.6495 31.2951 66.6524 26.9224C68.6838 22.5496 70.8441 18.9057 73.1331 15.9905C73.6767 15.3046 73.9485 14.9188 73.9485 14.833C73.7482 14.7759 73.5336 14.8902 73.3047 15.176L72.8755 15.6047L71.8026 16.9337C69.9428 19.2486 65.5794 24.9218 58.7124 33.9531C47.8684 48.6146 38.3548 59.1606 30.1717 65.5912C25.7654 69.0208 23.2046 70.7356 22.4893 70.7356C22.3462 70.6784 22.2604 70.5927 22.2318 70.4783C22.2318 70.3926 22.4177 70.1925 22.7897 69.8782C28.3977 64.7623 33.7625 57.0886 38.8841 46.8569C44.0343 36.5967 46.6094 28.4085 46.6094 22.2924C46.6094 18.1197 45.5937 14.8187 43.5622 12.3894C41.5308 9.93156 38.7554 8.70262 35.2361 8.70262C27.8255 8.70262 20.4578 12.8324 13.133 21.0921C5.83691 29.3517 2.18884 37.6828 2.18884 46.0853C2.18884 49.5721 3.13305 52.3872 5.02146 54.5307C6.93848 56.6742 9.42775 57.7459 12.4893 57.7459C18.9557 57.7459 25.0787 53.3303 30.8584 44.4991C34.6066 38.7545 36.4807 33.6387 36.4807 29.1516C36.4807 27.0367 35.9514 25.3362 34.8927 24.0501C33.8627 22.764 32.4893 22.1209 30.7725 22.1209C29.7425 22.1209 28.7411 22.3782 27.7682 22.8926C26.7954 23.3785 26.309 23.8786 26.309 24.3931C26.309 24.5645 26.3949 24.6503 26.5665 24.6503C26.6524 24.6503 26.7954 24.6217 26.9957 24.5645C27.711 24.4502 28.1831 24.3931 28.412 24.3931C29.6996 24.3931 30.3433 25.1218 30.3433 26.5794C30.3433 27.4654 30 28.2371 29.3133 28.8944C28.6266 29.5232 27.8255 29.8375 26.9099 29.8375C25.1359 29.8375 24.2489 28.8801 24.2489 26.9653C24.2489 25.4505 24.907 24.1358 26.2232 23.0212C27.5393 21.878 29.0558 21.3064 30.7725 21.3064C32.7468 21.3064 34.3205 22.0209 35.4936 23.4499C36.6953 24.8789 37.2961 26.7795 37.2961 29.1516C37.2961 34.5247 34.8355 40.5836 29.9142 47.3285C24.4492 54.7593 18.6123 58.4747 12.4034 58.4747C8.79828 58.4747 5.8226 57.1029 3.4764 54.3592C1.1588 51.5869 0 48.1002 0 43.8989C0 39.9549 1.04435 35.8394 3.13305 31.5523C5.25036 27.2653 8.1402 23.3642 11.8026 19.8488C20.0143 11.875 27.897 7.88809 35.4506 7.88809C39.8856 7.88809 43.6052 9.63147 46.6094 13.1182C49.6423 16.605 51.1588 20.892 51.1588 25.9792C51.1588 31.438 48.8984 38.0686 44.3777 45.8709C39.8569 53.6447 34.3777 60.3324 27.9399 65.9341C27.3104 66.5057 26.9957 66.8201 26.9957 66.8773C27.0243 66.9916 27.0815 67.0487 27.1674 67.0487C28.0544 67.0487 30.9013 64.5623 35.7082 59.5894C42.5179 52.5301 51.7167 41.3839 63.3047 26.1507C66.6238 21.778 69.8856 17.8625 73.0901 14.4043C76.2947 10.9461 78.269 9.21706 79.0129 9.21706C79.1846 9.21706 79.2704 9.3028 79.2704 9.47428C79.2704 9.56002 79.1846 9.70292 79.0129 9.90298C77.2103 12.3037 75.7511 14.7473 74.6352 17.2338C73.3763 20.0632 71.4735 25.3791 68.927 33.1814C66.123 41.6983 63.5765 48.1859 61.2876 52.6444C58.8841 57.2458 55.8655 61.4042 52.2318 65.1196C52.1745 65.2339 52.1173 65.3339 52.0601 65.4197C52.0887 65.5054 52.1459 65.5626 52.2318 65.5912C52.7182 65.5912 54.764 63.7192 58.3691 59.9752C60.887 57.3744 67.9256 49.0862 79.485 35.1106C85.465 27.8798 90.8155 22.1781 95.5365 18.0054C100.258 13.8042 105.565 10.0602 111.459 6.77347C119.499 2.25782 126.509 0 132.489 0C134.521 0 135.536 0.40012 135.536 1.20036Z" fill="var(--cream)"/></symbol>
+</svg>
+
+<div class="viewport">
+<div class="stage" id="stage">
+
+  <!-- ═══ KV ═══ -->
+  <section class="kv">
+    <!-- REPLACE: KV 배경 -->
+    <div class="slot kv-bg" data-label="KV 배경 사진"><img class="parallax-img" data-parallax-speed="0.14" src="images/kv.png"></div>
+    <!-- KV 로고 3요소를 하나의 그룹으로 묶어 100vh 기준 수직중앙 배치 -->
+    <div class="kv-logo-group" id="kvLogoGroup">
+      <div class="kv-logo-stack">
+        <div class="kv-logo" id="kvLogo">
+          <svg viewBox="0 0 340 95" xmlns="http://www.w3.org/2000/svg" aria-label="Wedding day">
+            <defs><clipPath id="wdClip"><rect class="wd-reveal" x="0" y="0" width="0" height="95"/></clipPath></defs>
+            <g clip-path="url(#wdClip)"><use href="#symWd"/></g>
+          </svg>
+        </div>
+        <!-- REPLACE: 이름 이미지/SVG (뒤 블러 레이어 + 앞 선명 레이어) -->
+        <div class="kv-names" id="kvNames">
+          <!-- 뒤: 블러 글로우 레이어 -->
+          <div class="kv-names-blur" data-label="Junsu & Yuri SVG (blur)"><img src="images/junsu_yuri.svg" alt=""></div>
+          <!-- 앞: 선명 레이어 -->
+          <div class="slot kv-names-main" data-label="Junsu & Yuri SVG"><img src="images/junsu_yuri.svg" alt="Junsu & Yuri"></div>
+        </div>
+        <div class="kv-date" id="kvDate">
+          <span>2026.10.11</span>
+          <div class="kv-date-pm"><span>PM</span><span>12:30</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ INFO + NAME ═══ -->
+  <section class="info-name">
+    <div class="info">
+      <!-- REPLACE: 꽃 장식 -->
+      <div class="slot info-deco" data-label="꽃"><img src="images/cat.png"></div>
+      <p class="info-tit">소중한 분들을 결혼식에 초대합니다</p>
+      <p class="info-sub">저희 두 사람이 하나가 되는 특별한 날,
+ 인생에서 가장 아름다운 순간을 함께 축복해 주시길 바랍니다.
+ 진심을 담아 초대드립니다.</p>
+    </div>
+    <div class="name-row">
+      <div class="name-set">
+        <div class="name-col">
+          <div class="name-parents"><p>탁영래</p><div class="name-dot"></div><p>박미녀</p></div>
+          <div class="name-role">의 아들</div>
+          <div class="name-main">탁준수</div>
+        </div>
+        <div class="name-col">
+          <div class="name-parents"><p>김진배</p><div class="name-dot"></div><p>구와하라 치카</p></div>
+          <div class="name-role">의 딸</div>
+          <div class="name-main">김유리</div>
+        </div>
+      </div>
+      <div class="name-and">
+      <!-- REPLACE: 반지 이미지 -->
+      <div class="slot" data-label="반지"><img src="images/ring.png" alt="반지"></div>
+    </div>
+    </div>
+  </section>
+
+  <!-- ═══ 신부 앉은 사진 (첫 사진, 우측 + Pic.2 데코) ═══ -->
+  <!-- REPLACE: 신부 앉은 사진 (나무 배경) -->
+  <div class="slot bride-seated" data-label="신부 앉은 사진"><img src="images/img1.png"></div>
+  <div class="pick pick1" data-label="pick1"><img src="images/pick1.svg"></div>
+
+  <!-- ═══ 신부 서있는 사진 + 메시지(Junsu say) ═══ -->
+  <section class="groom-row">
+    <!-- REPLACE: 신부 서있는 사진 -->
+    <div class="slot groom-photo" data-label="신부 서있는 사진"><img src="images/img2.png"></div>
+    <div class="groom-txt">
+      <div class="say-kr">
+        <p>서로 다른 길을 걸어온 두 사람이<br>이제 같은 방향을 바라보며<br>평생을 함께하고자 합니다.</p>
+        <p>새로운 시작의 순간에 함께해 주시어<br>따뜻한 축복을 나눠주시면 감사하겠습니다.</p>
+      </div>
+    </div>
+  </section>
+  <div class="pick pick2" data-label="pick2"><img src="images/pick2.svg"></div>
+  <!-- REPLACE: 데코 꽃 1 -->
+  <div class="slot deco-flower-1" data-label="데코"><img src="images/bird.png"></div>
+
+  <!-- ═══ FULLBLEED 1 ═══ -->
+  <!-- REPLACE: 전체 사진 1 -->
+  <div class="slot full1" data-label="전체 사진 ①"><img class="parallax-img" data-parallax-speed="0.12" src="images/img3.png"></div>
+  <div class="pick pick3" data-label="pick3"><img src="images/pick3.svg"></div>
+
+  <!-- ═══ CENTER PORTRAIT ═══ -->
+  <!-- REPLACE: 포트레이트 -->
+  <div class="slot portrait" data-label="포트레이트 사진"><img src="images/img4.png"></div>
+  <div class="pick pick4" data-label="pick4"><img src="images/pick4.svg"></div>
+  <!-- REPLACE: 데코 꽃 2 -->
+  <div class="slot deco-flower-2" data-label="데코"><!-- <img src="images/deco2.png"> --></div>
+
+  <!-- ═══ FULLBLEED 2 ═══ -->
+  <!-- REPLACE: 전체 사진 2 -->
+  <div class="slot full2" data-label="전체 사진 ②"><img class="parallax-img" data-parallax-speed="0.08" src="images/img5.png"></div>
+  <div class="pick pick5" data-label="pick5"><img src="images/pick5.svg"></div>
+
+  <!-- ═══ 신부 사진(우) + 메시지(좌) ═══ -->
+  <section class="bride-row">
+    <div class="bride-say-kr">
+      <p>서로 다른 길을 걸어온 두 사람이<br>이제 같은 방향을 바라보며<br>평생을 함께하고자 합니다.</p>
+      <p>새로운 시작의 순간에 함께해 주시어<br>따뜻한 축복을 나눠주시면 감사하겠습니다.</p>
+    </div>
+    <!-- REPLACE: 신부 사진 -->
+    <div class="slot bride-photo" data-label="신부 사진"><img src="images/img6.png"></div>
+    <div class="pick pick6" data-label="pick6"><img src="images/pick6.svg"></div>
+  </section>
+
+  <!-- ═══ 신랑 단독 사진(좌) ═══ -->
+  <!-- REPLACE: 신랑 단독 사진 -->
+  <div class="slot groom-solo" data-label="신랑 단독 사진"><img src="images/img7.png"></div>
+  <div class="pick pick7" data-label="pick7"><img src="images/pick7.svg"></div>
+
+  <!-- ═══ FULLBLEED 3 ═══ -->
+  <!-- REPLACE: 전체 사진 3 -->
+  <div class="slot full3" data-label="전체 사진 ③"><img class="parallax-img" data-parallax-speed="0.06" src="images/img8.png"></div>
+  <div class="pick pick8" data-label="pick8"><img src="images/pick8.svg"></div>
+
+  <!-- ═══ 커플 사진 ① (좌측 와이드 + Pic10 데코) ═══ -->
+  <section class="couple-1-wrap">
+    <!-- REPLACE: 커플 사진 1 -->
+    <div class="slot couple-1" data-label="커플 사진 ①"><img src="images/img9.png"></div>
+    <!-- REPLACE: Pic 10 데코 -->
+    <div class="slot couple-1-deco couple-deco" data-label="pick9"><img src="images/pick9.svg"></div>
+  </section>
+
+  <!-- ═══ 커플 사진 ② (우측 + Pic11 데코) ═══ -->
+  <section class="couple-2-wrap">
+    <!-- REPLACE: 커플 사진 2 -->
+    <div class="slot couple-2" data-label="커플 사진 ②"><img src="images/img10.png"></div>
+    <!-- REPLACE: Pic 11 데코 -->
+    <div class="slot couple-2-deco couple-deco" data-label="pick10"><img src="images/pick10.svg"></div>
+  </section>
+
+  <!-- ═══ 갤러리 스트립 ═══ -->
+  <section class="gallery">
+    <!-- REPLACE: 갤러리 6장 → 9장 반복 마퀴 (원본 세트 + 복제 세트로 무한 루프) -->
+    <div class="marquee">
+      <!-- 원본 세트 (9장: 6장을 반복해 채움) -->
+      <div class="slot cell" data-label="1"><img src="images/gallery1.png"></div>
+      <div class="slot cell" data-label="2"><img src="images/gallery2.png"></div>
+      <div class="slot cell" data-label="3"><img src="images/gallery3.png"></div>
+      <div class="slot cell" data-label="4"><img src="images/gallery4.png"></div>
+      <div class="slot cell" data-label="5"><img src="images/gallery5.png"></div>
+      <div class="slot cell" data-label="6"><img src="images/gallery6.png"></div>
+      <div class="slot cell" data-label="7"><img src="images/gallery1.png"></div>
+      <div class="slot cell" data-label="8"><img src="images/gallery2.png"></div>
+      <div class="slot cell" data-label="9"><img src="images/gallery3.png"></div>
+      <!-- 복제 세트 (seamless loop용, 화면엔 이어지는 동일 이미지) -->
+      <div class="slot cell" aria-hidden="true"><img src="images/gallery1.png"></div>
+      <div class="slot cell" aria-hidden="true"><img src="images/gallery2.png"></div>
+      <div class="slot cell" aria-hidden="true"><img src="images/gallery3.png"></div>
+      <div class="slot cell" aria-hidden="true"><img src="images/gallery4.png"></div>
+      <div class="slot cell" aria-hidden="true"><img src="images/gallery5.png"></div>
+      <div class="slot cell" aria-hidden="true"><img src="images/gallery6.png"></div>
+      <div class="slot cell" aria-hidden="true"><img src="images/gallery1.png"></div>
+      <div class="slot cell" aria-hidden="true"><img src="images/gallery2.png"></div>
+      <div class="slot cell" aria-hidden="true"><img src="images/gallery3.png"></div>
+    </div>
+  </section>
+
+  <!-- ═══ LOCATION + ACCOUNT ═══ -->
+  <section class="loc-acc">
+
+    <!-- 오시는 길 -->
+    <div class="loc-block">
+      <div class="loc-title">오시는 길</div>
+      <div class="loc-grid">
+        <div class="loc-info">
+          <div class="loc-name">여수 한옥호텔 오동재</div>
+          <div class="loc-addr">
+            <p>전라남도 여수시 박람회길 99, 오동재 한옥호텔</p>
+            <p>Tel. 061-650-0300</p>
+          </div>
+        </div>
+        <!-- REPLACE: 지도 -->
+        <div class="slot loc-map" data-label="지도"><img src="images/map.png"></div>
+        <div class="loc-btns">
+          <button class="map-btn" onclick="window.open('https://map.naver.com/p/search/여수+오동재+한옥호텔')">
+            <span class="map-btn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="10" r="4"/><path d="M12 2C7 2 3 6 3 10c0 5.25 9 13 9 13s9-7.75 9-13c0-4-4-8-9-8z"/></svg></span>네이버맵
+          </button>
+          <button class="map-btn" onclick="window.open('https://map.kakao.com/?q=여수+오동재+한옥호텔')">
+            <span class="map-btn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="10" r="4"/><path d="M12 2C7 2 3 6 3 10c0 5.25 9 13 9 13s9-7.75 9-13c0-4-4-8-9-8z"/></svg></span>카카오맵
+          </button>
+          <button class="map-btn" onclick="window.open('https://tmap.life/?q=여수+오동재+한옥호텔')">
+            <span class="map-btn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="10" r="4"/><path d="M12 2C7 2 3 6 3 10c0 5.25 9 13 9 13s9-7.75 9-13c0-4-4-8-9-8z"/></svg></span>티맵
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 마음 전하실 곳 -->
+    <div class="acc-block">
+      <div class="acc-title">마음 전하실 곳</div>
+      <div class="acc-desc">
+        <p>멀리서도 축하의 마음을 전하고 싶으신 분들을 위해<br>계좌번호를 안내드립니다.</p>
+        <p>소중한 축하를 보내주셔서 감사드리며,<br>따뜻한 마음에 깊이 감사드립니다.</p>
+      </div>
+      <div class="acc-table">
+        <!-- 신랑측 -->
+        <div class="acc-head" onclick="toggleAcc('groom')">
+          <span class="acc-head-label">신랑측 계좌번호</span>
+          <span class="acc-arrow" id="arrow-groom"><svg viewBox="0 0 14 8" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l6 6 6-6"/></svg></span>
+        </div>
+        <div class="acc-body" id="body-groom">
+          <div class="acc-row"><div class="acc-info-c"><div class="acc-name">탁준수</div><div class="acc-bank"><span>우리은행</span><span>1002460817380</span></div></div><button class="copy-btn" onclick="copyText(this,'1002460817380')">복사</button></div>
+          <div class="acc-row"><div class="acc-info-c"><div class="acc-name">탁영래</div><div class="acc-bank"><span>농협</span><span>17811052053113</span></div></div><button class="copy-btn" onclick="copyText(this,'17811052053113')">복사</button></div>
+          <div class="acc-row"><div class="acc-info-c"><div class="acc-name">박미녀</div><div class="acc-bank"><span>농협</span><span>17866056019143</span></div></div><button class="copy-btn" onclick="copyText(this,'17866056019143')">복사</button></div>
+        </div>
+        <!-- 신부측 -->
+        <div class="acc-head" onclick="toggleAcc('bride')">
+          <span class="acc-head-label">신부측 계좌번호</span>
+          <span class="acc-arrow" id="arrow-bride"><svg viewBox="0 0 14 8" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l6 6 6-6"/></svg></span>
+        </div>
+        <div class="acc-body" id="body-bride">
+          <div class="acc-row"><div class="acc-info-c"><div class="acc-name">김유리</div><div class="acc-bank"><span>우리은행</span><span>1002059810125</span></div></div><button class="copy-btn" onclick="copyText(this,'1002059810125')">복사</button></div>
+          <div class="acc-row"><div class="acc-info-c"><div class="acc-name">김진배</div><div class="acc-bank"><span>농협</span><span>62912448763</span></div></div><button class="copy-btn" onclick="copyText(this,'62912448763')">복사</button></div>
+        </div>
+      </div>
+
+      <!-- MAP -->
+      <div class="qr-block">
+        <!-- REPLACE: MAP -->
+        <div class="slot qr-slot" data-label="MAP"><img src="images/flower.png"></div>
+        <p class="qr-note">*축하의 마음만 감사히 받겠습니다.<br>화환은 정중히 사양합니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <!-- REPLACE: Junsu & Yuri 로고 SVG (직접 만든 svg 넣기) -->
+  <div class="footer-logo">
+    <div class="slot" data-label="Junsu & Yuri SVG"><img src="images/footer_logo.svg"></div>
+  </div>
+
+</div><!-- /stage -->
+
+<!-- ═════════════════════════════════════════════
+     MOBILE STAGE (≤1024px) — Figma mo (96:44)
+     ═════════════════════════════════════════════ -->
+<div class="stage-mo" id="stageMo">
+
+  <!-- ═══ KV ═══ -->
+  <section class="mo-kv">
+    <!-- REPLACE: KV 배경 (모바일) -->
+    <div class="slot kv-bg" data-label="KV 배경 사진"><img class="parallax-img" data-parallax-speed="0.14" src="images/kv.png"></div>
+    <div class="abs kv-logo">
+      <svg viewBox="0 0 340 95" xmlns="http://www.w3.org/2000/svg" aria-label="Wedding day">
+        <defs><clipPath id="wdClipM"><rect class="wd-reveal" x="0" y="0" width="0" height="95"/></clipPath></defs>
+        <g clip-path="url(#wdClipM)"><use href="#symWd"/></g>
+      </svg>
+    </div>
+    <div class="abs kv-names">
+      <div class="kv-names-blur" data-label="Junsu & Yuri SVG (blur)"><img src="images/junsu_yuri.svg" alt=""></div>
+      <div class="slot kv-names-main" data-label="Junsu & Yuri SVG"><img src="images/junsu_yuri.svg" alt="Junsu & Yuri"></div>
+    </div>
+    <div class="abs kv-date">
+      <span>2026.10.11</span>
+      <div class="kv-date-pm"><span>PM</span><span>12:30</span></div>
+    </div>
+  </section>
+
+  <!-- ═══ INFO + NAME ═══ -->
+  <section class="mo-info-name reveal">
+    <div class="mo-info">
+      <!-- REPLACE: 꽃 장식 -->
+      <div class="slot mo-info-deco" data-label="꽃"><!-- <img src="images/flower.png"> --></div>
+      <p class="mo-info-tit">소중한 분들을 결혼식에 초대합니다</p>
+      <p class="mo-info-sub">저희 두 사람이 하나가 되는 특별한 날,<br>인생에서 가장 아름다운 순간을 함께<br>축복해 주시길 바랍니다.</p>
+    </div>
+    <div class="mo-name-row">
+      <div class="mo-name-col">
+        <div class="name-parents"><p>탁영래</p><div class="name-dot"></div><p>박미녀</p></div>
+        <div class="mo-name-role">의 아들</div>
+        <div class="mo-name-main">탁준수</div>
+      </div>
+      <div class="mo-name-col">
+        <div class="name-parents"><p>김진배</p><div class="name-dot"></div><p>구와하라 치카</p></div>
+        <div class="mo-name-role">의 딸</div>
+        <div class="mo-name-main">김유리</div>
+      </div>
+      <div class="mo-name-and">
+        <!-- REPLACE: 반지 이미지 -->
+        <div class="slot" data-label="반지"><img src="images/ring.png" alt="반지"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 신부 앉은 사진 (우측) ═══ -->
+  <div class="slot mo-photo-r reveal" data-label="신부 앉은 사진"><img src="images/img1.png"></div>
+
+  <!-- ═══ 신부 서있는 사진 (좌측) + Junsu say ═══ -->
+  <div class="slot mo-photo-l reveal" data-label="신부 서있는 사진"><img src="images/img2.png"></div>
+  <div class="mo-say reveal">
+    <div class="mo-say-kr">
+      <p>서로 다른 길을 걸어온 두 사람이<br>이제 같은 방향을 바라보며<br>평생을 함께하고자 합니다.</p>
+      <p>새로운 시작의 순간에 함께해 주시어<br>따뜻한 축복을 나눠주시면 감사하겠습니다.</p>
+    </div>
+  </div>
+
+  <!-- ═══ FULLBLEED 1 ═══ -->
+  <div class="slot mo-full reveal" data-label="전체 사진 ①"><img class="parallax-img" data-parallax-speed="0.12" src="images/img3.png"></div>
+
+  <!-- ═══ CENTER PORTRAIT ═══ -->
+  <div class="slot mo-portrait reveal" data-label="포트레이트 사진"><img src="images/img4.png"></div>
+
+  <!-- ═══ FULLBLEED 2 ═══ -->
+  <div class="slot mo-full reveal" data-label="전체 사진 ②"><img class="parallax-img" data-parallax-speed="0.08" src="images/img5.png"></div>
+
+  <!-- ═══ 신부 사진 (우측) ═══ -->
+  <div class="slot mo-photo-r reveal" data-label="신부 사진"><img src="images/img6.png"></div>
+
+  <!-- ═══ 신랑 단독 사진 (좌측) + Yuri say ═══ -->
+  <div class="slot mo-photo-l reveal" data-label="신랑 단독 사진"><img src="images/img7.png"></div>
+  <div class="mo-say reveal">
+    <div class="mo-say-kr">
+      <p>서로 다른 길을 걸어온 두 사람이<br>이제 같은 방향을 바라보며<br>평생을 함께하고자 합니다.</p>
+      <p>새로운 시작의 순간에 함께해 주시어<br>따뜻한 축복을 나눠주시면 감사하겠습니다.</p>
+    </div>
+  </div>
+
+  <!-- ═══ FULLBLEED 3 ═══ -->
+  <div class="slot mo-full reveal" data-label="전체 사진 ③"><img class="parallax-img" data-parallax-speed="0.06" src="images/img8.png"></div>
+
+  <!-- ═══ 커플 사진 ①②③ ═══ -->
+  <div class="slot mo-couple-1 reveal" data-label="커플 사진 ①"><img src="images/img9.png"></div>
+  <div class="slot mo-couple-2 reveal" data-label="커플 사진 ②"><img src="images/img10.png"></div>
+  <!-- REPLACE: 커플 사진 ③ (모바일 전용 풀와이드) -->
+  <div class="slot mo-couple-3 reveal" data-label="커플 사진 ③"><!-- <img src="images/img11.png"> --></div>
+
+  <!-- ═══ 갤러리 3×3 ═══ -->
+  <section class="mo-gallery js-gallery reveal">
+    <div class="mo-g-row">
+      <div class="slot cell" data-label="1"><img src="images/gallery1.png"></div>
+      <div class="slot cell" data-label="2"><img src="images/gallery2.png"></div>
+      <div class="slot cell" data-label="3"><img src="images/gallery3.png"></div>
+    </div>
+    <div class="mo-g-row">
+      <div class="slot cell" data-label="4"><img src="images/gallery4.png"></div>
+      <div class="slot cell" data-label="5"><img src="images/gallery5.png"></div>
+      <div class="slot cell" data-label="6"><img src="images/gallery6.png"></div>
+    </div>
+    <div class="mo-g-row">
+      <!-- REPLACE: 갤러리 7~9 (모바일 3×3 전용 추가분) -->
+      <div class="slot cell" data-label="7"><!-- <img src="images/gallery7.png"> --></div>
+      <div class="slot cell" data-label="8"><!-- <img src="images/gallery8.png"> --></div>
+      <div class="slot cell" data-label="9"><!-- <img src="images/gallery9.png"> --></div>
+    </div>
+  </section>
+
+  <!-- ═══ 오시는 길 ═══ -->
+  <section class="mo-loc reveal">
+    <div class="mo-sec-title">오시는 길</div>
+    <div class="mo-loc-name">여수 한옥호텔 오동재</div>
+    <div class="mo-loc-addr">
+      <p>전라남도 여수시 박람회길 99, 오동재 한옥호텔</p>
+      <p>Tel. 061-650-0300</p>
+    </div>
+    <!-- REPLACE: 지도 -->
+    <div class="slot mo-loc-map" data-label="지도"><img src="images/map.png"></div>
+    <div class="mo-loc-btns">
+      <button class="map-btn" onclick="window.open('https://map.naver.com/p/search/여수+오동재+한옥호텔')">
+        <span class="map-btn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="10" r="4"/><path d="M12 2C7 2 3 6 3 10c0 5.25 9 13 9 13s9-7.75 9-13c0-4-4-8-9-8z"/></svg></span>네이버맵으로 가기
+      </button>
+      <button class="map-btn" onclick="window.open('https://map.kakao.com/?q=여수+오동재+한옥호텔')">
+        <span class="map-btn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="10" r="4"/><path d="M12 2C7 2 3 6 3 10c0 5.25 9 13 9 13s9-7.75 9-13c0-4-4-8-9-8z"/></svg></span>카카오맵으로 가기
+      </button>
+      <button class="map-btn" onclick="window.open('https://tmap.life/?q=여수+오동재+한옥호텔')">
+        <span class="map-btn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="10" r="4"/><path d="M12 2C7 2 3 6 3 10c0 5.25 9 13 9 13s9-7.75 9-13c0-4-4-8-9-8z"/></svg></span>티맵으로 가기
+      </button>
+    </div>
+  </section>
+
+  <!-- ═══ 마음 전하실 곳 ═══ -->
+  <section class="mo-acc reveal">
+    <div class="mo-sec-title">마음 전하실 곳</div>
+    <div class="mo-acc-desc">
+      <p>멀리서도 축하의 마음을 전하고 싶으신 분들을 위해<br>계좌번호를 안내드립니다.</p>
+      <p>소중한 축하를 보내주셔서 감사드리며,<br>따뜻한 마음에 깊이 감사드립니다.</p>
+    </div>
+    <div class="acc-table">
+      <!-- 신랑측 -->
+      <div class="acc-head" onclick="toggleAcc('groom-m')">
+        <span class="acc-head-label">신랑측 계좌번호</span>
+        <span class="acc-arrow" id="arrow-groom-m"><svg viewBox="0 0 14 8" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l6 6 6-6"/></svg></span>
+      </div>
+      <div class="acc-body" id="body-groom-m">
+        <div class="acc-row"><div class="acc-info-c"><div class="acc-name">탁준수</div><div class="acc-bank"><span>우리은행</span><span>1002460817380</span></div></div><button class="copy-btn" onclick="copyText(this,'1002460817380')">복사</button></div>
+        <div class="acc-row"><div class="acc-info-c"><div class="acc-name">탁영래</div><div class="acc-bank"><span>농협</span><span>17811052053113</span></div></div><button class="copy-btn" onclick="copyText(this,'17811052053113')">복사</button></div>
+        <div class="acc-row"><div class="acc-info-c"><div class="acc-name">박미녀</div><div class="acc-bank"><span>농협</span><span>17866056019143</span></div></div><button class="copy-btn" onclick="copyText(this,'17866056019143')">복사</button></div>
+      </div>
+      <!-- 신부측 -->
+      <div class="acc-head" onclick="toggleAcc('bride-m')">
+        <span class="acc-head-label">신부측 계좌번호</span>
+        <span class="acc-arrow" id="arrow-bride-m"><svg viewBox="0 0 14 8" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l6 6 6-6"/></svg></span>
+      </div>
+      <div class="acc-body" id="body-bride-m">
+        <div class="acc-row"><div class="acc-info-c"><div class="acc-name">김유리</div><div class="acc-bank"><span>우리은행</span><span>1002059810125</span></div></div><button class="copy-btn" onclick="copyText(this,'1002460817380')">복사</button></div>
+        <div class="acc-row"><div class="acc-info-c"><div class="acc-name">김진배</div><div class="acc-bank"><span>농협</span><span>62912448763</span></div></div><button class="copy-btn" onclick="copyText(this,'1002460817380')">복사</button></div>
+      </div>
+    </div>
+
+    <!-- MAP/QR -->
+    <div class="mo-qr">
+      <!-- REPLACE: MAP -->
+      <div class="slot mo-qr-slot" data-label="MAP"><img src="images/flower.png"></div>
+      <p class="mo-qr-note">*축하의 마음만 감사히 받겠습니다.<br>화환은 정중히 사양합니다.</p>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <div class="mo-footer-logo">
+    <div class="slot" data-label="Junsu & Yuri SVG"><img src="images/footer_logo.svg"></div>
+  </div>
+
+</div><!-- /stage-mo -->
+
+</div><!-- /viewport -->
+
+<script>
+/* ───── 새로고침 시 항상 맨 위에서 시작 ───── */
+if('scrollRestoration' in history){ history.scrollRestoration = 'manual'; }
+window.scrollTo(0,0);
+window.addEventListener('beforeunload', ()=>window.scrollTo(0,0));
+window.addEventListener('load', ()=>{ window.scrollTo(0,0); });
+
+/* ───── STAGE 반응형 보정 ─────
+   데스크톱(>1024): CSS vw 단위로 1920 기준 좌표를 직접 반응형 처리
+   모바일(≤1024): 390 기준 플로우 캔버스 → 화면폭 맞춤
+   ───────────────────────── */
+const STAGE_W = 1920, STAGE_H = 18602, MO_W = 390, MO_KV_H = 844;
+const stage = document.getElementById('stage');
+const stageMo = document.getElementById('stageMo');
+const kvLogoGroup = document.getElementById('kvLogoGroup');
+const viewport = document.querySelector('.viewport');
+function isMobileMode(){ return window.innerWidth <= 1024; }
+function desktopUnit(){ return Math.min(window.innerWidth, 2560) / STAGE_W; }
+function kvBottomPx(){
+  const vw = window.innerWidth;
+  return isMobileMode() ? MO_KV_H * (vw / MO_W) : 1080 * desktopUnit();
+}
+function fitStage(){
+  const vw = window.innerWidth;
+  if(isMobileMode()){
+    stageMo.style.transform = '';
+    viewport.style.height = '';
+  } else {
+    stage.style.transform = '';
+    viewport.style.height = '';
+  }
+}
+fitStage();
+/* 모바일 스테이지는 플로우 레이아웃 — 아코디언 변화 시 보정 */
+if('ResizeObserver' in window && stageMo){
+  new ResizeObserver(() => { if(isMobileMode()) fitStage(); }).observe(stageMo);
+}
+
+const parallaxImages = [...document.querySelectorAll('.parallax-img')];
+function updateParallax(){
+  const vh = window.innerHeight;
+  parallaxImages.forEach(img => {
+    const speed = parseFloat(img.dataset.parallaxSpeed || '0');
+    const slot = img.parentElement;
+    const rect = slot.getBoundingClientRect();
+    if(rect.bottom < 0 || rect.top > vh) return;
+    // 중앙 기준으로 아주 작게 이동해 풀와이드 사진이 밀려 보이지 않게 한다.
+    const isKv = slot.classList.contains('kv-bg');
+    const progress = isKv
+      ? Math.min(1, Math.max(0, (window.scrollY || 0) / Math.max(vh, 1)))
+      : Math.min(1, Math.max(0, (vh - rect.top) / (vh + rect.height)));
+    const maxShift = rect.height * Math.min(0.08, Math.max(0.035, speed * 0.45));
+    const y = (progress - 0.5) * 2 * maxShift;
+    img.style.setProperty('--parallax-y', `${y}px`);
+  });
+}
+
+window.addEventListener('resize', ()=>{fitStage();updateParallax();});
+
+/* ───── 갤러리 마퀴: 호버 시 재생속도만 낮춤 (위치 튐 없음) ───── */
+document.querySelectorAll('.gallery .marquee').forEach(mq => {
+  const anim = mq.getAnimations()[0];
+  if(!anim) return;
+  const section = mq.closest('.gallery');
+  let target = 1, current = 1, raf = null;
+  function loop(){
+    current += (target - current) * 0.06;
+    anim.playbackRate = current;
+    if(Math.abs(target - current) > 0.002){ raf = requestAnimationFrame(loop); }
+    else { current = target; anim.playbackRate = current; raf = null; }
+  }
+  function to(v){ target = v; if(!raf) raf = requestAnimationFrame(loop); }
+  section.addEventListener('mouseenter', () => to(0.15));
+  section.addEventListener('mouseleave', () => to(1));
+});
+
+/* ───── 갤러리 자동 활성화 (좌→우 3초 간격, 끝까지 가면 루핑 / 호버 시 우선) ───── */
+document.querySelectorAll('.js-gallery').forEach(gal => {
+  const cells = [...gal.querySelectorAll('.cell')];
+  if(!cells.length) return;
+  let idx = 0;
+  let timer = null;
+  let hovering = false;
+
+  function setActive(i){
+    cells.forEach((c, n) => c.classList.toggle('active', n === i));
+  }
+  function tick(){
+    if(hovering) return;
+    setActive(idx);
+    idx = (idx + 1) % cells.length;   // 끝에 닿으면 처음으로 루핑
+  }
+  function start(){
+    if(timer) return;
+    tick();                            // 즉시 한 번 표시
+    timer = setInterval(tick, 3000);
+  }
+  function stop(){ clearInterval(timer); timer = null; }
+
+  // 호버: 해당 셀만 활성, 자동 순환은 잠시 멈춤
+  cells.forEach((cell, n) => {
+    cell.addEventListener('mouseenter', () => {
+      hovering = true;
+      cells.forEach((c, m) => c.classList.toggle('active', m === n));
+      idx = (n + 1) % cells.length;    // 호버 해제 후 그 다음부터 이어서
+    });
+    cell.addEventListener('mouseleave', () => { hovering = false; });
+  });
+
+  // 화면에 보일 때만 순환
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => e.isIntersecting ? start() : stop());
+    }, {threshold: 0.2});
+    io.observe(gal);
+  } else {
+    start();
+  }
+});
+
+/* ───── KV 로고모션 (등장 순서/간격은 각 요소 CSS transition-delay로 제어) ───── */
+window.addEventListener('load', () => {
+  requestAnimationFrame(() => {
+    setTimeout(()=>{
+      document.querySelectorAll('.kv-bg, .kv-logo, .kv-names, .kv-date')
+        .forEach(el => el.classList.add('in'));
+    }, 300);
+  });
+});
+
+/* ───── 뮤직바/언어 숨김 (KV 영역 벗어나면) ───── */
+const musicBar=document.getElementById('musicBar'), langToggle=document.getElementById('langToggle');
+window.addEventListener('scroll', () => {
+  const past = window.scrollY > kvBottomPx() - 80;
+  musicBar.classList.toggle('hide', past);
+  langToggle.classList.toggle('hide', past);
+  updateParallax();
+}, {passive:true});
+
+/* ───── 스크롤 reveal (콘텐츠 유실 방지: 한 번 보이면 계속 보임) ───── */
+const reveals = [...document.querySelectorAll('.reveal')];
+// 초기: 첫 화면 아래에 있는 것만 살짝 숨김(페이드인 대상)
+function initReveal(){
+  const vh = window.innerHeight;
+  reveals.forEach(el=>{
+    const r = el.getBoundingClientRect();
+    if(r.top >= vh){ el.classList.add('pre'); }
+    else { el.classList.add('visible'); }
+  });
+}
+function checkReveal(){
+  const vh = window.innerHeight;
+  reveals.forEach(el=>{
+    if(el.classList.contains('visible')) return;
+    const r = el.getBoundingClientRect();
+    if(r.top < vh*0.9){ el.classList.remove('pre'); el.classList.add('visible'); }
+  });
+}
+window.addEventListener('scroll', checkReveal, {passive:true});
+window.addEventListener('resize', ()=>{fitStage();updateParallax();});
+window.addEventListener('load', ()=>{fitStage();initReveal();checkReveal();updateParallax();});
+initReveal();
+checkReveal();
+updateParallax();
+
+/* ───── 사진 등장 모션 (KV 제외, 갤러리 슬라이드 전까지) ───── */
+const photoRiseTargets = [
+  ...document.querySelectorAll(
+    '.stage .bride-seated,.stage .groom-photo,.stage .full1,.stage .portrait,.stage .full2,.stage .bride-photo,.stage .groom-solo,.stage .full3,.stage .couple-1,.stage .couple-2,' +
+    '.stage-mo .mo-photo-r,.stage-mo .mo-photo-l,.stage-mo .mo-full,.stage-mo .mo-portrait,.stage-mo .mo-couple-1,.stage-mo .mo-couple-2,.stage-mo .mo-couple-3'
+  )
+].filter(el => !el.closest('.kv,.mo-kv,.gallery,.mo-gallery'));
+
+photoRiseTargets.forEach(el => el.classList.add('photo-rise'));
+function showPhotoRise(el){ el.classList.add('visible'); }
+if('IntersectionObserver' in window){
+  const photoRiseObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(!entry.isIntersecting) return;
+      showPhotoRise(entry.target);
+      photoRiseObserver.unobserve(entry.target);
+    });
+  }, {threshold:0.12, rootMargin:'0px 0px -8% 0px'});
+  photoRiseTargets.forEach(el => photoRiseObserver.observe(el));
+} else {
+  photoRiseTargets.forEach(showPhotoRise);
+}
+
+/* ───── 언어 토글 ───── */
+function setLang(lang,el){document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('ghost',b!==el));}
+
+/* ───── BGM 재생/정지 토글 ───── */
+const bgm = document.getElementById('bgm');
+const musicBarEl = document.getElementById('musicBar');
+let bgmStarted = false;
+function toggleBGM(){
+  if(!bgm) return;
+  if(bgm.paused){
+    bgm.play().then(()=>{ musicBarEl.classList.remove('paused'); }).catch(()=>{});
+  } else {
+    bgm.pause();
+    musicBarEl.classList.add('paused');
+  }
+}
+/* 자동재생은 브라우저 정책상 사용자 첫 상호작용(클릭/스크롤/터치) 후에만 가능 */
+function tryAutoplayBGM(){
+  if(bgmStarted || !bgm) return;
+  bgm.play().then(()=>{ bgmStarted=true; musicBarEl.classList.remove('paused'); }).catch(()=>{});
+}
+['click','scroll','touchstart','keydown'].forEach(ev=>{
+  window.addEventListener(ev, tryAutoplayBGM, {once:true, passive:true});
+});
+/* 초기엔 정지 표시 */
+if(musicBarEl) musicBarEl.classList.add('paused');
+
+/* ───── 아코디언 ───── */
+function toggleAcc(id){
+  const body = document.getElementById('body-'+id);
+  const arrow = document.getElementById('arrow-'+id);
+  const table = body.closest('.acc-table');   // 자기 테이블 안에서만 배타 토글
+  const willOpen = !body.classList.contains('open');
+  table.querySelectorAll('.acc-body').forEach(b=>b.classList.remove('open'));
+  table.querySelectorAll('.acc-arrow').forEach(a=>a.classList.remove('open'));
+  if(willOpen){
+    body.classList.add('open');
+    arrow.classList.add('open');
+  }
+}
+
+/* ───── 복사 ───── */
+function copyText(btn,text){
+  const done=()=>{btn.textContent='복사됨';btn.classList.add('done');setTimeout(()=>{btn.textContent='복사';btn.classList.remove('done');},1600);};
+  if(navigator.clipboard){navigator.clipboard.writeText(text).then(done);}
+  else{const ta=Object.assign(document.createElement('textarea'),{value:text});document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);done();}
+}
+</script>
+<!-- ───── 부드러운 관성 스크롤 (자체 구현 / 외부 의존 없음) ───── -->
+<script>
+(function(){
+  const isTouch = window.matchMedia('(hover: none)').matches;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(isTouch || reduce) return; // 모바일·모션최소화는 네이티브 스크롤 유지
+
+  let current = window.scrollY, target = window.scrollY, ticking = false;
+  let programmatic = false;      // loop이 일으킨 scroll 이벤트 무시용 플래그
+  const ease = 0.1;             // 보간 강도 (0.08~0.12)
+  const maxY = () => document.documentElement.scrollHeight - window.innerHeight;
+  const clamp = v => Math.max(0, Math.min(v, maxY()));
+
+  function onWheel(e){
+    e.preventDefault();
+    target = clamp(target + e.deltaY);
+    if(!ticking){ ticking = true; requestAnimationFrame(loop); }
+  }
+
+  function loop(){
+    const diff = target - current;
+    if(Math.abs(diff) < 0.1){
+      current = target;           // 정수 반올림 없이 목표에 스냅
+      ticking = false;
+    } else {
+      current += diff * ease;     // 소수점 유지 → 떨림 없음
+    }
+    programmatic = true;
+    window.scrollTo(0, current);  // 소수점 그대로 전달 (브라우저가 서브픽셀 처리)
+    programmatic = false;
+    syncOnScroll(current);
+    if(ticking) requestAnimationFrame(loop);
+  }
+
+  function onNativeScroll(){
+    // loop이 일으킨 스크롤이면 무시 (피드백 루프 방지)
+    if(programmatic) return;
+    // 사용자가 스크롤바 드래그/키보드로 직접 이동한 경우만 동기화
+    if(!ticking){ current = target = window.scrollY; syncOnScroll(current); }
+  }
+
+  function syncOnScroll(y){
+    const past = y > (typeof kvBottomPx === 'function'
+      ? kvBottomPx()
+      : 1080 * desktopUnit()) - 80;
+    if(typeof musicBar!=='undefined' && musicBar) musicBar.classList.toggle('hide', past);
+    if(typeof langToggle!=='undefined' && langToggle) langToggle.classList.toggle('hide', past);
+    if(typeof checkReveal === 'function') checkReveal();
+    if(typeof updateParallax === 'function') updateParallax();
+  }
+
+  window.addEventListener('wheel', onWheel, {passive:false});
+  window.addEventListener('scroll', onNativeScroll, {passive:true});
+  window.addEventListener('resize', ()=>{ target = current = clamp(current); });
+
+  // 키보드 스크롤(Space, PageUp/Down, 방향키)도 부드럽게
+  window.addEventListener('keydown', (e)=>{
+    const keys = {' ':1, 'PageDown':1, 'PageUp':-1, 'ArrowDown':0.25, 'ArrowUp':-0.25, 'Home':-99, 'End':99};
+    if(!(e.key in keys)) return;
+    if(['INPUT','TEXTAREA'].includes(document.activeElement.tagName)) return;
+    e.preventDefault();
+    const k = keys[e.key];
+    if(e.key==='Home') target = 0;
+    else if(e.key==='End') target = maxY();
+    else target = clamp(target + window.innerHeight * k);
+    if(!ticking){ ticking = true; requestAnimationFrame(loop); }
+  });
+})();
+</script>
+</body>
+</html>
