@@ -94,7 +94,7 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
 .kv-logo svg{width:calc(340 * var(--vw));height:calc(95 * var(--vw));display:block;overflow:visible;}
 .kv-logo .wd-reveal{width:0;}
 .kv-logo.in .wd-reveal{animation:wdWipe 2.4s cubic-bezier(.45,.05,.35,1) forwards;}
-@keyframes wdWipe{from{width:0;}to{width:calc(340 * var(--vw));}}
+@keyframes wdWipe{from{width:0;}to{width:340px;}}
 .kv-names{grid-column:1 / -1;grid-row:2 / 4;width:calc(748.768 * var(--vw));height:calc(140 * var(--vw));opacity:0;filter:blur(calc(16 * var(--vw)));transition:opacity 1.8s ease 2s, filter 2.8s cubic-bezier(.22,.61,.36,1) 2s;}
 .kv-names.in{opacity:1;filter:blur(0);}
 .kv-names .slot{width:100%;height:100%;background:transparent;}
@@ -216,8 +216,24 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
    ===================================================== */
 .stage-mo{display:none;position:relative;width:100%;background:var(--cream);padding-bottom:calc(60 * var(--mo-vw));--mo-vw:0.2564102564vw;}
 
-/* KV (390×844) */
-.mo-kv{position:relative;width:100%;height:calc(844 * var(--mo-vw));overflow:hidden;}
+/* KV */
+.mo-kv{
+  position:relative;
+  width:100%;
+  height:100svh;
+  min-height:calc(720 * var(--mo-vw));
+  overflow:hidden;
+}
+.stage-mo .mo-kv .kv-bg,
+.stage-mo .mo-kv .kv-bg img{
+  width:100%;
+  height:100%;
+}
+.stage-mo .mo-kv .kv-bg img{
+  height:120%;
+  object-fit:cover;
+  object-position:center center;
+}
 .stage-mo .kv-logo{left:calc(12 * var(--mo-vw));top:calc(350 * var(--mo-vw));width:calc(165 * var(--mo-vw));height:calc(46 * var(--mo-vw));margin:0;}
 .stage-mo .kv-logo svg{width:calc(165 * var(--mo-vw));height:calc(46 * var(--mo-vw));}
 .stage-mo .kv-names{left:calc(12 * var(--mo-vw));top:calc(397 * var(--mo-vw));width:calc(366 * var(--mo-vw));height:calc(68.4 * var(--mo-vw));margin:0;overflow:visible;}
@@ -241,18 +257,30 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
 .mo-name-and .slot img{object-fit:contain;}
 
 /* 사진 배치 */
-.mo-photo-r{width:calc(263 * var(--mo-vw));height:calc(330 * var(--mo-vw));margin:calc(80 * var(--mo-vw)) calc(12 * var(--mo-vw)) 0 auto;}
-.mo-photo-l{width:calc(264 * var(--mo-vw));height:calc(331 * var(--mo-vw));margin:calc(80 * var(--mo-vw)) 0 0 calc(12 * var(--mo-vw));}
+.mo-photo-r{width:calc(263 * var(--mo-vw));height:calc(330 * var(--mo-vw));margin:calc(80 * var(--mo-vw)) calc(12 * var(--mo-vw)) 0 auto;overflow:visible;}
+.mo-photo-l{width:calc(264 * var(--mo-vw));height:calc(331 * var(--mo-vw));margin:calc(80 * var(--mo-vw)) 0 0 calc(12 * var(--mo-vw));overflow:visible;}
 .mo-say{margin:calc(32 * var(--mo-vw)) calc(12 * var(--mo-vw)) 0;display:flex;flex-direction:column;gap:calc(16 * var(--mo-vw));}
 .mo-say-en{font-family:var(--f-dutch);font-size:calc(18 * var(--mo-vw));line-height:1;}
 .mo-say-kr{font-size:calc(15 * var(--mo-vw));line-height:1.6;}
 .mo-say-kr p+p{margin-top:1.6em;}
 .mo-full{width:100%;height:calc(260 * var(--mo-vw));margin-top:calc(80 * var(--mo-vw));}
 .mo-say + .mo-full{margin-top:calc(80 * var(--mo-vw));}
-.mo-portrait{width:calc(320 * var(--mo-vw));height:calc(480 * var(--mo-vw));margin:calc(80 * var(--mo-vw)) auto 0;}
-.mo-couple-1{width:calc(300 * var(--mo-vw));height:calc(200 * var(--mo-vw));margin:calc(80 * var(--mo-vw)) 0 0 calc(12 * var(--mo-vw));}
-.mo-couple-2{width:calc(300 * var(--mo-vw));height:calc(200 * var(--mo-vw));margin:calc(80 * var(--mo-vw)) 0 0 calc(78 * var(--mo-vw));}
+.mo-portrait{width:calc(320 * var(--mo-vw));height:calc(480 * var(--mo-vw));margin:calc(80 * var(--mo-vw)) auto 0;overflow:visible;}
+.mo-couple-1{width:calc(300 * var(--mo-vw));height:calc(200 * var(--mo-vw));margin:calc(80 * var(--mo-vw)) 0 0 calc(12 * var(--mo-vw));overflow:visible;}
+.mo-couple-2{width:calc(300 * var(--mo-vw));height:calc(200 * var(--mo-vw));margin:calc(80 * var(--mo-vw)) 0 0 calc(78 * var(--mo-vw));overflow:visible;}
 .mo-couple-3{width:100%;height:calc(261 * var(--mo-vw));margin-top:calc(80 * var(--mo-vw));}
+
+/* pick1~10 (모바일) */
+.stage-mo .pick1{width:calc(48 * var(--mo-vw));height:calc(48 * var(--mo-vw));right:100%;margin-right:calc(10 * var(--mo-vw));bottom:0;}
+.stage-mo .pick2{width:calc(40.625 * var(--mo-vw));height:calc(20 * var(--mo-vw));left:100%;margin-left:calc(10 * var(--mo-vw));bottom:0;}
+.stage-mo .pick3{width:calc(40 * var(--mo-vw));height:calc(20 * var(--mo-vw));right:calc(10 * var(--mo-vw));top:100%;margin-top:calc(10 * var(--mo-vw));}
+.stage-mo .pick4{width:calc(40 * var(--mo-vw));height:calc(20 * var(--mo-vw));right:0;top:100%;margin-top:calc(10 * var(--mo-vw));}
+.stage-mo .pick5{width:calc(40 * var(--mo-vw));height:calc(20 * var(--mo-vw));right:calc(10 * var(--mo-vw));top:100%;margin-top:calc(10 * var(--mo-vw));}
+.stage-mo .pick6{width:calc(40 * var(--mo-vw));height:calc(20 * var(--mo-vw));right:100%;margin-right:calc(10 * var(--mo-vw));bottom:0;}
+.stage-mo .pick7{width:calc(48 * var(--mo-vw));height:calc(48 * var(--mo-vw));left:100%;margin-left:calc(10 * var(--mo-vw));bottom:0;}
+.stage-mo .pick8{width:calc(48.13 * var(--mo-vw));height:calc(20 * var(--mo-vw));right:calc(10.87 * var(--mo-vw));top:100%;margin-top:calc(10 * var(--mo-vw));}
+.stage-mo .pick9{width:calc(40.625 * var(--mo-vw));height:calc(20 * var(--mo-vw));left:100%;margin-left:calc(10 * var(--mo-vw));bottom:0;}
+.stage-mo .pick10{width:calc(48 * var(--mo-vw));height:calc(39.79 * var(--mo-vw));right:100%;margin-right:calc(10 * var(--mo-vw));bottom:0;}
 
 /* 갤러리 3×3 */
 .mo-gallery{margin-top:calc(80 * var(--mo-vw));display:flex;flex-direction:column;gap:calc(1 * var(--mo-vw));}
@@ -662,11 +690,17 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
     </div>
   </section>
 
-  <!-- ═══ 신부 앉은 사진 (우측) ═══ -->
-  <div class="slot mo-photo-r reveal" data-label="신부 앉은 사진"><img src="images/img1.png"></div>
+  <!-- ═══ 신부 앉은 사진 (우측) + Pick1 데코 ═══ -->
+  <div class="slot mo-photo-r reveal" data-label="신부 앉은 사진">
+    <img src="images/img1.png">
+    <div class="pick pick1" data-label="pick1"><img src="images/pick1.svg"></div>
+  </div>
 
-  <!-- ═══ 신부 서있는 사진 (좌측) + Junsu say ═══ -->
-  <div class="slot mo-photo-l reveal" data-label="신부 서있는 사진"><img src="images/img2.png"></div>
+  <!-- ═══ 신부 서있는 사진 (좌측) + Junsu say + Pick2 데코 ═══ -->
+  <div class="slot mo-photo-l reveal" data-label="신부 서있는 사진">
+    <img src="images/img2.png">
+    <div class="pick pick2" data-label="pick2"><img src="images/pick2.svg"></div>
+  </div>
   <div class="mo-say reveal">
     <div class="mo-say-kr">
       <p>서로 다른 길을 걸어온 두 사람이<br>이제 같은 방향을 바라보며<br>평생을 함께하고자 합니다.</p>
@@ -674,20 +708,35 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
     </div>
   </div>
 
-  <!-- ═══ FULLBLEED 1 ═══ -->
-  <div class="slot mo-full reveal" data-label="전체 사진 ①"><img class="parallax-img" data-parallax-speed="0.12" src="images/img3.png"></div>
+  <!-- ═══ FULLBLEED 1 + Pick3 데코 ═══ -->
+  <div class="pic-anchor">
+    <div class="slot mo-full reveal" data-label="전체 사진 ①"><img class="parallax-img" data-parallax-speed="0.12" src="images/img3.png"></div>
+    <div class="pick pick3" data-label="pick3"><img src="images/pick3.svg"></div>
+  </div>
 
-  <!-- ═══ CENTER PORTRAIT ═══ -->
-  <div class="slot mo-portrait reveal" data-label="포트레이트 사진"><img src="images/img4.png"></div>
+  <!-- ═══ CENTER PORTRAIT + Pick4 데코 ═══ -->
+  <div class="slot mo-portrait reveal" data-label="포트레이트 사진">
+    <img src="images/img4.png">
+    <div class="pick pick4" data-label="pick4"><img src="images/pick4.svg"></div>
+  </div>
 
-  <!-- ═══ FULLBLEED 2 ═══ -->
-  <div class="slot mo-full reveal" data-label="전체 사진 ②"><img class="parallax-img" data-parallax-speed="0.08" src="images/img5.png"></div>
+  <!-- ═══ FULLBLEED 2 + Pick5 데코 ═══ -->
+  <div class="pic-anchor">
+    <div class="slot mo-full reveal" data-label="전체 사진 ②"><img class="parallax-img" data-parallax-speed="0.08" src="images/img5.png"></div>
+    <div class="pick pick5" data-label="pick5"><img src="images/pick5.svg"></div>
+  </div>
 
-  <!-- ═══ 신부 사진 (우측) ═══ -->
-  <div class="slot mo-photo-r reveal" data-label="신부 사진"><img src="images/img6.png"></div>
+  <!-- ═══ 신부 사진 (우측) + Pick6 데코 ═══ -->
+  <div class="slot mo-photo-r reveal" data-label="신부 사진">
+    <img src="images/img6.png">
+    <div class="pick pick6" data-label="pick6"><img src="images/pick6.svg"></div>
+  </div>
 
-  <!-- ═══ 신랑 단독 사진 (좌측) + Yuri say ═══ -->
-  <div class="slot mo-photo-l reveal" data-label="신랑 단독 사진"><img src="images/img7.png"></div>
+  <!-- ═══ 신랑 단독 사진 (좌측) + Yuri say + Pick7 데코 ═══ -->
+  <div class="slot mo-photo-l reveal" data-label="신랑 단독 사진">
+    <img src="images/img7.png">
+    <div class="pick pick7" data-label="pick7"><img src="images/pick7.svg"></div>
+  </div>
   <div class="mo-say reveal">
     <div class="mo-say-kr">
       <p>서로 다른 길을 걸어온 두 사람이<br>이제 같은 방향을 바라보며<br>평생을 함께하고자 합니다.</p>
@@ -695,12 +744,21 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
     </div>
   </div>
 
-  <!-- ═══ FULLBLEED 3 ═══ -->
-  <div class="slot mo-full reveal" data-label="전체 사진 ③"><img class="parallax-img" data-parallax-speed="0.06" src="images/img8.png"></div>
+  <!-- ═══ FULLBLEED 3 + Pick8 데코 ═══ -->
+  <div class="pic-anchor">
+    <div class="slot mo-full reveal" data-label="전체 사진 ③"><img class="parallax-img" data-parallax-speed="0.06" src="images/img8.png"></div>
+    <div class="pick pick8" data-label="pick8"><img src="images/pick8.svg"></div>
+  </div>
 
   <!-- ═══ 커플 사진 ①②③ ═══ -->
-  <div class="slot mo-couple-1 reveal" data-label="커플 사진 ①"><img src="images/img9.png"></div>
-  <div class="slot mo-couple-2 reveal" data-label="커플 사진 ②"><img src="images/img10.png"></div>
+  <div class="slot mo-couple-1 reveal" data-label="커플 사진 ①">
+    <img src="images/img9.png">
+    <div class="pick pick9" data-label="pick9"><img src="images/pick9.svg"></div>
+  </div>
+  <div class="slot mo-couple-2 reveal" data-label="커플 사진 ②">
+    <img src="images/img10.png">
+    <div class="pick pick10" data-label="pick10"><img src="images/pick10.svg"></div>
+  </div>
   <!-- REPLACE: 커플 사진 ③ (모바일 전용 풀와이드) -->
   <div class="slot mo-couple-3 reveal" data-label="커플 사진 ③"><!-- <img src="images/img11.png"> --></div>
 
