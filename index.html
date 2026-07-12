@@ -140,27 +140,28 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
 .say-en{font-family:var(--f-dutch);font-size:calc(24 * var(--vw));line-height:1;}
 .say-kr{font-size:calc(20 * var(--vw));line-height:1.6;}
 .say-kr p+p{margin-top:1.6em;}
+.new-photo{width:calc(940 * var(--vw));height:calc(1178 * var(--vw));margin:calc(200 * var(--vw)) calc(120 * var(--vw)) 0 auto;overflow:visible;}
+.pick3{width:calc(65 * var(--vw));height:calc(32 * var(--vw));right:100%;margin-right:calc(16 * var(--vw));bottom:0;}
 .full1,.full2,.full3{width:100%;height:calc(1280 * var(--vw));margin-top:calc(160 * var(--vw));}
-.pick3{width:calc(64 * var(--vw));height:calc(32 * var(--vw));right:calc(60 * var(--vw));top:100%;margin-top:calc(16 * var(--vw));}
-.pick5{width:calc(64 * var(--vw));height:calc(32 * var(--vw));right:calc(60 * var(--vw));top:100%;margin-top:calc(16 * var(--vw));}
-.pick8{width:calc(63 * var(--vw));height:calc(32 * var(--vw));right:calc(60 * var(--vw));top:100%;margin-top:calc(16 * var(--vw));}
+.pick4{width:calc(64 * var(--vw));height:calc(32 * var(--vw));right:calc(60 * var(--vw));top:100%;margin-top:calc(16 * var(--vw));}
+.pick6{width:calc(64 * var(--vw));height:calc(32 * var(--vw));right:calc(60 * var(--vw));top:100%;margin-top:calc(16 * var(--vw));}
+.pick10{width:calc(63 * var(--vw));height:calc(32 * var(--vw));right:calc(60 * var(--vw));top:100%;margin-top:calc(16 * var(--vw));}
+.pick11{width:calc(77 * var(--vw));height:calc(63 * var(--vw));left:100%;margin-left:calc(16 * var(--vw));bottom:0}
+.pick12{width:calc(80 * var(--vw));height:calc(32 * var(--vw));right:100%;margin-right:calc(16 * var(--vw));bottom:0}
 .portrait{width:calc(1080 * var(--vw));height:calc(1620 * var(--vw));margin:calc(204 * var(--vw)) auto 0;overflow:visible;}
-.pick4{width:calc(64 * var(--vw));height:calc(32 * var(--vw));left:0;top:100%;margin-top:calc(16 * var(--vw));}
+.pick5{width:calc(64 * var(--vw));height:calc(32 * var(--vw));left:0;top:100%;margin-top:calc(16 * var(--vw));}
 .bride-row{position:relative;display:flex;gap:calc(48 * var(--vw));align-items:flex-end;margin:calc(200 * var(--vw)) calc(120 * var(--vw)) 0 calc(360 * var(--vw));}
-.pick6{width:calc(64 * var(--vw));height:calc(32 * var(--vw));right:0;top:100%;margin-top:calc(16 * var(--vw));}
+.pick7{width:calc(77 * var(--vw));height:calc(77 * var(--vw));right:0;top:100%;margin-top:calc(16 * var(--vw));}
 .bride-photo{order:2;width:calc(943 * var(--vw));height:calc(1181 * var(--vw));}
 .bride-say-en{display:none;}
 .bride-say-kr{order:1;width:calc(449 * var(--vw));font-size:calc(20 * var(--vw));line-height:1.8;text-align:right;white-space:nowrap;margin:0;}
 .bride-say-kr p+p{margin-top:1.8em;}
 .groom-solo{width:calc(943 * var(--vw));height:calc(1181 * var(--vw));margin:calc(200 * var(--vw)) 0 0 calc(120 * var(--vw));overflow:visible;}
-.pick7{width:calc(77 * var(--vw));height:calc(77 * var(--vw));left:100%;margin-left:calc(16 * var(--vw));bottom:0;}
+.pick8{width:calc(65 * var(--vw));height:calc(32 * var(--vw));left:100%;margin-left:calc(16 * var(--vw));bottom:0;}
+.pick9{width:calc(64 * var(--vw));height:calc(32 * var(--vw));right:100%;margin-right:calc(16 * var(--vw));bottom:0;}
 .couple-1-wrap,.couple-2-wrap{width:100%;height:auto;position:relative;}
 .couple-1{width:calc(1406 * var(--vw));height:calc(870 * var(--vw));margin-top:calc(227 * var(--vw));overflow:visible;}
 .couple-2{width:calc(1418 * var(--vw));height:calc(877 * var(--vw));margin:calc(200 * var(--vw)) 0 0 auto;overflow:visible;}
-.couple-deco{background:transparent;position:absolute;}
-.couple-deco img{object-fit:contain;}
-.couple-1-deco{width:calc(65 * var(--vw));height:calc(32 * var(--vw));left:100%;margin-left:calc(16 * var(--vw));bottom:0;}
-.couple-2-deco{width:calc(76 * var(--vw));height:calc(63 * var(--vw));right:100%;margin-right:calc(16 * var(--vw));bottom:0;}
 .gallery{width:100%;height:calc(284 * var(--vw));margin-top:calc(200 * var(--vw));overflow:hidden;}
 .gallery .marquee{display:flex;align-items:center;width:max-content;gap:calc(100 * var(--vw));padding-left:calc(100 * var(--vw));animation:gallery-scroll 40s linear infinite;}
 .gallery .cell{flex:0 0 auto;width:calc(213 * var(--vw));height:calc(284 * var(--vw));opacity:.4;mix-blend-mode:luminosity;transition:opacity .6s ease, mix-blend-mode .6s ease;cursor:pointer;}
@@ -177,12 +178,13 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
 .loc-info{width:calc(381 * var(--vw));display:flex;flex-direction:column;gap:calc(32 * var(--vw));align-items:center;text-align:center;}
 .loc-name{font-size:calc(24 * var(--vw));line-height:1.2;width:100%;}
 .loc-addr{display:flex;flex-direction:column;gap:calc(8 * var(--vw));font-size:calc(18 * var(--vw));line-height:1.5;width:100%;}
+.loc-addr p{color:#78766B}
 .loc-map{width:100%;height:calc(328 * var(--vw));margin-top:calc(64 * var(--vw));}
 .loc-btns{width:100%;display:flex;gap:calc(12 * var(--vw));justify-content:center;margin-top:calc(48 * var(--vw));}
 .map-btn{display:flex;gap:calc(4 * var(--vw));align-items:center;padding:calc(8 * var(--vw)) calc(20 * var(--vw)) calc(8 * var(--vw)) calc(16 * var(--vw));border:calc(1 * var(--vw)) solid var(--black);background:transparent;font-family:var(--f-mapo);font-size:calc(16 * var(--vw));line-height:1.5;color:var(--black);cursor:pointer;transition:background .18s;}
 .map-btn:hover{background:rgba(0,0,0,.05);}
 .map-btn-ic{width:calc(24 * var(--vw));height:calc(24 * var(--vw));display:flex;align-items:center;justify-content:center;}
-.map-btn-ic svg{width:calc(18 * var(--vw));height:calc(18 * var(--vw));}
+.map-btn-ic img{width:calc(18 * var(--vw));height:calc(18 * var(--vw));display:block;object-fit:contain;}
 .acc-block{display:flex;flex-direction:column;gap:calc(64 * var(--vw));width:100%;}
 .acc-title{font-size:calc(30 * var(--vw));line-height:1.2;text-align:center;width:100%;}
 .acc-desc{display:flex;flex-direction:column;gap:calc(24 * var(--vw));text-align:center;font-size:calc(18 * var(--vw));line-height:1.5;}
@@ -214,7 +216,7 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
    MOBILE STAGE (≤1024px) — 390 기준 좌표를 vw 단위로 변환
    플로우 레이아웃
    ===================================================== */
-.stage-mo{display:none;position:relative;width:100%;background:var(--cream);padding-bottom:calc(60 * var(--mo-vw));--mo-vw:0.2564102564vw;}
+.stage-mo{display:none;position:relative;width:100%;background:var(--cream);padding-bottom:calc(24 * var(--mo-vw));--mo-vw:0.2564102564vw;}
 
 /* KV */
 .mo-kv{
@@ -230,7 +232,7 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
   height:100%;
 }
 .stage-mo .mo-kv .kv-bg img{
-  height:120%;
+  height:104%;
   object-fit:cover;
   object-position:center center;
 }
@@ -266,21 +268,23 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
 .mo-full{width:100%;height:calc(260 * var(--mo-vw));margin-top:calc(80 * var(--mo-vw));}
 .mo-say + .mo-full{margin-top:calc(80 * var(--mo-vw));}
 .mo-portrait{width:calc(320 * var(--mo-vw));height:calc(480 * var(--mo-vw));margin:calc(80 * var(--mo-vw)) auto 0;overflow:visible;}
-.mo-couple-1{width:calc(300 * var(--mo-vw));height:calc(200 * var(--mo-vw));margin:calc(80 * var(--mo-vw)) 0 0 calc(12 * var(--mo-vw));overflow:visible;}
-.mo-couple-2{width:calc(300 * var(--mo-vw));height:calc(200 * var(--mo-vw));margin:calc(80 * var(--mo-vw)) 0 0 calc(78 * var(--mo-vw));overflow:visible;}
+.mo-couple-1{width:calc(300 * var(--mo-vw));height:calc(200 * var(--mo-vw));margin:calc(80 * var(--mo-vw)) 0 0 0;overflow:visible;}
+.mo-couple-2{width:calc(300 * var(--mo-vw));height:calc(200 * var(--mo-vw));margin:calc(80 * var(--mo-vw)) 0 0 calc(90 * var(--mo-vw));overflow:visible;}
 .mo-couple-3{width:100%;height:calc(261 * var(--mo-vw));margin-top:calc(80 * var(--mo-vw));}
 
 /* pick1~10 (모바일) */
 .stage-mo .pick1{width:calc(48 * var(--mo-vw));height:calc(48 * var(--mo-vw));right:100%;margin-right:calc(10 * var(--mo-vw));bottom:0;}
-.stage-mo .pick2{width:calc(40.625 * var(--mo-vw));height:calc(20 * var(--mo-vw));left:100%;margin-left:calc(10 * var(--mo-vw));bottom:0;}
-.stage-mo .pick3{width:calc(40 * var(--mo-vw));height:calc(20 * var(--mo-vw));right:calc(10 * var(--mo-vw));top:100%;margin-top:calc(10 * var(--mo-vw));}
-.stage-mo .pick4{width:calc(40 * var(--mo-vw));height:calc(20 * var(--mo-vw));right:0;top:100%;margin-top:calc(10 * var(--mo-vw));}
-.stage-mo .pick5{width:calc(40 * var(--mo-vw));height:calc(20 * var(--mo-vw));right:calc(10 * var(--mo-vw));top:100%;margin-top:calc(10 * var(--mo-vw));}
-.stage-mo .pick6{width:calc(40 * var(--mo-vw));height:calc(20 * var(--mo-vw));right:100%;margin-right:calc(10 * var(--mo-vw));bottom:0;}
-.stage-mo .pick7{width:calc(48 * var(--mo-vw));height:calc(48 * var(--mo-vw));left:100%;margin-left:calc(10 * var(--mo-vw));bottom:0;}
-.stage-mo .pick8{width:calc(48.13 * var(--mo-vw));height:calc(20 * var(--mo-vw));right:calc(10.87 * var(--mo-vw));top:100%;margin-top:calc(10 * var(--mo-vw));}
-.stage-mo .pick9{width:calc(40.625 * var(--mo-vw));height:calc(20 * var(--mo-vw));left:100%;margin-left:calc(10 * var(--mo-vw));bottom:0;}
-.stage-mo .pick10{width:calc(48 * var(--mo-vw));height:calc(39.79 * var(--mo-vw));right:100%;margin-right:calc(10 * var(--mo-vw));bottom:0;}
+.stage-mo .pick2{width:calc(40 * var(--mo-vw));height:calc(20 * var(--mo-vw));top:93%;left:100%;margin-left:calc(10 * var(--mo-vw));bottom:0;}
+.stage-mo .pick3{width:calc(40 * var(--mo-vw));height:calc(20 * var(--mo-vw));right:100%;margin-right:calc(10 * var(--mo-vw));bottom:0;}
+.stage-mo .pick4{width:calc(40 * var(--mo-vw));height:calc(20 * var(--mo-vw));right:calc(10 * var(--mo-vw));top:100%;margin-top:calc(10 * var(--mo-vw));}
+.stage-mo .pick5{width:calc(40 * var(--mo-vw));height:calc(20 * var(--mo-vw));right:0;top:100%;margin-top:calc(10 * var(--mo-vw));}
+.stage-mo .pick6{width:calc(40 * var(--mo-vw));height:calc(20 * var(--mo-vw));right:calc(10 * var(--mo-vw));top:100%;margin-top:calc(10 * var(--mo-vw));}
+.stage-mo .pick7{width:calc(48 * var(--mo-vw));height:calc(48 * var(--mo-vw));top:84%;right:100%;margin-right:calc(10 * var(--mo-vw));bottom:0;}
+.stage-mo .pick8{width:calc(48 * var(--mo-vw));height:calc(20 * var(--mo-vw));left:100%;margin-left:calc(10 * var(--mo-vw));bottom:0;}
+.stage-mo .pick9{width:calc(40 * var(--mo-vw));height:calc(20 * var(--mo-vw));right:100%;margin-right:calc(10 * var(--mo-vw));bottom:0;}
+.stage-mo .pick10{width:calc(44 * var(--mo-vw));height:calc(20 * var(--mo-vw));right:calc(10.87 * var(--mo-vw));top:100%;margin-top:calc(10 * var(--mo-vw));}
+.stage-mo .pick11{width:calc(48 * var(--mo-vw));height:calc(39 * var(--mo-vw));left:100%;margin-left:calc(10 * var(--mo-vw));bottom:0;}
+.stage-mo .pick12{width:calc(50 * var(--mo-vw));height:calc(20 * var(--mo-vw));right:100%;margin-right:calc(10 * var(--mo-vw));bottom:0;}
 
 /* 갤러리 3×3 */
 .mo-gallery{margin-top:calc(80 * var(--mo-vw));display:flex;flex-direction:column;gap:calc(1 * var(--mo-vw));}
@@ -298,7 +302,7 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
 .mo-loc-btns{width:100%;display:flex;flex-direction:column;gap:calc(12 * var(--mo-vw));}
 .stage-mo .map-btn{width:100%;padding:calc(12 * var(--mo-vw));justify-content:flex-start;gap:calc(4 * var(--mo-vw));border:calc(1 * var(--mo-vw)) solid var(--black);font-size:calc(16 * var(--mo-vw));}
 .stage-mo .map-btn-ic{width:calc(24 * var(--mo-vw));height:calc(24 * var(--mo-vw));}
-.stage-mo .map-btn-ic svg{width:calc(18 * var(--mo-vw));height:calc(18 * var(--mo-vw));}
+.stage-mo .map-btn-ic img{width:calc(18 * var(--mo-vw));height:calc(18 * var(--mo-vw));display:block;object-fit:contain;}
 
 /* 마음 전하실 곳 */
 .mo-acc{margin:calc(100 * var(--mo-vw)) calc(12 * var(--mo-vw)) 0;display:flex;flex-direction:column;}
@@ -468,71 +472,85 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
   <!-- REPLACE: 데코 꽃 1 -->
   <div class="slot deco-flower-1" data-label="데코"><img src="images/bird.png"></div>
 
-  <!-- ═══ FULLBLEED 1 + Pick3 데코 ═══ -->
-  <!-- REPLACE: 전체 사진 1 -->
-  <div class="pic-anchor">
-    <div class="slot full1" data-label="전체 사진 ①"><img class="parallax-img" data-parallax-speed="0.12" src="images/img3.png"></div>
+  <!-- ═══ 추가 사진 new-01 + Pick3 데코 ═══ -->
+  <div class="slot new-photo" data-label="추가 사진 ①">
+    <!-- REPLACE: 추가 사진 1 -->
+    <img src="images/img3.png">
     <div class="pick pick3" data-label="pick3"><img src="images/pick3.svg"></div>
   </div>
 
-  <!-- ═══ CENTER PORTRAIT + Pick4 데코 ═══ -->
+  <!-- ═══ FULLBLEED 1 + Pick4 데코 ═══ -->
+  <!-- REPLACE: 전체 사진 1 -->
+  <div class="pic-anchor">
+    <div class="slot full1" data-label="전체 사진 ①"><img class="parallax-img" data-parallax-speed="0.12" src="images/img4.png"></div>
+    <div class="pick pick4" data-label="pick4"><img src="images/pick4.svg"></div>
+  </div>
+
+  <!-- ═══ CENTER PORTRAIT + Pick5 데코 ═══ -->
   <!-- REPLACE: 포트레이트 -->
   <div class="slot portrait" data-label="포트레이트 사진">
-    <img src="images/img4.png">
-    <div class="pick pick4" data-label="pick4"><img src="images/pick4.svg"></div>
+    <img src="images/img5.png">
+    <div class="pick pick5" data-label="pick5"><img src="images/pick5.svg"></div>
   </div>
   <!-- REPLACE: 데코 꽃 2 -->
   <div class="slot deco-flower-2" data-label="데코"><!-- <img src="images/deco2.png"> --></div>
 
-  <!-- ═══ FULLBLEED 2 + Pick5 데코 ═══ -->
+  <!-- ═══ FULLBLEED 2 + Pick6 데코 ═══ -->
   <!-- REPLACE: 전체 사진 2 -->
   <div class="pic-anchor">
-    <div class="slot full2" data-label="전체 사진 ②"><img class="parallax-img" data-parallax-speed="0.08" src="images/img5.png"></div>
-    <div class="pick pick5" data-label="pick5"><img src="images/pick5.svg"></div>
+    <div class="slot full2" data-label="전체 사진 ②"><img class="parallax-img" data-parallax-speed="0.08" src="images/img6.png"></div>
+    <div class="pick pick6" data-label="pick6"><img src="images/pick6.svg"></div>
   </div>
 
-  <!-- ═══ 신부 사진(우) + 메시지(좌) + Pick6 데코 ═══ -->
+  <!-- ═══ 신부 사진(우) + 메시지(좌) + Pick7 데코 ═══ -->
   <section class="bride-row">
     <div class="bride-say-kr">
       <p>서로 다른 길을 걸어온 두 사람이<br>이제 같은 방향을 바라보며<br>평생을 함께하고자 합니다.</p>
       <p>새로운 시작의 순간에 함께해 주시어<br>따뜻한 축복을 나눠주시면 감사하겠습니다.</p>
     </div>
     <!-- REPLACE: 신부 사진 -->
-    <div class="slot bride-photo" data-label="신부 사진"><img src="images/img6.png"></div>
-    <div class="pick pick6" data-label="pick6"><img src="images/pick6.svg"></div>
+    <div class="slot bride-photo" data-label="신부 사진"><img src="images/img7.png"></div>
+    <div class="pick pick7" data-label="pick7"><img src="images/pick7.svg"></div>
   </section>
 
-  <!-- ═══ 신랑 단독 사진(좌) + Pick7 데코 ═══ -->
+  <!-- ═══ 신랑 단독 사진(좌) + Pick8 데코 ═══ -->
   <!-- REPLACE: 신랑 단독 사진 -->
   <div class="slot groom-solo" data-label="신랑 단독 사진">
-    <img src="images/img7.png">
-    <div class="pick pick7" data-label="pick7"><img src="images/pick7.svg"></div>
-  </div>
-
-  <!-- ═══ FULLBLEED 3 + Pick8 데코 ═══ -->
-  <!-- REPLACE: 전체 사진 3 -->
-  <div class="pic-anchor">
-    <div class="slot full3" data-label="전체 사진 ③"><img class="parallax-img" data-parallax-speed="0.06" src="images/img8.png"></div>
+    <img src="images/img8.png">
     <div class="pick pick8" data-label="pick8"><img src="images/pick8.svg"></div>
   </div>
 
-  <!-- ═══ 커플 사진 ① (좌측 와이드 + Pick9 데코) ═══ -->
+  <!-- ═══ 추가 사진 new-02 + Pick9 데코 ═══ -->
+  <div class="slot new-photo" data-label="추가 사진 ②">
+    <!-- REPLACE: 추가 사진 2 -->
+    <img src="images/img9.png">
+    <div class="pick pick9" data-label="pick9"><img src="images/pick9.svg"></div>
+  </div>
+
+  <!-- ═══ FULLBLEED 3 + Pick10 데코 ═══ -->
+  <!-- REPLACE: 전체 사진 3 -->
+  <div class="pic-anchor">
+    <div class="slot full3" data-label="전체 사진 ③"><img class="parallax-img" data-parallax-speed="0.06" src="images/img10.png"></div>
+    <div class="pick pick10" data-label="pick10"><img src="images/pick10.svg"></div>
+  </div>
+
+  <!-- ═══ 커플 사진 ① (좌측 와이드 + Pick11 데코) ═══ -->
   <section class="couple-1-wrap">
     <!-- REPLACE: 커플 사진 1 -->
     <div class="slot couple-1" data-label="커플 사진 ①">
-      <img src="images/img9.png">
-      <!-- REPLACE: Pick 9 데코 -->
-      <div class="pick couple-1-deco couple-deco" data-label="pick9"><img src="images/pick9.svg"></div>
+      <img src="images/img11.png">
+      <!-- REPLACE: Pick 11 데코 -->
+      <div class="pick pick11" data-label="pick11"><img src="images/pick11.svg"></div>
     </div>
   </section>
 
-  <!-- ═══ 커플 사진 ② (우측 + Pick10 데코) ═══ -->
+  <!-- ═══ 커플 사진 ② (우측 + Pick12 데코) ═══ -->
   <section class="couple-2-wrap">
     <!-- REPLACE: 커플 사진 2 -->
     <div class="slot couple-2" data-label="커플 사진 ②">
-      <img src="images/img10.png">
-      <!-- REPLACE: Pick 10 데코 -->
-      <div class="pick couple-2-deco couple-deco" data-label="pick10"><img src="images/pick10.svg"></div>
+      <img src="images/img12.png">
+      <!-- REPLACE: Pick 12 데코 -->
+      <div class="pick pick12" data-label="pick12"><img src="images/pick12.svg"></div>
     </div>
   </section>
 
@@ -547,9 +565,9 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
       <div class="slot cell" data-label="4"><img src="images/gallery4.png"></div>
       <div class="slot cell" data-label="5"><img src="images/gallery5.png"></div>
       <div class="slot cell" data-label="6"><img src="images/gallery6.png"></div>
-      <div class="slot cell" data-label="7"><img src="images/gallery1.png"></div>
-      <div class="slot cell" data-label="8"><img src="images/gallery2.png"></div>
-      <div class="slot cell" data-label="9"><img src="images/gallery3.png"></div>
+      <div class="slot cell" data-label="7"><img src="images/gallery7.png"></div>
+      <div class="slot cell" data-label="8"><img src="images/gallery8.png"></div>
+      <div class="slot cell" data-label="9"><img src="images/gallery9.png"></div>
       <!-- 복제 세트 (seamless loop용, 화면엔 이어지는 동일 이미지) -->
       <div class="slot cell" aria-hidden="true"><img src="images/gallery1.png"></div>
       <div class="slot cell" aria-hidden="true"><img src="images/gallery2.png"></div>
@@ -557,9 +575,9 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
       <div class="slot cell" aria-hidden="true"><img src="images/gallery4.png"></div>
       <div class="slot cell" aria-hidden="true"><img src="images/gallery5.png"></div>
       <div class="slot cell" aria-hidden="true"><img src="images/gallery6.png"></div>
-      <div class="slot cell" aria-hidden="true"><img src="images/gallery1.png"></div>
-      <div class="slot cell" aria-hidden="true"><img src="images/gallery2.png"></div>
-      <div class="slot cell" aria-hidden="true"><img src="images/gallery3.png"></div>
+      <div class="slot cell" aria-hidden="true"><img src="images/gallery7.png"></div>
+      <div class="slot cell" aria-hidden="true"><img src="images/gallery8.png"></div>
+      <div class="slot cell" aria-hidden="true"><img src="images/gallery9.png"></div>
     </div>
   </section>
 
@@ -581,13 +599,13 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
         <div class="slot loc-map" data-label="지도"><img src="images/map.png"></div>
         <div class="loc-btns">
           <button class="map-btn" onclick="window.open('https://map.naver.com/p/search/여수+오동재+한옥호텔')">
-            <span class="map-btn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="10" r="4"/><path d="M12 2C7 2 3 6 3 10c0 5.25 9 13 9 13s9-7.75 9-13c0-4-4-8-9-8z"/></svg></span>네이버맵
+            <span class="map-btn-ic"><img src="images/naverm.svg" alt=""></span>네이버맵
           </button>
           <button class="map-btn" onclick="window.open('https://map.kakao.com/?q=여수+오동재+한옥호텔')">
-            <span class="map-btn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="10" r="4"/><path d="M12 2C7 2 3 6 3 10c0 5.25 9 13 9 13s9-7.75 9-13c0-4-4-8-9-8z"/></svg></span>카카오맵
+            <span class="map-btn-ic"><img src="images/kakaom.svg" alt=""></span>카카오맵
           </button>
           <button class="map-btn" onclick="window.open('https://tmap.life/?q=여수+오동재+한옥호텔')">
-            <span class="map-btn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="10" r="4"/><path d="M12 2C7 2 3 6 3 10c0 5.25 9 13 9 13s9-7.75 9-13c0-4-4-8-9-8z"/></svg></span>티맵
+            <span class="map-btn-ic"><img src="images/tmap.svg" alt=""></span>티맵
           </button>
         </div>
       </div>
@@ -668,7 +686,7 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
   <section class="mo-info-name reveal">
     <div class="mo-info">
       <!-- REPLACE: 꽃 장식 -->
-      <div class="slot mo-info-deco" data-label="꽃"><!-- <img src="images/flower.png"> --></div>
+      <div class="slot mo-info-deco" data-label="꽃"><img src="images/cat.png"></div>
       <p class="mo-info-tit">소중한 분들을 결혼식에 초대합니다</p>
       <p class="mo-info-sub">저희 두 사람이 하나가 되는 특별한 날,<br>인생에서 가장 아름다운 순간을 함께<br>축복해 주시길 바랍니다.</p>
     </div>
@@ -708,34 +726,41 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
     </div>
   </div>
 
-  <!-- ═══ FULLBLEED 1 + Pick3 데코 ═══ -->
-  <div class="pic-anchor">
-    <div class="slot mo-full reveal" data-label="전체 사진 ①"><img class="parallax-img" data-parallax-speed="0.12" src="images/m_img3.png"></div>
+  <!-- ═══ 추가 사진 new-01 + Pick3 데코 ═══ -->
+  <div class="slot mo-photo-r reveal" data-label="추가 사진 ①">
+    <!-- REPLACE: 추가 사진 1 (모바일) -->
+    <img src="images/m_img3.png">
     <div class="pick pick3" data-label="pick3"><img src="images/pick3.svg"></div>
   </div>
 
-  <!-- ═══ CENTER PORTRAIT + Pick4 데코 ═══ -->
-  <div class="slot mo-portrait reveal" data-label="포트레이트 사진">
-    <img src="images/m_img4.png">
+  <!-- ═══ FULLBLEED 1 + Pick4 데코 ═══ -->
+  <div class="pic-anchor">
+    <div class="slot mo-full reveal" data-label="전체 사진 ①"><img class="parallax-img" data-parallax-speed="0.12" src="images/m_img4.png"></div>
     <div class="pick pick4" data-label="pick4"><img src="images/pick4.svg"></div>
   </div>
 
-  <!-- ═══ FULLBLEED 2 + Pick5 데코 ═══ -->
-  <div class="pic-anchor">
-    <div class="slot mo-full reveal" data-label="전체 사진 ②"><img class="parallax-img" data-parallax-speed="0.08" src="images/m_img5.png"></div>
+  <!-- ═══ CENTER PORTRAIT + Pick5 데코 ═══ -->
+  <div class="slot mo-portrait reveal" data-label="포트레이트 사진">
+    <img src="images/m_img5.png">
     <div class="pick pick5" data-label="pick5"><img src="images/pick5.svg"></div>
   </div>
 
-  <!-- ═══ 신부 사진 (우측) + Pick6 데코 ═══ -->
-  <div class="slot mo-photo-r reveal" data-label="신부 사진">
-    <img src="images/m_img6.png">
+  <!-- ═══ FULLBLEED 2 + Pick6 데코 ═══ -->
+  <div class="pic-anchor">
+    <div class="slot mo-full reveal" data-label="전체 사진 ②"><img class="parallax-img" data-parallax-speed="0.08" src="images/m_img6.png"></div>
     <div class="pick pick6" data-label="pick6"><img src="images/pick6.svg"></div>
   </div>
 
-  <!-- ═══ 신랑 단독 사진 (좌측) + Yuri say + Pick7 데코 ═══ -->
-  <div class="slot mo-photo-l reveal" data-label="신랑 단독 사진">
+  <!-- ═══ 신부 사진 (우측) + Pick7 데코 ═══ -->
+  <div class="slot mo-photo-r reveal" data-label="신부 사진">
     <img src="images/m_img7.png">
     <div class="pick pick7" data-label="pick7"><img src="images/pick7.svg"></div>
+  </div>
+
+  <!-- ═══ 신랑 단독 사진 (좌측) + Yuri say + Pick8 데코 ═══ -->
+  <div class="slot mo-photo-l reveal" data-label="신랑 단독 사진">
+    <img src="images/m_img8.png">
+    <div class="pick pick8" data-label="pick8"><img src="images/pick8.svg"></div>
   </div>
   <div class="mo-say reveal">
     <div class="mo-say-kr">
@@ -744,24 +769,28 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
     </div>
   </div>
 
-  <!-- ═══ FULLBLEED 3 + Pick8 데코 ═══ -->
+  <!-- ═══ 추가 사진 new-02 + Pick9 데코 ═══ -->
+  <div class="slot mo-photo-r reveal" data-label="추가 사진 ②">
+    <!-- REPLACE: 추가 사진 2 (모바일) -->
+    <img src="images/m_img9.png">
+    <div class="pick pick9" data-label="pick9"><img src="images/pick9.svg"></div>
+  </div>
+
+  <!-- ═══ FULLBLEED 3 + Pick10 데코 ═══ -->
   <div class="pic-anchor">
-    <div class="slot mo-full reveal" data-label="전체 사진 ③"><img class="parallax-img" data-parallax-speed="0.06" src="images/m_img8.png"></div>
-    <div class="pick pick8" data-label="pick8"><img src="images/pick8.svg"></div>
+    <div class="slot mo-full reveal" data-label="전체 사진 ③"><img class="parallax-img" data-parallax-speed="0.06" src="images/m_img10.png"></div>
+    <div class="pick pick10" data-label="pick10"><img src="images/pick10.svg"></div>
   </div>
 
   <!-- ═══ 커플 사진 ①②③ ═══ -->
   <div class="slot mo-couple-1 reveal" data-label="커플 사진 ①">
-    <img src="images/m_img9.png">
-    <div class="pick pick9" data-label="pick9"><img src="images/pick9.svg"></div>
+    <img src="images/m_img11.png">
+    <div class="pick pick11" data-label="pick11"><img src="images/pick11.svg"></div>
   </div>
   <div class="slot mo-couple-2 reveal" data-label="커플 사진 ②">
-    <img src="images/m_img10.png">
-    <div class="pick pick10" data-label="pick10"><img src="images/pick10.svg"></div>
+    <img src="images/m_img12.png">
+    <div class="pick pick12" data-label="pick12"><img src="images/pick12.svg"></div>
   </div>
-  <!-- REPLACE: 커플 사진 ③ (모바일 전용 풀와이드) -->
-  <div class="slot mo-couple-3 reveal" data-label="커플 사진 ③"><!-- <img src="images/img11.png"> --></div>
-
   <!-- ═══ 갤러리 3×3 ═══ -->
   <section class="mo-gallery js-gallery reveal">
     <div class="mo-g-row">
@@ -776,9 +805,9 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
     </div>
     <div class="mo-g-row">
       <!-- REPLACE: 갤러리 7~9 (모바일 3×3 전용 추가분) -->
-      <div class="slot cell" data-label="7"><!-- <img src="images/gallery7.png"> --></div>
-      <div class="slot cell" data-label="8"><!-- <img src="images/gallery8.png"> --></div>
-      <div class="slot cell" data-label="9"><!-- <img src="images/gallery9.png"> --></div>
+      <div class="slot cell" data-label="7"><img src="images/gallery7.png"></div>
+      <div class="slot cell" data-label="8"><img src="images/gallery8.png"></div>
+      <div class="slot cell" data-label="9"><img src="images/gallery9.png"></div>
     </div>
   </section>
 
@@ -794,13 +823,13 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
     <div class="slot mo-loc-map" data-label="지도"><img src="images/map.png"></div>
     <div class="mo-loc-btns">
       <button class="map-btn" onclick="window.open('https://map.naver.com/p/search/여수+오동재+한옥호텔')">
-        <span class="map-btn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="10" r="4"/><path d="M12 2C7 2 3 6 3 10c0 5.25 9 13 9 13s9-7.75 9-13c0-4-4-8-9-8z"/></svg></span>네이버맵으로 가기
+        <span class="map-btn-ic"><img src="images/naverm.svg" alt=""></span>네이버맵으로 가기
       </button>
       <button class="map-btn" onclick="window.open('https://map.kakao.com/?q=여수+오동재+한옥호텔')">
-        <span class="map-btn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="10" r="4"/><path d="M12 2C7 2 3 6 3 10c0 5.25 9 13 9 13s9-7.75 9-13c0-4-4-8-9-8z"/></svg></span>카카오맵으로 가기
+        <span class="map-btn-ic"><img src="images/kakaom.svg" alt=""></span>카카오맵으로 가기
       </button>
       <button class="map-btn" onclick="window.open('https://tmap.life/?q=여수+오동재+한옥호텔')">
-        <span class="map-btn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="10" r="4"/><path d="M12 2C7 2 3 6 3 10c0 5.25 9 13 9 13s9-7.75 9-13c0-4-4-8-9-8z"/></svg></span>티맵으로 가기
+        <span class="map-btn-ic"><img src="images/tmap.svg" alt=""></span>티맵으로 가기
       </button>
     </div>
   </section>
@@ -902,7 +931,11 @@ function updateParallax(){
     const progress = isKv
       ? Math.min(1, Math.max(0, (window.scrollY || 0) / Math.max(vh, 1)))
       : Math.min(1, Math.max(0, (vh - rect.top) / (vh + rect.height)));
-    const maxShift = rect.height * Math.min(0.08, Math.max(0.035, speed * 0.45));
+    const isMobileKv = isKv && slot.closest('.stage-mo');
+    const maxRatio = isMobileKv
+      ? Math.min(0.022, Math.max(0.012, speed * 0.16))
+      : Math.min(0.08, Math.max(0.035, speed * 0.45));
+    const maxShift = rect.height * maxRatio;
     const y = (progress - 0.5) * 2 * maxShift;
     img.style.setProperty('--parallax-y', `${y}px`);
   });
@@ -1019,7 +1052,8 @@ updateParallax();
 /* ───── 사진 등장 모션 (KV 제외, 갤러리 슬라이드 전까지) ───── */
 const photoRiseTargets = [
   ...document.querySelectorAll(
-    '.stage .bride-seated,.stage .groom-photo,.stage .full1,.stage .portrait,.stage .full2,.stage .bride-photo,.stage .groom-solo,.stage .full3,.stage .couple-1,.stage .couple-2,' +
+    '.stage .bride-seated,.stage .groom-photo,.stage .new-photo,.stage .full1,.stage .portrait,.stage .full2,.stage .bride-photo,.stage .groom-solo,.stage .full3,.stage .couple-1,.stage .couple-2,' +
+    '.stage .pick2,.stage .pick4,.stage .pick6,.stage .pick7,.stage .pick10,' +
     '.stage-mo .mo-photo-r,.stage-mo .mo-photo-l,.stage-mo .mo-full,.stage-mo .mo-portrait,.stage-mo .mo-couple-1,.stage-mo .mo-couple-2,.stage-mo .mo-couple-3'
   )
 ].filter(el => !el.closest('.kv,.mo-kv,.gallery,.mo-gallery'));
