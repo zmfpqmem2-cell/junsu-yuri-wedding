@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Junsu & Yuri Wedding</title>
 <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.23/dist/lenis.css">
+<script>
+/* WebP를 불러오지 못하는 환경에서는 기존 원본 이미지로 자동 전환 */
+document.addEventListener('error', (event) => {
+  const img = event.target;
+  if(!(img instanceof HTMLImageElement) || !img.dataset.fallbackSrc) return;
+  const fallback = img.dataset.fallbackSrc;
+  img.removeAttribute('data-fallback-src');
+  img.src = fallback;
+}, true);
+</script>
 <style>
 /* =====================================================
    FONT FACE
@@ -396,7 +406,7 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
   <!-- ═══ KV ═══ -->
   <section class="kv">
     <!-- REPLACE: KV 배경 -->
-    <div class="slot kv-bg" data-label="KV 배경 사진"><img loading="lazy" fetchpriority="high" decoding="async" class="parallax-img" data-parallax-speed="0.14" src="images/kv.png"></div>
+    <div class="slot kv-bg" data-label="KV 배경 사진"><img loading="lazy" fetchpriority="high" decoding="async" class="parallax-img" data-parallax-speed="0.14" src="images/webp/kv.webp" data-fallback-src="images/kv.png"></div>
     <!-- KV 로고 3요소를 하나의 그룹으로 묶어 100vh 기준 수직중앙 배치 -->
     <div class="kv-logo-group" id="kvLogoGroup">
       <div class="kv-logo-stack">
@@ -425,7 +435,7 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
   <section class="info-name">
     <div class="info">
       <!-- REPLACE: 꽃 장식 -->
-      <div class="slot info-deco" data-label="꽃"><img loading="lazy" decoding="async" src="images/cat.png"></div>
+      <div class="slot info-deco" data-label="꽃"><img loading="lazy" decoding="async" src="images/webp/cat.webp" data-fallback-src="images/cat.png"></div>
       <p class="info-tit">소중한 분들을 결혼식에 초대합니다</p>
       <p class="info-sub">저희 두 사람이 하나가 되는 특별한 날,
  인생에서 가장 아름다운 순간을 함께 축복해 주시길 바랍니다.
@@ -446,7 +456,7 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
       </div>
       <div class="name-and">
       <!-- REPLACE: 반지 이미지 -->
-      <div class="slot" data-label="반지"><img loading="lazy" decoding="async" src="images/ring.png" alt="반지"></div>
+      <div class="slot" data-label="반지"><img loading="lazy" decoding="async" src="images/webp/ring.webp" data-fallback-src="images/ring.png" alt="반지"></div>
     </div>
     </div>
   </section>
@@ -454,14 +464,14 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
   <!-- ═══ 신부 앉은 사진 (첫 사진, 좌측 바깥 + Pick1 데코) ═══ -->
   <!-- REPLACE: 신부 앉은 사진 (나무 배경) -->
   <div class="slot bride-seated" data-label="신부 앉은 사진">
-    <img loading="lazy" decoding="async" src="images/img1.png">
+    <img loading="lazy" decoding="async" src="images/webp/img1.webp" data-fallback-src="images/img1.png">
     <div class="pick pick1" data-label="pick1"><img loading="lazy" decoding="async" src="images/pick1.svg"></div>
   </div>
 
   <!-- ═══ 신부 서있는 사진 + 메시지(Junsu say) + Pick2 데코 ═══ -->
   <section class="groom-row">
     <!-- REPLACE: 신부 서있는 사진 -->
-    <div class="slot groom-photo" data-label="신부 서있는 사진"><img loading="lazy" decoding="async" src="images/img2.png"></div>
+    <div class="slot groom-photo" data-label="신부 서있는 사진"><img loading="lazy" decoding="async" src="images/webp/img2.webp" data-fallback-src="images/img2.png"></div>
     <div class="groom-txt">
       <div class="say-kr">
         <p>서로 다른 길을 걸어온 두 사람이<br>이제 같은 방향을 바라보며<br>평생을 함께하고자 합니다.</p>
@@ -471,26 +481,26 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
     <div class="pick pick2" data-label="pick2"><img loading="lazy" decoding="async" src="images/pick2.svg"></div>
   </section>
   <!-- REPLACE: 데코 꽃 1 -->
-  <div class="slot deco-flower-1" data-label="데코"><img loading="lazy" decoding="async" src="images/bird.png"></div>
+  <div class="slot deco-flower-1" data-label="데코"><img loading="lazy" decoding="async" src="images/webp/bird.webp" data-fallback-src="images/bird.png"></div>
 
   <!-- ═══ 추가 사진 new-01 + Pick3 데코 ═══ -->
   <div class="slot new-photo" data-label="추가 사진 ①">
     <!-- REPLACE: 추가 사진 1 -->
-    <img loading="lazy" decoding="async" src="images/img3.png">
+    <img loading="lazy" decoding="async" src="images/webp/img3.webp" data-fallback-src="images/img3.png">
     <div class="pick pick3" data-label="pick3"><img loading="lazy" decoding="async" src="images/pick3.svg"></div>
   </div>
 
   <!-- ═══ FULLBLEED 1 + Pick4 데코 ═══ -->
   <!-- REPLACE: 전체 사진 1 -->
   <div class="pic-anchor">
-    <div class="slot full1" data-label="전체 사진 ①"><img loading="lazy" decoding="async" class="parallax-img" data-parallax-speed="0.12" src="images/img4.png"></div>
+    <div class="slot full1" data-label="전체 사진 ①"><img loading="lazy" decoding="async" class="parallax-img" data-parallax-speed="0.12" src="images/webp/img4.webp" data-fallback-src="images/img4.png"></div>
     <div class="pick pick4" data-label="pick4"><img loading="lazy" decoding="async" src="images/pick4.svg"></div>
   </div>
 
   <!-- ═══ CENTER PORTRAIT + Pick5 데코 ═══ -->
   <!-- REPLACE: 포트레이트 -->
   <div class="slot portrait" data-label="포트레이트 사진">
-    <img loading="lazy" decoding="async" src="images/img5.png">
+    <img loading="lazy" decoding="async" src="images/webp/img5.webp" data-fallback-src="images/img5.png">
     <div class="pick pick5" data-label="pick5"><img loading="lazy" decoding="async" src="images/pick5.svg"></div>
   </div>
   <!-- REPLACE: 데코 꽃 2 -->
@@ -499,7 +509,7 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
   <!-- ═══ FULLBLEED 2 + Pick6 데코 ═══ -->
   <!-- REPLACE: 전체 사진 2 -->
   <div class="pic-anchor">
-    <div class="slot full2" data-label="전체 사진 ②"><img loading="lazy" decoding="async" class="parallax-img" data-parallax-speed="0.08" src="images/img6.png"></div>
+    <div class="slot full2" data-label="전체 사진 ②"><img loading="lazy" decoding="async" class="parallax-img" data-parallax-speed="0.08" src="images/webp/img6.webp" data-fallback-src="images/img6.png"></div>
     <div class="pick pick6" data-label="pick6"><img loading="lazy" decoding="async" src="images/pick6.svg"></div>
   </div>
 
@@ -510,28 +520,28 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
       <p>새로운 시작의 순간에 함께해 주시어<br>따뜻한 축복을 나눠주시면 감사하겠습니다.</p>
     </div>
     <!-- REPLACE: 신부 사진 -->
-    <div class="slot bride-photo" data-label="신부 사진"><img loading="lazy" decoding="async" src="images/img7.png"></div>
+    <div class="slot bride-photo" data-label="신부 사진"><img loading="lazy" decoding="async" src="images/webp/img7.webp" data-fallback-src="images/img7.png"></div>
     <div class="pick pick7" data-label="pick7"><img loading="lazy" decoding="async" src="images/pick7.svg"></div>
   </section>
 
   <!-- ═══ 신랑 단독 사진(좌) + Pick8 데코 ═══ -->
   <!-- REPLACE: 신랑 단독 사진 -->
   <div class="slot groom-solo" data-label="신랑 단독 사진">
-    <img loading="lazy" decoding="async" src="images/img8.png">
+    <img loading="lazy" decoding="async" src="images/webp/img8.webp" data-fallback-src="images/img8.png">
     <div class="pick pick8" data-label="pick8"><img loading="lazy" decoding="async" src="images/pick8.svg"></div>
   </div>
 
   <!-- ═══ 추가 사진 new-02 + Pick9 데코 ═══ -->
   <div class="slot new-photo" data-label="추가 사진 ②">
     <!-- REPLACE: 추가 사진 2 -->
-    <img loading="lazy" decoding="async" src="images/img9.png">
+    <img loading="lazy" decoding="async" src="images/webp/img9.webp" data-fallback-src="images/img9.png">
     <div class="pick pick9" data-label="pick9"><img loading="lazy" decoding="async" src="images/pick9.svg"></div>
   </div>
 
   <!-- ═══ FULLBLEED 3 + Pick10 데코 ═══ -->
   <!-- REPLACE: 전체 사진 3 -->
   <div class="pic-anchor">
-    <div class="slot full3" data-label="전체 사진 ③"><img loading="lazy" decoding="async" class="parallax-img" data-parallax-speed="0.06" src="images/img10.png"></div>
+    <div class="slot full3" data-label="전체 사진 ③"><img loading="lazy" decoding="async" class="parallax-img" data-parallax-speed="0.06" src="images/webp/img10.webp" data-fallback-src="images/img10.png"></div>
     <div class="pick pick10" data-label="pick10"><img loading="lazy" decoding="async" src="images/pick10.svg"></div>
   </div>
 
@@ -539,7 +549,7 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
   <section class="couple-1-wrap">
     <!-- REPLACE: 커플 사진 1 -->
     <div class="slot couple-1" data-label="커플 사진 ①">
-      <img loading="lazy" decoding="async" src="images/img11.png">
+      <img loading="lazy" decoding="async" src="images/webp/img11.webp" data-fallback-src="images/img11.png">
       <!-- REPLACE: Pick 11 데코 -->
       <div class="pick pick11" data-label="pick11"><img loading="lazy" decoding="async" src="images/pick11.svg"></div>
     </div>
@@ -549,7 +559,7 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
   <section class="couple-2-wrap">
     <!-- REPLACE: 커플 사진 2 -->
     <div class="slot couple-2" data-label="커플 사진 ②">
-      <img loading="lazy" decoding="async" src="images/img12.png">
+      <img loading="lazy" decoding="async" src="images/webp/img12.webp" data-fallback-src="images/img12.png">
       <!-- REPLACE: Pick 12 데코 -->
       <div class="pick pick12" data-label="pick12"><img loading="lazy" decoding="async" src="images/pick12.svg"></div>
     </div>
@@ -560,25 +570,25 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
     <!-- REPLACE: 갤러리 6장 → 9장 반복 마퀴 (원본 세트 + 복제 세트로 무한 루프) -->
     <div class="marquee">
       <!-- 원본 세트 (9장: 6장을 반복해 채움) -->
-      <div class="slot cell" data-label="1"><img loading="lazy" decoding="async" src="images/gallery1.png"></div>
-      <div class="slot cell" data-label="2"><img loading="lazy" decoding="async" src="images/gallery2.png"></div>
-      <div class="slot cell" data-label="3"><img loading="lazy" decoding="async" src="images/gallery3.png"></div>
-      <div class="slot cell" data-label="4"><img loading="lazy" decoding="async" src="images/gallery4.png"></div>
-      <div class="slot cell" data-label="5"><img loading="lazy" decoding="async" src="images/gallery5.png"></div>
-      <div class="slot cell" data-label="6"><img loading="lazy" decoding="async" src="images/gallery6.png"></div>
-      <div class="slot cell" data-label="7"><img loading="lazy" decoding="async" src="images/gallery7.png"></div>
-      <div class="slot cell" data-label="8"><img loading="lazy" decoding="async" src="images/gallery8.png"></div>
-      <div class="slot cell" data-label="9"><img loading="lazy" decoding="async" src="images/gallery9.png"></div>
+      <div class="slot cell" data-label="1"><img loading="lazy" decoding="async" src="images/webp/gallery1.webp" data-fallback-src="images/gallery1.png"></div>
+      <div class="slot cell" data-label="2"><img loading="lazy" decoding="async" src="images/webp/gallery2.webp" data-fallback-src="images/gallery2.png"></div>
+      <div class="slot cell" data-label="3"><img loading="lazy" decoding="async" src="images/webp/gallery3.webp" data-fallback-src="images/gallery3.png"></div>
+      <div class="slot cell" data-label="4"><img loading="lazy" decoding="async" src="images/webp/gallery4.webp" data-fallback-src="images/gallery4.png"></div>
+      <div class="slot cell" data-label="5"><img loading="lazy" decoding="async" src="images/webp/gallery5.webp" data-fallback-src="images/gallery5.png"></div>
+      <div class="slot cell" data-label="6"><img loading="lazy" decoding="async" src="images/webp/gallery6.webp" data-fallback-src="images/gallery6.png"></div>
+      <div class="slot cell" data-label="7"><img loading="lazy" decoding="async" src="images/webp/gallery7.webp" data-fallback-src="images/gallery7.png"></div>
+      <div class="slot cell" data-label="8"><img loading="lazy" decoding="async" src="images/webp/gallery8.webp" data-fallback-src="images/gallery8.png"></div>
+      <div class="slot cell" data-label="9"><img loading="lazy" decoding="async" src="images/webp/gallery9.webp" data-fallback-src="images/gallery9.png"></div>
       <!-- 복제 세트 (seamless loop용, 화면엔 이어지는 동일 이미지) -->
-      <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/gallery1.png"></div>
-      <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/gallery2.png"></div>
-      <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/gallery3.png"></div>
-      <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/gallery4.png"></div>
-      <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/gallery5.png"></div>
-      <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/gallery6.png"></div>
-      <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/gallery7.png"></div>
-      <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/gallery8.png"></div>
-      <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/gallery9.png"></div>
+      <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/webp/gallery1.webp" data-fallback-src="images/gallery1.png"></div>
+      <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/webp/gallery2.webp" data-fallback-src="images/gallery2.png"></div>
+      <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/webp/gallery3.webp" data-fallback-src="images/gallery3.png"></div>
+      <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/webp/gallery4.webp" data-fallback-src="images/gallery4.png"></div>
+      <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/webp/gallery5.webp" data-fallback-src="images/gallery5.png"></div>
+      <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/webp/gallery6.webp" data-fallback-src="images/gallery6.png"></div>
+      <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/webp/gallery7.webp" data-fallback-src="images/gallery7.png"></div>
+      <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/webp/gallery8.webp" data-fallback-src="images/gallery8.png"></div>
+      <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/webp/gallery9.webp" data-fallback-src="images/gallery9.png"></div>
     </div>
   </section>
 
@@ -597,7 +607,7 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
           </div>
         </div>
         <!-- REPLACE: 지도 -->
-        <div class="slot loc-map" data-label="지도"><img loading="lazy" decoding="async" src="images/map.png"></div>
+        <div class="slot loc-map" data-label="지도"><img loading="lazy" decoding="async" src="images/webp/map.webp" data-fallback-src="images/map.png"></div>
         <div class="loc-btns">
           <button class="map-btn" onclick="window.open('https://map.naver.com/p/search/여수+오동재+한옥호텔')">
             <span class="map-btn-ic"><img loading="lazy" decoding="async" src="images/naverm.svg" alt=""></span>네이버맵
@@ -644,7 +654,7 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
       <!-- MAP -->
       <div class="qr-block">
         <!-- REPLACE: MAP -->
-        <div class="slot qr-slot" data-label="MAP"><img loading="lazy" decoding="async" src="images/flower.png"></div>
+        <div class="slot qr-slot" data-label="MAP"><img loading="lazy" decoding="async" src="images/webp/flower.webp" data-fallback-src="images/flower.png"></div>
         <p class="qr-note">*축하의 마음만 감사히 받겠습니다.<br>화환은 정중히 사양합니다.</p>
       </div>
     </div>
@@ -666,7 +676,7 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
   <!-- ═══ KV ═══ -->
   <section class="mo-kv">
     <!-- REPLACE: KV 배경 (모바일) -->
-    <div class="slot kv-bg" data-label="KV 배경 사진"><img loading="lazy" fetchpriority="high" decoding="async" class="parallax-img" data-parallax-speed="0.14" src="images/m_kv.png"></div>
+    <div class="slot kv-bg" data-label="KV 배경 사진"><img loading="lazy" fetchpriority="high" decoding="async" class="parallax-img" data-parallax-speed="0.14" src="images/webp/m_kv.webp" data-fallback-src="images/m_kv.png"></div>
     <div class="abs kv-logo">
       <svg viewBox="0 0 340 95" xmlns="http://www.w3.org/2000/svg" aria-label="Wedding day">
         <defs><clipPath id="wdClipM"><rect class="wd-reveal" x="0" y="0" width="0" height="95"/></clipPath></defs>
@@ -687,7 +697,7 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
   <section class="mo-info-name reveal">
     <div class="mo-info">
       <!-- REPLACE: 꽃 장식 -->
-      <div class="slot mo-info-deco" data-label="꽃"><img loading="lazy" decoding="async" src="images/cat.png"></div>
+      <div class="slot mo-info-deco" data-label="꽃"><img loading="lazy" decoding="async" src="images/webp/cat.webp" data-fallback-src="images/cat.png"></div>
       <p class="mo-info-tit">소중한 분들을 결혼식에 초대합니다</p>
       <p class="mo-info-sub">저희 두 사람이 하나가 되는 특별한 날,<br>인생에서 가장 아름다운 순간을 함께<br>축복해 주시길 바랍니다.</p>
     </div>
@@ -704,20 +714,20 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
       </div>
       <div class="mo-name-and">
         <!-- REPLACE: 반지 이미지 -->
-        <div class="slot" data-label="반지"><img loading="lazy" decoding="async" src="images/ring.png" alt="반지"></div>
+        <div class="slot" data-label="반지"><img loading="lazy" decoding="async" src="images/webp/ring.webp" data-fallback-src="images/ring.png" alt="반지"></div>
       </div>
     </div>
   </section>
 
   <!-- ═══ 신부 앉은 사진 (우측) + Pick1 데코 ═══ -->
   <div class="slot mo-photo-r reveal" data-label="신부 앉은 사진">
-    <img loading="lazy" decoding="async" src="images/m_img1.png">
+    <img loading="lazy" decoding="async" src="images/webp/m_img1.webp" data-fallback-src="images/m_img1.png">
     <div class="pick pick1" data-label="pick1"><img loading="lazy" decoding="async" src="images/pick1.svg"></div>
   </div>
 
   <!-- ═══ 신부 서있는 사진 (좌측) + Junsu say + Pick2 데코 ═══ -->
   <div class="slot mo-photo-l reveal" data-label="신부 서있는 사진">
-    <img loading="lazy" decoding="async" src="images/m_img2.png">
+    <img loading="lazy" decoding="async" src="images/webp/m_img2.webp" data-fallback-src="images/m_img2.png">
     <div class="pick pick2" data-label="pick2"><img loading="lazy" decoding="async" src="images/pick2.svg"></div>
   </div>
   <div class="mo-say reveal">
@@ -730,37 +740,37 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
   <!-- ═══ 추가 사진 new-01 + Pick3 데코 ═══ -->
   <div class="slot mo-photo-r reveal" data-label="추가 사진 ①">
     <!-- REPLACE: 추가 사진 1 (모바일) -->
-    <img loading="lazy" decoding="async" src="images/m_img3.png">
+    <img loading="lazy" decoding="async" src="images/webp/m_img3.webp" data-fallback-src="images/m_img3.png">
     <div class="pick pick3" data-label="pick3"><img loading="lazy" decoding="async" src="images/pick3.svg"></div>
   </div>
 
   <!-- ═══ FULLBLEED 1 + Pick4 데코 ═══ -->
   <div class="pic-anchor">
-    <div class="slot mo-full reveal" data-label="전체 사진 ①"><img loading="lazy" decoding="async" class="parallax-img" data-parallax-speed="0.12" src="images/m_img4.png"></div>
+    <div class="slot mo-full reveal" data-label="전체 사진 ①"><img loading="lazy" decoding="async" class="parallax-img" data-parallax-speed="0.12" src="images/webp/m_img4.webp" data-fallback-src="images/m_img4.png"></div>
     <div class="pick pick4" data-label="pick4"><img loading="lazy" decoding="async" src="images/pick4.svg"></div>
   </div>
 
   <!-- ═══ CENTER PORTRAIT + Pick5 데코 ═══ -->
   <div class="slot mo-portrait reveal" data-label="포트레이트 사진">
-    <img loading="lazy" decoding="async" src="images/m_img5.png">
+    <img loading="lazy" decoding="async" src="images/webp/m_img5.webp" data-fallback-src="images/m_img5.png">
     <div class="pick pick5" data-label="pick5"><img loading="lazy" decoding="async" src="images/pick5.svg"></div>
   </div>
 
   <!-- ═══ FULLBLEED 2 + Pick6 데코 ═══ -->
   <div class="pic-anchor">
-    <div class="slot mo-full reveal" data-label="전체 사진 ②"><img loading="lazy" decoding="async" class="parallax-img" data-parallax-speed="0.08" src="images/m_img6.png"></div>
+    <div class="slot mo-full reveal" data-label="전체 사진 ②"><img loading="lazy" decoding="async" class="parallax-img" data-parallax-speed="0.08" src="images/webp/m_img6.webp" data-fallback-src="images/m_img6.png"></div>
     <div class="pick pick6" data-label="pick6"><img loading="lazy" decoding="async" src="images/pick6.svg"></div>
   </div>
 
   <!-- ═══ 신부 사진 (우측) + Pick7 데코 ═══ -->
   <div class="slot mo-photo-r reveal" data-label="신부 사진">
-    <img loading="lazy" decoding="async" src="images/m_img7.png">
+    <img loading="lazy" decoding="async" src="images/webp/m_img7.webp" data-fallback-src="images/m_img7.png">
     <div class="pick pick7" data-label="pick7"><img loading="lazy" decoding="async" src="images/pick7.svg"></div>
   </div>
 
   <!-- ═══ 신랑 단독 사진 (좌측) + Yuri say + Pick8 데코 ═══ -->
   <div class="slot mo-photo-l reveal" data-label="신랑 단독 사진">
-    <img loading="lazy" decoding="async" src="images/m_img8.png">
+    <img loading="lazy" decoding="async" src="images/webp/m_img8.webp" data-fallback-src="images/m_img8.png">
     <div class="pick pick8" data-label="pick8"><img loading="lazy" decoding="async" src="images/pick8.svg"></div>
   </div>
   <div class="mo-say reveal">
@@ -773,42 +783,42 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
   <!-- ═══ 추가 사진 new-02 + Pick9 데코 ═══ -->
   <div class="slot mo-photo-r reveal" data-label="추가 사진 ②">
     <!-- REPLACE: 추가 사진 2 (모바일) -->
-    <img loading="lazy" decoding="async" src="images/m_img9.png">
+    <img loading="lazy" decoding="async" src="images/webp/m_img9.webp" data-fallback-src="images/m_img9.png">
     <div class="pick pick9" data-label="pick9"><img loading="lazy" decoding="async" src="images/pick9.svg"></div>
   </div>
 
   <!-- ═══ FULLBLEED 3 + Pick10 데코 ═══ -->
   <div class="pic-anchor">
-    <div class="slot mo-full reveal" data-label="전체 사진 ③"><img loading="lazy" decoding="async" class="parallax-img" data-parallax-speed="0.06" src="images/m_img10.png"></div>
+    <div class="slot mo-full reveal" data-label="전체 사진 ③"><img loading="lazy" decoding="async" class="parallax-img" data-parallax-speed="0.06" src="images/webp/m_img10.webp" data-fallback-src="images/m_img10.png"></div>
     <div class="pick pick10" data-label="pick10"><img loading="lazy" decoding="async" src="images/pick10.svg"></div>
   </div>
 
   <!-- ═══ 커플 사진 ①②③ ═══ -->
   <div class="slot mo-couple-1 reveal" data-label="커플 사진 ①">
-    <img loading="lazy" decoding="async" src="images/m_img11.png">
+    <img loading="lazy" decoding="async" src="images/webp/m_img11.webp" data-fallback-src="images/m_img11.png">
     <div class="pick pick11" data-label="pick11"><img loading="lazy" decoding="async" src="images/pick11.svg"></div>
   </div>
   <div class="slot mo-couple-2 reveal" data-label="커플 사진 ②">
-    <img loading="lazy" decoding="async" src="images/m_img12.png">
+    <img loading="lazy" decoding="async" src="images/webp/m_img12.webp" data-fallback-src="images/m_img12.png">
     <div class="pick pick12" data-label="pick12"><img loading="lazy" decoding="async" src="images/pick12.svg"></div>
   </div>
   <!-- ═══ 갤러리 3×3 ═══ -->
   <section class="mo-gallery js-gallery reveal">
     <div class="mo-g-row">
-      <div class="slot cell" data-label="1"><img loading="lazy" decoding="async" src="images/gallery1.png"></div>
-      <div class="slot cell" data-label="2"><img loading="lazy" decoding="async" src="images/gallery2.png"></div>
-      <div class="slot cell" data-label="3"><img loading="lazy" decoding="async" src="images/gallery3.png"></div>
+      <div class="slot cell" data-label="1"><img loading="lazy" decoding="async" src="images/webp/gallery1.webp" data-fallback-src="images/gallery1.png"></div>
+      <div class="slot cell" data-label="2"><img loading="lazy" decoding="async" src="images/webp/gallery2.webp" data-fallback-src="images/gallery2.png"></div>
+      <div class="slot cell" data-label="3"><img loading="lazy" decoding="async" src="images/webp/gallery3.webp" data-fallback-src="images/gallery3.png"></div>
     </div>
     <div class="mo-g-row">
-      <div class="slot cell" data-label="4"><img loading="lazy" decoding="async" src="images/gallery4.png"></div>
-      <div class="slot cell" data-label="5"><img loading="lazy" decoding="async" src="images/gallery5.png"></div>
-      <div class="slot cell" data-label="6"><img loading="lazy" decoding="async" src="images/gallery6.png"></div>
+      <div class="slot cell" data-label="4"><img loading="lazy" decoding="async" src="images/webp/gallery4.webp" data-fallback-src="images/gallery4.png"></div>
+      <div class="slot cell" data-label="5"><img loading="lazy" decoding="async" src="images/webp/gallery5.webp" data-fallback-src="images/gallery5.png"></div>
+      <div class="slot cell" data-label="6"><img loading="lazy" decoding="async" src="images/webp/gallery6.webp" data-fallback-src="images/gallery6.png"></div>
     </div>
     <div class="mo-g-row">
       <!-- REPLACE: 갤러리 7~9 (모바일 3×3 전용 추가분) -->
-      <div class="slot cell" data-label="7"><img loading="lazy" decoding="async" src="images/gallery7.png"></div>
-      <div class="slot cell" data-label="8"><img loading="lazy" decoding="async" src="images/gallery8.png"></div>
-      <div class="slot cell" data-label="9"><img loading="lazy" decoding="async" src="images/gallery9.png"></div>
+      <div class="slot cell" data-label="7"><img loading="lazy" decoding="async" src="images/webp/gallery7.webp" data-fallback-src="images/gallery7.png"></div>
+      <div class="slot cell" data-label="8"><img loading="lazy" decoding="async" src="images/webp/gallery8.webp" data-fallback-src="images/gallery8.png"></div>
+      <div class="slot cell" data-label="9"><img loading="lazy" decoding="async" src="images/webp/gallery9.webp" data-fallback-src="images/gallery9.png"></div>
     </div>
   </section>
 
@@ -821,7 +831,7 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
       <p>Tel. 061-650-0300</p>
     </div>
     <!-- REPLACE: 지도 -->
-    <div class="slot mo-loc-map" data-label="지도"><img loading="lazy" decoding="async" src="images/map.png"></div>
+    <div class="slot mo-loc-map" data-label="지도"><img loading="lazy" decoding="async" src="images/webp/map.webp" data-fallback-src="images/map.png"></div>
     <div class="mo-loc-btns">
       <button class="map-btn" onclick="window.open('https://map.naver.com/p/search/여수+오동재+한옥호텔')">
         <span class="map-btn-ic"><img loading="lazy" decoding="async" src="images/naverm.svg" alt=""></span>네이버맵으로 가기
@@ -867,7 +877,7 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
     <!-- MAP/QR -->
     <div class="mo-qr">
       <!-- REPLACE: MAP -->
-      <div class="slot mo-qr-slot" data-label="MAP"><img loading="lazy" decoding="async" src="images/flower.png"></div>
+      <div class="slot mo-qr-slot" data-label="MAP"><img loading="lazy" decoding="async" src="images/webp/flower.webp" data-fallback-src="images/flower.png"></div>
       <p class="mo-qr-note">*축하의 마음만 감사히 받겠습니다.<br>화환은 정중히 사양합니다.</p>
     </div>
   </section>
