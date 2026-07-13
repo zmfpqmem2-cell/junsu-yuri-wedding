@@ -132,7 +132,7 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
 .name-parents{display:flex;gap:calc(6 * var(--vw));align-items:center;}
 .name-parents p{font-size:calc(18 * var(--vw));line-height:1.2;}
 .name-dot{width:calc(2 * var(--vw));height:calc(2 * var(--vw));border-radius:50%;background:var(--black);}
-.name-role{font-size:calc(12 * var(--vw));line-height:1.2;text-align:center;}
+.name-role{font-size:calc(12 * var(--vw));line-height:1.2;text-align:center;color:#78766B}
 .name-main{font-size:calc(28 * var(--vw));line-height:1.2;text-align:center;}
 .name-and{width:calc(56 * var(--vw));height:calc(56 * var(--vw));overflow:hidden;display:flex;align-items:center;justify-content:center;position:absolute;left:50%;transform:translateX(-50%);top:calc(24 * var(--vw));z-index:2;}
 .name-and .slot{width:100%;height:100%;background:transparent;}
@@ -219,6 +219,13 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
 .qr-block{display:flex;flex-direction:column;gap:calc(16 * var(--vw));align-items:center;width:100%;}
 .qr-slot{width:calc(220 * var(--vw));height:calc(220 * var(--vw));}
 .qr-note{font-size:calc(18 * var(--vw));line-height:1.5;text-align:center;width:100%;}
+.time-block{display:flex;flex-direction:column;gap:calc(12 * var(--vw));align-items:center;width:100%;}
+.time-nums{display:flex;gap:calc(20 * var(--vw));align-items:center;}
+.time-num{font-family:var(--f-dutch);font-size:calc(64 * var(--vw));line-height:1;color:#4B4941;text-align:center;width:calc(70 * var(--vw));}
+.time-sep{width:calc(5 * var(--vw));height:calc(32 * var(--vw));flex:0 0 auto;}
+.time-sep img{width:100%;height:100%;display:block;}
+.time-labels{display:flex;gap:calc(45 * var(--vw));font-family:var(--f-dutch);font-size:calc(16 * var(--vw));line-height:1;color:#78766B;}
+.time-labels span{width:calc(70 * var(--vw));text-align:center;display:block;}
 .footer-logo{width:calc(1856 * var(--vw));height:calc(347 * var(--vw));display:flex;align-items:center;justify-content:center;margin:calc(240 * var(--vw)) auto calc(32 * var(--vw));}
 .footer-logo .slot{width:100%;height:100%;background:transparent;}
 .footer-logo .slot img{width:100%;height:100%;object-fit:contain;display:block;}
@@ -262,7 +269,9 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
 .mo-info-sub{font-size:calc(14 * var(--mo-vw));line-height:1.5;text-align:center;width:100%;}
 .mo-name-row{position:relative;display:flex;justify-content:space-between;width:100%;}
 .mo-name-col{width:calc(183 * var(--mo-vw));display:flex;flex-direction:column;gap:calc(10 * var(--mo-vw));align-items:center;}
+.stage-mo .name-parents{gap:calc(6 * var(--mo-vw));}
 .stage-mo .name-parents p{font-size:calc(13 * var(--mo-vw));}
+.stage-mo .name-dot{width:calc(2 * var(--mo-vw));height:calc(2 * var(--mo-vw));}
 .mo-name-role{font-size:calc(12 * var(--mo-vw));line-height:1.2;color:#8A8174;text-align:center;}
 .mo-name-main{font-size:calc(18 * var(--mo-vw));line-height:1.2;text-align:center;}
 .mo-name-and{position:absolute;left:50%;transform:translateX(-50%);top:calc(16 * var(--mo-vw));width:calc(40 * var(--mo-vw));height:calc(40 * var(--mo-vw));z-index:2;}
@@ -272,7 +281,7 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
 /* 사진 배치 */
 .mo-photo-r{width:calc(263 * var(--mo-vw));height:calc(330 * var(--mo-vw));margin:calc(80 * var(--mo-vw)) calc(12 * var(--mo-vw)) 0 auto;overflow:visible;}
 .mo-photo-l{width:calc(264 * var(--mo-vw));height:calc(331 * var(--mo-vw));margin:calc(80 * var(--mo-vw)) 0 0 calc(12 * var(--mo-vw));overflow:visible;}
-.mo-say{margin:calc(32 * var(--mo-vw)) calc(12 * var(--mo-vw)) 0;display:flex;flex-direction:column;gap:calc(16 * var(--mo-vw));}
+.mo-say{margin:calc(24 * var(--mo-vw)) calc(12 * var(--mo-vw)) 0;display:flex;flex-direction:column;gap:calc(16 * var(--mo-vw));}
 .mo-say-en{font-family:var(--f-dutch);font-size:calc(18 * var(--mo-vw));line-height:1;}
 .mo-say-kr{font-size:calc(15 * var(--mo-vw));line-height:1.6;}
 .mo-say-kr p+p{margin-top:1.6em;}
@@ -308,10 +317,10 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
 .mo-sec-title{font-size:calc(22 * var(--mo-vw));line-height:1.2;text-align:center;width:100%;}
 .mo-loc .mo-sec-title{margin-bottom:calc(36 * var(--mo-vw));}
 .mo-loc-name{font-size:calc(18 * var(--mo-vw));line-height:1.2;margin-bottom:calc(20 * var(--mo-vw));}
-.mo-loc-addr{display:flex;flex-direction:column;gap:calc(6 * var(--mo-vw));font-size:calc(14 * var(--mo-vw));line-height:1.5;color:#736C62;margin-bottom:calc(22 * var(--mo-vw));}
-.mo-loc-map{width:100%;height:calc(167 * var(--mo-vw));margin-bottom:calc(16 * var(--mo-vw));}
+.mo-loc-addr{display:flex;flex-direction:column;gap:calc(6 * var(--mo-vw));font-size:calc(14 * var(--mo-vw));line-height:1.5;color:#736C62;margin-bottom:calc(32 * var(--mo-vw));}
+.mo-loc-map{width:100%;height:calc(167 * var(--mo-vw));margin-bottom:calc(32 * var(--mo-vw));}
 .mo-loc-btns{width:100%;display:flex;flex-direction:column;gap:calc(10 * var(--mo-vw));}
-.stage-mo .map-btn{width:100%;padding:calc(8 * var(--mo-vw));justify-content:flex-start;gap:calc(4 * var(--mo-vw));border:calc(1 * var(--mo-vw)) solid var(--black);font-size:calc(14 * var(--mo-vw));}
+.stage-mo .map-btn{width:100%;padding:calc(12 * var(--mo-vw)) calc(8 * var(--mo-vw));justify-content:flex-start;gap:calc(4 * var(--mo-vw));border:calc(1 * var(--mo-vw)) solid var(--black);font-size:calc(14 * var(--mo-vw));}
 .stage-mo .map-btn-ic{width:calc(24 * var(--mo-vw));height:calc(24 * var(--mo-vw));}
 .stage-mo .map-btn-ic img{width:calc(18 * var(--mo-vw));height:calc(18 * var(--mo-vw));display:block;object-fit:contain;}
 
@@ -321,11 +330,11 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
 .mo-acc-desc{display:flex;flex-direction:column;gap:calc(10 * var(--mo-vw));text-align:center;font-size:calc(14 * var(--mo-vw));line-height:1.5;margin-bottom:calc(37 * var(--mo-vw));}
 .stage-mo .acc-table{width:100%;border-bottom:calc(1 * var(--mo-vw)) solid var(--black);}
 .stage-mo .acc-head{padding:calc(16 * var(--mo-vw)) 0;border-top:calc(1 * var(--mo-vw)) solid var(--black);}
-.stage-mo .acc-head-label{font-size:calc(15 * var(--mo-vw));}
+.stage-mo .acc-head-label{font-size:calc(14 * var(--mo-vw));}
 .stage-mo .acc-arrow{width:calc(24 * var(--mo-vw));height:calc(24 * var(--mo-vw));}
 .stage-mo .acc-arrow svg{width:calc(14 * var(--mo-vw));height:calc(14 * var(--mo-vw));}
 .stage-mo .acc-body.open{max-height:calc(400 * var(--mo-vw));}
-.stage-mo .acc-row{padding:calc(24 * var(--mo-vw)) calc(12 * var(--mo-vw));}
+.stage-mo .acc-row{padding:calc(16 * var(--mo-vw)) calc(12 * var(--mo-vw));}
 .stage-mo .acc-info-c{gap:calc(4 * var(--mo-vw));}
 .stage-mo .acc-name,.stage-mo .acc-bank{font-size:calc(14 * var(--mo-vw));}
 .stage-mo .acc-bank{gap:calc(4 * var(--mo-vw));}
@@ -335,6 +344,13 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
 .mo-qr{margin-top:calc(48 * var(--mo-vw));display:flex;flex-direction:column;gap:calc(8 * var(--mo-vw));align-items:center;}
 .mo-qr-slot{width:calc(200 * var(--mo-vw));height:calc(200 * var(--mo-vw));}
 .mo-qr-note{font-size:calc(14 * var(--mo-vw));line-height:1.5;text-align:center;}
+.mo-time{margin-top:calc(48 * var(--mo-vw));display:flex;flex-direction:column;gap:calc(9.427 * var(--mo-vw));align-items:center;}
+.mo-time-nums{display:flex;gap:calc(15.711 * var(--mo-vw));align-items:center;}
+.mo-time-num{font-family:var(--f-dutch);font-size:calc(50.275 * var(--mo-vw));line-height:1;color:#4B4941;text-align:center;width:calc(54.988 * var(--mo-vw));}
+.mo-time-sep{width:calc(3.928 * var(--mo-vw));height:calc(25.137 * var(--mo-vw));flex:0 0 auto;}
+.mo-time-sep img{width:100%;height:100%;display:block;}
+.mo-time-labels{display:flex;gap:calc(35.349 * var(--mo-vw));font-family:var(--f-dutch);font-size:calc(12.569 * var(--mo-vw));line-height:1;color:#78766B;}
+.mo-time-labels span{width:calc(54.988 * var(--mo-vw));text-align:center;display:block;}
 .mo-footer-logo{margin:calc(136 * var(--mo-vw)) calc(12 * var(--mo-vw)) 0;}
 .mo-footer-logo .slot{width:100%;height:calc(68.4 * var(--mo-vw));background:transparent;}
 .mo-footer-logo .slot img{object-fit:contain;}
@@ -346,6 +362,7 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
   .music-bar{top:20px;left:12px;}
   .music-label{font-size:13px;}
   .lang-toggle{top:16px;right:12px;gap:4px;}
+  .lang-btn{font-size:13px;}
 }
 
 /* =====================================================
@@ -658,6 +675,20 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
         <p class="qr-note">*축하의 마음만 감사히 받겠습니다.<br>화환은 정중히 사양합니다.</p>
       </div>
     </div>
+
+    <!-- ═══ 카운트다운 ═══ -->
+    <div class="time-block reveal">
+      <div class="time-nums">
+        <span class="time-num" id="cdDay">00</span>
+        <span class="time-sep"><img src="images/time_icon.svg" alt=""></span>
+        <span class="time-num" id="cdHour">00</span>
+        <span class="time-sep"><img src="images/time_icon.svg" alt=""></span>
+        <span class="time-num" id="cdMin">00</span>
+        <span class="time-sep"><img src="images/time_icon.svg" alt=""></span>
+        <span class="time-num" id="cdSec">00</span>
+      </div>
+      <div class="time-labels"><span>day</span><span>hr</span><span>min</span><span>sec</span></div>
+    </div>
   </section>
 
   <!-- ═══ FOOTER ═══ -->
@@ -880,6 +911,20 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
       <div class="slot mo-qr-slot" data-label="MAP"><img loading="lazy" decoding="async" src="images/webp/flower.webp" data-fallback-src="images/flower.png"></div>
       <p class="mo-qr-note">*축하의 마음만 감사히 받겠습니다.<br>화환은 정중히 사양합니다.</p>
     </div>
+
+    <!-- ═══ 카운트다운 ═══ -->
+    <div class="mo-time reveal">
+      <div class="mo-time-nums">
+        <span class="mo-time-num" id="cdDayM">00</span>
+        <span class="mo-time-sep"><img src="images/time_icon.svg" alt=""></span>
+        <span class="mo-time-num" id="cdHourM">00</span>
+        <span class="mo-time-sep"><img src="images/time_icon.svg" alt=""></span>
+        <span class="mo-time-num" id="cdMinM">00</span>
+        <span class="mo-time-sep"><img src="images/time_icon.svg" alt=""></span>
+        <span class="mo-time-num" id="cdSecM">00</span>
+      </div>
+      <div class="mo-time-labels"><span>day</span><span>hr</span><span>min</span><span>sec</span></div>
+    </div>
   </section>
 
   <!-- ═══ FOOTER ═══ -->
@@ -1070,13 +1115,25 @@ updateParallax();
 const photoRiseTargets = [
   ...document.querySelectorAll(
     '.stage .bride-seated,.stage .groom-photo,.stage .new-photo,.stage .full1,.stage .portrait,.stage .full2,.stage .bride-photo,.stage .groom-solo,.stage .full3,.stage .couple-1,.stage .couple-2,' +
-    '.stage .pick2,.stage .pick4,.stage .pick6,.stage .pick7,.stage .pick10,' +
     '.stage-mo .mo-photo-r,.stage-mo .mo-photo-l,.stage-mo .mo-full,.stage-mo .mo-portrait,.stage-mo .mo-couple-1,.stage-mo .mo-couple-2,.stage-mo .mo-couple-3'
   )
 ].filter(el => !el.closest('.kv,.mo-kv,.gallery,.mo-gallery'));
 
+/* 사진과 형제로 분리돼 있는 pick 데코(2,4,6,7,10)를 짝지어진 사진과 동시에 등장시킴 */
+const pickPairTargets = [...document.querySelectorAll('.stage .pick2,.stage .pick4,.stage .pick6,.stage .pick7,.stage .pick10')];
+const pickPairMap = new Map();
+pickPairTargets.forEach(pick => {
+  const photo = pick.parentElement.querySelector('.full1,.full2,.full3,.groom-photo,.bride-photo');
+  if(photo) pickPairMap.set(photo, pick);
+});
+
 photoRiseTargets.forEach(el => el.classList.add('photo-rise'));
-function showPhotoRise(el){ el.classList.add('visible'); }
+pickPairTargets.forEach(el => el.classList.add('photo-rise'));
+function showPhotoRise(el){
+  el.classList.add('visible');
+  const pairedPick = pickPairMap.get(el);
+  if(pairedPick) pairedPick.classList.add('visible');
+}
 if('IntersectionObserver' in window){
   const photoRiseObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -1088,6 +1145,7 @@ if('IntersectionObserver' in window){
   photoRiseTargets.forEach(el => photoRiseObserver.observe(el));
 } else {
   photoRiseTargets.forEach(showPhotoRise);
+  pickPairTargets.forEach(showPhotoRise);
 }
 
 /* ───── 언어 토글 ───── */
@@ -1191,6 +1249,30 @@ function copyText(btn,text){
   if(navigator.clipboard){navigator.clipboard.writeText(text).then(done);}
   else{const ta=Object.assign(document.createElement('textarea'),{value:text});document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);done();}
 }
+
+/* ───── 결혼식까지 남은 시간 카운트다운 ───── */
+const WEDDING_AT = new Date('2026-10-11T12:30:00+09:00').getTime();
+const cdEls = {
+  day:[document.getElementById('cdDay'), document.getElementById('cdDayM')],
+  hour:[document.getElementById('cdHour'), document.getElementById('cdHourM')],
+  min:[document.getElementById('cdMin'), document.getElementById('cdMinM')],
+  sec:[document.getElementById('cdSec'), document.getElementById('cdSecM')]
+};
+function pad2(n){ return String(Math.max(0,n)).padStart(2,'0'); }
+function updateCountdown(){
+  const diff = WEDDING_AT - Date.now();
+  const d = diff > 0 ? diff : 0;
+  const day = Math.floor(d / 86400000);
+  const hour = Math.floor((d % 86400000) / 3600000);
+  const min = Math.floor((d % 3600000) / 60000);
+  const sec = Math.floor((d % 60000) / 1000);
+  cdEls.day.forEach(el => el && (el.textContent = pad2(day)));
+  cdEls.hour.forEach(el => el && (el.textContent = pad2(hour)));
+  cdEls.min.forEach(el => el && (el.textContent = pad2(min)));
+  cdEls.sec.forEach(el => el && (el.textContent = pad2(sec)));
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
 </script>
 <!-- ───── Lenis 부드러운 스크롤 ───── -->
 <script src="https://unpkg.com/lenis@1.3.23/dist/lenis.min.js"></script>
