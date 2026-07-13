@@ -371,7 +371,7 @@ body{background:var(--cream);color:var(--black);font-family:var(--f-mapo);}
   <div class="inner">
     <div class="music-bar" id="musicBar" onclick="toggleBGM()">
       <!-- REPLACE: BGM 파일 경로 (mp3 권장, mp4도 가능) -->
-      <audio id="bgm" loop preload="auto">
+      <audio id="bgm" loop autoplay playsinline preload="metadata">
         <source src="audio/bgm.mp3" type="audio/mpeg">
         <source src="audio/bgm.mp4" type="audio/mp4">
       </audio>
@@ -1153,18 +1153,19 @@ let bgmStarted = false;
 function toggleBGM(){
   if(!bgm) return;
   if(bgm.paused){
-    bgm.play().then(()=>{ musicBarEl.classList.remove('paused'); }).catch(()=>{});
+    bgm.play().then(()=>{ bgmStarted=true; musicBarEl.classList.remove('paused'); }).catch(()=>{});
   } else {
     bgm.pause();
     musicBarEl.classList.add('paused');
   }
 }
-/* 자동재생은 브라우저 정책상 사용자 첫 상호작용(클릭/스크롤/터치) 후에만 가능 */
+/* 진입 즉시 먼저 시도하고, 차단되면 첫 상호작용에서 다시 시도 */
 function tryAutoplayBGM(){
   if(bgmStarted || !bgm) return;
   bgm.play().then(()=>{ bgmStarted=true; musicBarEl.classList.remove('paused'); }).catch(()=>{});
 }
-['click','scroll','touchstart','keydown'].forEach(ev=>{
+requestAnimationFrame(tryAutoplayBGM);
+['pointerdown','click','scroll','touchstart','keydown'].forEach(ev=>{
   window.addEventListener(ev, tryAutoplayBGM, {once:true, passive:true});
 });
 /* 초기엔 정지 표시 */
