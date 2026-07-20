@@ -338,20 +338,21 @@ a[href^="sms:"]{
 
 /* 갤러리 3×3 */
 .mo-gallery{margin-top:calc(80 * var(--mo-vw));display:flex;flex-direction:column;gap:calc(1 * var(--mo-vw));}
+.mo-gallery.reveal,.mo-gallery.reveal.pre,.mo-gallery.reveal.visible{opacity:1;transform:none;transition:none;}
 .mo-g-row{display:flex;gap:calc(1 * var(--mo-vw));}
 .mo-gallery .cell{flex:1;aspect-ratio:129.42/172.57;opacity:.4;mix-blend-mode:luminosity;transition:opacity .6s ease, mix-blend-mode .6s ease;cursor:pointer;}
 .mo-gallery .cell.active,.mo-gallery .cell:hover{opacity:1;mix-blend-mode:normal;}
-.mo-gallery.gallery-sequence-ready .cell{opacity:0;mix-blend-mode:luminosity;transition:opacity .72s cubic-bezier(.33,0,.2,1);}
+.mo-gallery.gallery-sequence-ready .cell{opacity:0;mix-blend-mode:luminosity;transition:opacity .8s cubic-bezier(.33,0,.2,1);}
 .mo-gallery.gallery-sequence-ready.gallery-sequence-in .cell{opacity:.4;}
 .mo-gallery.gallery-sequence-ready .mo-g-row:nth-child(1) .cell:nth-child(1){transition-delay:0s;}
-.mo-gallery.gallery-sequence-ready .mo-g-row:nth-child(1) .cell:nth-child(2){transition-delay:.18s;}
-.mo-gallery.gallery-sequence-ready .mo-g-row:nth-child(1) .cell:nth-child(3){transition-delay:.36s;}
-.mo-gallery.gallery-sequence-ready .mo-g-row:nth-child(2) .cell:nth-child(1){transition-delay:.54s;}
-.mo-gallery.gallery-sequence-ready .mo-g-row:nth-child(2) .cell:nth-child(2){transition-delay:.72s;}
-.mo-gallery.gallery-sequence-ready .mo-g-row:nth-child(2) .cell:nth-child(3){transition-delay:.9s;}
-.mo-gallery.gallery-sequence-ready .mo-g-row:nth-child(3) .cell:nth-child(1){transition-delay:1.08s;}
-.mo-gallery.gallery-sequence-ready .mo-g-row:nth-child(3) .cell:nth-child(2){transition-delay:1.26s;}
-.mo-gallery.gallery-sequence-ready .mo-g-row:nth-child(3) .cell:nth-child(3){transition-delay:1.44s;}
+.mo-gallery.gallery-sequence-ready .mo-g-row:nth-child(1) .cell:nth-child(2){transition-delay:.32s;}
+.mo-gallery.gallery-sequence-ready .mo-g-row:nth-child(1) .cell:nth-child(3){transition-delay:.64s;}
+.mo-gallery.gallery-sequence-ready .mo-g-row:nth-child(2) .cell:nth-child(1){transition-delay:.96s;}
+.mo-gallery.gallery-sequence-ready .mo-g-row:nth-child(2) .cell:nth-child(2){transition-delay:1.28s;}
+.mo-gallery.gallery-sequence-ready .mo-g-row:nth-child(2) .cell:nth-child(3){transition-delay:1.6s;}
+.mo-gallery.gallery-sequence-ready .mo-g-row:nth-child(3) .cell:nth-child(1){transition-delay:1.92s;}
+.mo-gallery.gallery-sequence-ready .mo-g-row:nth-child(3) .cell:nth-child(2){transition-delay:2.24s;}
+.mo-gallery.gallery-sequence-ready .mo-g-row:nth-child(3) .cell:nth-child(3){transition-delay:2.56s;}
 
 /* 오시는 길 */
 .mo-loc{margin:calc(100 * var(--mo-vw)) calc(12 * var(--mo-vw)) 0;display:flex;flex-direction:column;align-items:center;text-align:center;}
@@ -1089,7 +1090,7 @@ document.querySelectorAll('.js-gallery').forEach(gal => {
           gal.classList.remove('gallery-sequence-ready','gallery-sequence-in');
           gal.classList.add('gallery-sequence-done');
           start();
-        }, 2200);
+        }, 3400);
       });
       return;
     }
