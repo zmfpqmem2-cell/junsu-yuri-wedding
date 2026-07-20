@@ -429,13 +429,10 @@ html.gallery-lightbox-open,body.gallery-lightbox-open{overflow:hidden;overscroll
 .gallery-lightbox-close{width:44px;height:44px;display:grid;place-items:center;padding:0;}
 .gallery-lightbox-close::before,.gallery-lightbox-close::after{content:"";position:absolute;width:26px;height:1px;background:currentColor;}
 .gallery-lightbox-close::before{transform:rotate(45deg);}.gallery-lightbox-close::after{transform:rotate(-45deg);}
-.gallery-lightbox-stage{position:relative;min-height:0;flex:1;overflow:hidden;}
-.gallery-lightbox-image{width:100%;height:100%;display:block;object-fit:contain;opacity:0;transform:scale(.992);transition:opacity .28s ease,transform .45s cubic-bezier(.33,0,.2,1);}
-.gallery-lightbox-image.is-ready{opacity:1;transform:scale(1);}
-.gallery-lightbox-image.exit-next{opacity:0;transform:translateX(-28px) scale(.992);}
-.gallery-lightbox-image.exit-prev{opacity:0;transform:translateX(28px) scale(.992);}
-.gallery-lightbox-image.enter-next{opacity:0;transform:translateX(28px) scale(.992);}
-.gallery-lightbox-image.enter-prev{opacity:0;transform:translateX(-28px) scale(.992);}
+.gallery-lightbox-stage{position:relative;min-height:0;flex:1;overflow:hidden;touch-action:none;}
+.gallery-lightbox-track{position:relative;width:100%;height:100%;}
+.gallery-lightbox-slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;will-change:transform,opacity;}
+.gallery-lightbox-slide img{max-width:100%;max-height:100%;object-fit:contain;display:block;pointer-events:none;user-select:none;-webkit-user-drag:none;}
 .gallery-lightbox-nav{position:absolute;z-index:2;top:0;bottom:0;width:96px;display:flex;align-items:center;padding:0 18px;opacity:.38;transition:opacity .2s ease;}
 .gallery-lightbox-nav:hover{opacity:1;}.gallery-lightbox-prev{left:0;justify-content:flex-start;}.gallery-lightbox-next{right:0;justify-content:flex-end;}
 .gallery-lightbox-nav svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:1.2;}
@@ -453,7 +450,7 @@ html.gallery-lightbox-open,body.gallery-lightbox-open{overflow:hidden;overscroll
 }
 @media (prefers-reduced-motion:reduce){
   .photo-rise{opacity:1;transform:none;transition:none;}
-  .gallery-lightbox,.gallery-lightbox-image{transition:none;}
+  .gallery-lightbox,.gallery-lightbox-slide{transition:none;}
 }
 </style>
 </head>
@@ -1018,8 +1015,8 @@ html.gallery-lightbox-open,body.gallery-lightbox-open{overflow:hidden;overscroll
     <div class="gallery-lightbox-title">Junsu &amp; Yuri</div>
     <button class="gallery-lightbox-close" type="button" aria-label="갤러리 닫기"></button>
   </div>
-  <div class="gallery-lightbox-stage">
-    <img class="gallery-lightbox-image" alt="">
+  <div class="gallery-lightbox-stage" id="lightboxStage">
+    <div class="gallery-lightbox-track" id="lightboxTrack"></div>
     <button class="gallery-lightbox-nav gallery-lightbox-prev" type="button" aria-label="이전 사진"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M20 6 10 16l10 10"/></svg></button>
     <button class="gallery-lightbox-nav gallery-lightbox-next" type="button" aria-label="다음 사진"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="m12 6 10 10-10 10"/></svg></button>
   </div>
@@ -1175,76 +1172,84 @@ document.querySelectorAll('.js-gallery').forEach(gal => {
   }
 });
 
-/* ───── 갤러리 전체화면 뷰어 ───── */
+/* ───── 갤러리 전체화면 뷰어 (드래그 스와이프 트랜지션) ───── */
 (() => {
   const lightbox = document.getElementById('galleryLightbox');
   if(!lightbox) return;
-  const image = lightbox.querySelector('.gallery-lightbox-image');
+  const stage = document.getElementById('lightboxStage');
+  const track = document.getElementById('lightboxTrack');
   const count = lightbox.querySelector('.gallery-lightbox-count');
   const closeBtn = lightbox.querySelector('.gallery-lightbox-close');
   const prevBtn = lightbox.querySelector('.gallery-lightbox-prev');
   const nextBtn = lightbox.querySelector('.gallery-lightbox-next');
   const galleryCells = [...document.querySelectorAll('.gallery .cell, .mo-gallery .cell')];
   const originals = [...document.querySelectorAll('.mo-gallery .cell img')];
-  const slides = originals.map((img, index) => ({
-    src: img.currentSrc || img.getAttribute('src'),
-    fallback: img.dataset.fallbackSrc || '',
-    alt: `준수와 유리 웨딩 갤러리 ${index + 1}`
-  }));
+
+  const slides = originals.map((img, index) => {
+    const el = document.createElement('div');
+    el.className = 'gallery-lightbox-slide';
+    const slideImg = document.createElement('img');
+    slideImg.src = img.currentSrc || img.getAttribute('src');
+    if(img.dataset.fallbackSrc) slideImg.dataset.fallbackSrc = img.dataset.fallbackSrc;
+    slideImg.alt = `준수와 유리 웨딩 갤러리 ${index + 1}`;
+    slideImg.loading = 'lazy';
+    el.appendChild(slideImg);
+    track.appendChild(el);
+    return el;
+  });
+
   let current = 0;
   let lastFocus = null;
-  let touchStartX = 0;
-  let slideTimer = null;
-  let renderToken = 0;
+  let dragging = false;
+  let startX = 0;
+  let deltaX = 0;
+  let pointerId = null;
 
-  function setSlide(index, direction){
-    const token = ++renderToken;
-    current = (index + slides.length) % slides.length;
-    const slide = slides[current];
-    image.classList.remove('is-ready','exit-next','exit-prev','enter-next','enter-prev');
-    if(direction) image.classList.add(direction > 0 ? 'enter-next' : 'enter-prev');
-    image.onerror = () => {
-      image.onerror = null;
-      if(slide.fallback) image.src = slide.fallback;
-    };
-    image.onload = () => {
-      if(token !== renderToken) return;
-      requestAnimationFrame(() => requestAnimationFrame(() => {
-        image.classList.remove('enter-next','enter-prev');
-        image.classList.add('is-ready');
-      }));
-    };
-    image.src = slide.src;
-    image.alt = slide.alt;
+  function layout(offsetPx){
+    const w = stage.clientWidth || 1;
+    slides.forEach((el, i) => {
+      const offset = i - current;
+      const x = offset * w + (offsetPx || 0);
+      const t = Math.max(-1, Math.min(1, x / w));
+      const scale = 1 - Math.abs(t) * 0.1;
+      const opacity = 1 - Math.abs(t) * 0.7;
+      el.style.transform = `translateX(${x}px) scale(${scale})`;
+      el.style.opacity = Math.max(0, opacity);
+      el.style.zIndex = String(10 - Math.abs(offset));
+    });
+  }
+  function setTransition(on){
+    slides.forEach(el => {
+      el.style.transition = on ? 'transform .45s cubic-bezier(.32,.72,0,1), opacity .45s cubic-bezier(.32,.72,0,1)' : 'none';
+    });
+  }
+  function updateCount(){
     count.textContent = `${String(current + 1).padStart(2,'0')} / ${String(slides.length).padStart(2,'0')}`;
   }
-  function render(index, direction = 0){
-    clearTimeout(slideTimer);
-    if(!direction || !lightbox.classList.contains('is-open')){
-      setSlide(index, 0);
-      return;
-    }
-    image.classList.remove('enter-next','enter-prev');
-    image.classList.add(direction > 0 ? 'exit-next' : 'exit-prev');
-    slideTimer = setTimeout(() => setSlide(index, direction), 180);
+  function goTo(index){
+    current = (index + slides.length) % slides.length;
+    setTransition(true);
+    layout(0);
+    updateCount();
   }
   function open(index, trigger){
     if(!slides.length) return;
     lastFocus = trigger || document.activeElement;
-    render(index);
+    current = (index + slides.length) % slides.length;
     lightbox.classList.add('is-open');
     lightbox.setAttribute('aria-hidden','false');
     document.documentElement.classList.add('gallery-lightbox-open');
     document.body.classList.add('gallery-lightbox-open');
+    setTransition(false);
+    layout(0);
+    updateCount();
     closeBtn.focus({preventScroll:true});
   }
   function close(){
-    clearTimeout(slideTimer);
     lightbox.classList.remove('is-open');
     lightbox.setAttribute('aria-hidden','true');
     document.documentElement.classList.remove('gallery-lightbox-open');
     document.body.classList.remove('gallery-lightbox-open');
-    image.classList.remove('is-ready');
     if(lastFocus) lastFocus.focus({preventScroll:true});
   }
   function indexForCell(cell){
@@ -1262,19 +1267,41 @@ document.querySelectorAll('.js-gallery').forEach(gal => {
     });
   });
   closeBtn.addEventListener('click', close);
-  prevBtn.addEventListener('click', () => render(current - 1, -1));
-  nextBtn.addEventListener('click', () => render(current + 1, 1));
+  prevBtn.addEventListener('click', () => goTo(current - 1));
+  nextBtn.addEventListener('click', () => goTo(current + 1));
   document.addEventListener('keydown', e => {
     if(!lightbox.classList.contains('is-open')) return;
     if(e.key === 'Escape') close();
-    if(e.key === 'ArrowLeft') render(current - 1, -1);
-    if(e.key === 'ArrowRight') render(current + 1, 1);
+    if(e.key === 'ArrowLeft') goTo(current - 1);
+    if(e.key === 'ArrowRight') goTo(current + 1);
   });
-  lightbox.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].clientX; }, {passive:true});
-  lightbox.addEventListener('touchend', e => {
-    const dx = e.changedTouches[0].clientX - touchStartX;
-    if(Math.abs(dx) > 45) render(current + (dx < 0 ? 1 : -1), dx < 0 ? 1 : -1);
-  }, {passive:true});
+
+  stage.addEventListener('pointerdown', e => {
+    if(!lightbox.classList.contains('is-open') || slides.length < 2) return;
+    dragging = true;
+    startX = e.clientX;
+    deltaX = 0;
+    pointerId = e.pointerId;
+    setTransition(false);
+    stage.setPointerCapture(pointerId);
+  });
+  stage.addEventListener('pointermove', e => {
+    if(!dragging) return;
+    deltaX = e.clientX - startX;
+    layout(deltaX);
+  });
+  function endDrag(){
+    if(!dragging) return;
+    dragging = false;
+    const w = stage.clientWidth || 1;
+    const threshold = Math.min(90, w * 0.18);
+    if(deltaX < -threshold) goTo(current + 1);
+    else if(deltaX > threshold) goTo(current - 1);
+    else goTo(current);
+  }
+  stage.addEventListener('pointerup', endDrag);
+  stage.addEventListener('pointercancel', endDrag);
+  stage.addEventListener('pointerleave', () => { if(dragging) endDrag(); });
 })();
 
 /* ───── KV 로고모션 (등장 순서/간격은 각 요소 CSS transition-delay로 제어) ───── */
