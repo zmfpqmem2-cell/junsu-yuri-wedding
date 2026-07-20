@@ -400,12 +400,12 @@ a[href^="sms:"]{
    페이드인은 JS가 .visible 부여 시 transition으로만 적용.
    ===================================================== */
 .reveal{opacity:1;}
-.reveal.pre{opacity:0;transform:translateY(28px);}
-.reveal.visible{opacity:1;transform:none;transition:opacity .8s ease,transform .8s ease;}
-.photo-rise{opacity:0;transform:translate3d(0,calc(36 * var(--vw)),0);transition:opacity 1.15s ease,transform 1.3s cubic-bezier(.22,.61,.36,1);}
-.photo-rise.visible{opacity:1;transform:translate3d(0,0,0);}
-.stage-mo .photo-rise{transform:translate3d(0,calc(18 * var(--mo-vw)),0);transition-duration:1s,1.15s;}
-.stage-mo .photo-rise.visible{transform:translate3d(0,0,0);}
+.reveal.pre{opacity:0;transform:none;}
+.reveal.visible{opacity:1;transform:none;transition:opacity 1.35s cubic-bezier(.33,0,.2,1);}
+.photo-rise{opacity:0;transform:none;transition:opacity 1.6s cubic-bezier(.33,0,.2,1);}
+.photo-rise.visible{opacity:1;transform:none;}
+.stage-mo .photo-rise{transform:none;transition:opacity 1.6s cubic-bezier(.33,0,.2,1);}
+.stage-mo .photo-rise.visible{transform:none;}
 @media (prefers-reduced-motion:reduce){
   .photo-rise{opacity:1;transform:none;transition:none;}
 }
