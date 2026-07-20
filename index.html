@@ -418,8 +418,38 @@ a[href^="sms:"]{
 .photo-rise.visible{opacity:1;transform:none;}
 .stage-mo .photo-rise{transform:none;transition:opacity 1.6s cubic-bezier(.33,0,.2,1);}
 .stage-mo .photo-rise.visible{transform:none;}
+
+/* 갤러리 전체화면 뷰어 */
+html.gallery-lightbox-open,body.gallery-lightbox-open{overflow:hidden;overscroll-behavior:none;}
+.gallery-lightbox{position:fixed;inset:0;z-index:1000;display:flex;flex-direction:column;background:rgba(43,38,34,.98);color:var(--cream);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .35s ease,visibility 0s linear .35s;}
+.gallery-lightbox.is-open{opacity:1;visibility:visible;pointer-events:auto;transition-delay:0s;}
+.gallery-lightbox-head{height:80px;flex:0 0 80px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;}
+.gallery-lightbox-title{font-family:var(--f-dutch);font-size:18px;letter-spacing:.04em;}
+.gallery-lightbox-close,.gallery-lightbox-nav{border:0;background:transparent;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+.gallery-lightbox-close{width:44px;height:44px;display:grid;place-items:center;padding:0;}
+.gallery-lightbox-close::before,.gallery-lightbox-close::after{content:"";position:absolute;width:26px;height:1px;background:currentColor;}
+.gallery-lightbox-close::before{transform:rotate(45deg);}.gallery-lightbox-close::after{transform:rotate(-45deg);}
+.gallery-lightbox-stage{position:relative;min-height:0;flex:1;overflow:hidden;}
+.gallery-lightbox-image{width:100%;height:100%;display:block;object-fit:contain;opacity:0;transform:scale(.992);transition:opacity .28s ease,transform .45s cubic-bezier(.33,0,.2,1);}
+.gallery-lightbox-image.is-ready{opacity:1;transform:scale(1);}
+.gallery-lightbox-nav{position:absolute;z-index:2;top:0;bottom:0;width:96px;display:flex;align-items:center;padding:0 18px;opacity:.38;transition:opacity .2s ease;}
+.gallery-lightbox-nav:hover{opacity:1;}.gallery-lightbox-prev{left:0;justify-content:flex-start;}.gallery-lightbox-next{right:0;justify-content:flex-end;}
+.gallery-lightbox-nav svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:1.2;}
+.gallery-lightbox-foot{height:58px;flex:0 0 58px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;}
+.gallery-lightbox-count{opacity:.68;}.gallery-lightbox-label{opacity:.48;}
+.gallery .cell,.mo-gallery .cell{cursor:zoom-in;}
+.gallery .cell:focus-visible,.mo-gallery .cell:focus-visible{outline:2px solid var(--black);outline-offset:-2px;}
+@media (max-width:1024px){
+  .gallery-lightbox-head{height:64px;flex-basis:64px;padding:0 12px;}
+  .gallery-lightbox-title{font-size:15px;}
+  .gallery-lightbox-close{width:40px;height:40px;}
+  .gallery-lightbox-nav{width:56px;padding:0 10px;opacity:.5;}
+  .gallery-lightbox-nav svg{width:23px;height:23px;}
+  .gallery-lightbox-foot{height:50px;flex-basis:50px;padding:0 14px;font-size:11px;}
+}
 @media (prefers-reduced-motion:reduce){
   .photo-rise{opacity:1;transform:none;transition:none;}
+  .gallery-lightbox,.gallery-lightbox-image{transition:none;}
 }
 </style>
 </head>
@@ -978,6 +1008,20 @@ a[href^="sms:"]{
 
 </div><!-- /viewport -->
 
+<!-- ───── 갤러리 전체화면 뷰어 ───── -->
+<div class="gallery-lightbox" id="galleryLightbox" role="dialog" aria-modal="true" aria-label="갤러리 크게 보기" aria-hidden="true">
+  <div class="gallery-lightbox-head">
+    <div class="gallery-lightbox-title">Junsu &amp; Yuri</div>
+    <button class="gallery-lightbox-close" type="button" aria-label="갤러리 닫기"></button>
+  </div>
+  <div class="gallery-lightbox-stage">
+    <img class="gallery-lightbox-image" alt="">
+    <button class="gallery-lightbox-nav gallery-lightbox-prev" type="button" aria-label="이전 사진"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M20 6 10 16l10 10"/></svg></button>
+    <button class="gallery-lightbox-nav gallery-lightbox-next" type="button" aria-label="다음 사진"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="m12 6 10 10-10 10"/></svg></button>
+  </div>
+  <div class="gallery-lightbox-foot"><span class="gallery-lightbox-count">01 / 09</span><span class="gallery-lightbox-label">Gallery</span></div>
+</div>
+
 <script>
 /* ───── 새로고침 시 항상 맨 위에서 시작 ───── */
 if('scrollRestoration' in history){ history.scrollRestoration = 'manual'; }
@@ -1126,6 +1170,87 @@ document.querySelectorAll('.js-gallery').forEach(gal => {
     start();
   }
 });
+
+/* ───── 갤러리 전체화면 뷰어 ───── */
+(() => {
+  const lightbox = document.getElementById('galleryLightbox');
+  if(!lightbox) return;
+  const image = lightbox.querySelector('.gallery-lightbox-image');
+  const count = lightbox.querySelector('.gallery-lightbox-count');
+  const closeBtn = lightbox.querySelector('.gallery-lightbox-close');
+  const prevBtn = lightbox.querySelector('.gallery-lightbox-prev');
+  const nextBtn = lightbox.querySelector('.gallery-lightbox-next');
+  const galleryCells = [...document.querySelectorAll('.gallery .cell, .mo-gallery .cell')];
+  const originals = [...document.querySelectorAll('.mo-gallery .cell img')];
+  const slides = originals.map((img, index) => ({
+    src: img.currentSrc || img.getAttribute('src'),
+    fallback: img.dataset.fallbackSrc || '',
+    alt: `준수와 유리 웨딩 갤러리 ${index + 1}`
+  }));
+  let current = 0;
+  let lastFocus = null;
+  let touchStartX = 0;
+
+  function render(index){
+    current = (index + slides.length) % slides.length;
+    const slide = slides[current];
+    image.classList.remove('is-ready');
+    image.onerror = () => {
+      image.onerror = null;
+      if(slide.fallback) image.src = slide.fallback;
+    };
+    image.onload = () => requestAnimationFrame(() => image.classList.add('is-ready'));
+    image.src = slide.src;
+    image.alt = slide.alt;
+    count.textContent = `${String(current + 1).padStart(2,'0')} / ${String(slides.length).padStart(2,'0')}`;
+  }
+  function open(index, trigger){
+    if(!slides.length) return;
+    lastFocus = trigger || document.activeElement;
+    render(index);
+    lightbox.classList.add('is-open');
+    lightbox.setAttribute('aria-hidden','false');
+    document.documentElement.classList.add('gallery-lightbox-open');
+    document.body.classList.add('gallery-lightbox-open');
+    closeBtn.focus({preventScroll:true});
+  }
+  function close(){
+    lightbox.classList.remove('is-open');
+    lightbox.setAttribute('aria-hidden','true');
+    document.documentElement.classList.remove('gallery-lightbox-open');
+    document.body.classList.remove('gallery-lightbox-open');
+    image.classList.remove('is-ready');
+    if(lastFocus) lastFocus.focus({preventScroll:true});
+  }
+  function indexForCell(cell){
+    const src = cell.querySelector('img')?.getAttribute('src') || '';
+    const match = src.match(/gallery(\d+)\./);
+    return match ? Number(match[1]) - 1 : 0;
+  }
+  galleryCells.forEach(cell => {
+    cell.setAttribute('role','button');
+    cell.setAttribute('tabindex','0');
+    cell.setAttribute('aria-label',`갤러리 ${indexForCell(cell) + 1} 크게 보기`);
+    cell.addEventListener('click', () => open(indexForCell(cell), cell));
+    cell.addEventListener('keydown', e => {
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); open(indexForCell(cell), cell); }
+    });
+  });
+  closeBtn.addEventListener('click', close);
+  prevBtn.addEventListener('click', () => render(current - 1));
+  nextBtn.addEventListener('click', () => render(current + 1));
+  document.addEventListener('keydown', e => {
+    if(!lightbox.classList.contains('is-open')) return;
+    if(e.key === 'Escape') close();
+    if(e.key === 'ArrowLeft') render(current - 1);
+    if(e.key === 'ArrowRight') render(current + 1);
+  });
+  lightbox.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].clientX; }, {passive:true});
+  lightbox.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if(Math.abs(dx) > 45) render(current + (dx < 0 ? 1 : -1));
+  }, {passive:true});
+})();
 
 /* ───── KV 로고모션 (등장 순서/간격은 각 요소 CSS transition-delay로 제어) ───── */
 window.addEventListener('load', () => {
