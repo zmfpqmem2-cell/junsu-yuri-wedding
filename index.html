@@ -1183,16 +1183,17 @@ document.querySelectorAll('.js-gallery').forEach(gal => {
   const prevBtn = lightbox.querySelector('.gallery-lightbox-prev');
   const nextBtn = lightbox.querySelector('.gallery-lightbox-next');
   const galleryCells = [...document.querySelectorAll('.gallery .cell, .mo-gallery .cell')];
-  const originals = [...document.querySelectorAll('.mo-gallery .cell img')];
+  const originals = [...document.querySelectorAll('.gallery .cell:not([aria-hidden]) img')];
 
   const slides = originals.map((img, index) => {
     const el = document.createElement('div');
     el.className = 'gallery-lightbox-slide';
     const slideImg = document.createElement('img');
-    slideImg.src = img.currentSrc || img.getAttribute('src');
-    if(img.dataset.fallbackSrc) slideImg.dataset.fallbackSrc = img.dataset.fallbackSrc;
+    slideImg.dataset.src = img.dataset.fallbackSrc || img.currentSrc || img.getAttribute('src');
+    slideImg.dataset.fallbackSrc = img.getAttribute('src') || '';
     slideImg.alt = `준수와 유리 웨딩 갤러리 ${index + 1}`;
     slideImg.loading = 'lazy';
+    slideImg.decoding = 'async';
     el.appendChild(slideImg);
     track.appendChild(el);
     return el;
@@ -1204,6 +1205,22 @@ document.querySelectorAll('.js-gallery').forEach(gal => {
   let startX = 0;
   let deltaX = 0;
   let pointerId = null;
+
+  function ensureSlide(index){
+    const normalized = (index + slides.length) % slides.length;
+    const img = slides[normalized].querySelector('img');
+    if(img.getAttribute('src')) return;
+    img.onerror = () => {
+      img.onerror = null;
+      if(img.dataset.fallbackSrc) img.src = img.dataset.fallbackSrc;
+    };
+    img.src = img.dataset.src;
+  }
+  function preloadNearby(){
+    ensureSlide(current);
+    ensureSlide(current - 1);
+    ensureSlide(current + 1);
+  }
 
   function layout(offsetPx){
     const w = stage.clientWidth || 1;
@@ -1232,6 +1249,7 @@ document.querySelectorAll('.js-gallery').forEach(gal => {
   }
   function goTo(index){
     current = (index + slides.length) % slides.length;
+    preloadNearby();
     setTransition(true);
     layout(0);
     updateCount();
@@ -1240,6 +1258,7 @@ document.querySelectorAll('.js-gallery').forEach(gal => {
     if(!slides.length) return;
     lastFocus = trigger || document.activeElement;
     current = (index + slides.length) % slides.length;
+    preloadNearby();
     lightbox.classList.add('is-open');
     lightbox.setAttribute('aria-hidden','false');
     document.documentElement.classList.add('gallery-lightbox-open');
