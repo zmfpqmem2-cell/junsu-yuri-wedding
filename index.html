@@ -421,7 +421,7 @@ a[href^="sms:"]{
 
 /* 갤러리 전체화면 뷰어 */
 html.gallery-lightbox-open,body.gallery-lightbox-open{overflow:hidden;overscroll-behavior:none;}
-.gallery-lightbox{position:fixed;inset:0;z-index:1000;display:flex;flex-direction:column;background:rgba(43,38,34,.98);color:var(--cream);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .35s ease,visibility 0s linear .35s;}
+.gallery-lightbox{position:fixed;inset:0;z-index:1000;display:flex;flex-direction:column;background:rgba(43,38,34,.2);-webkit-backdrop-filter:blur(40px);backdrop-filter:blur(40px);color:var(--cream);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .35s ease,visibility 0s linear .35s;}
 .gallery-lightbox.is-open{opacity:1;visibility:visible;pointer-events:auto;transition-delay:0s;}
 .gallery-lightbox-head{height:80px;flex:0 0 80px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;}
 .gallery-lightbox-title{font-family:var(--f-dutch);font-size:18px;letter-spacing:.04em;}
@@ -1208,7 +1208,11 @@ document.querySelectorAll('.js-gallery').forEach(gal => {
   function layout(offsetPx){
     const w = stage.clientWidth || 1;
     slides.forEach((el, i) => {
-      const offset = i - current;
+      // 첫 장과 마지막 장도 서로 바로 옆에 놓아 같은 방향으로 무한 순환한다.
+      let offset = i - current;
+      const half = slides.length / 2;
+      if(offset > half) offset -= slides.length;
+      if(offset < -half) offset += slides.length;
       const x = offset * w + (offsetPx || 0);
       const t = Math.max(-1, Math.min(1, x / w));
       const scale = 1 - Math.abs(t) * 0.1;
