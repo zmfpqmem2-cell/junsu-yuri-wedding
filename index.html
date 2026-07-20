@@ -432,6 +432,10 @@ html.gallery-lightbox-open,body.gallery-lightbox-open{overflow:hidden;overscroll
 .gallery-lightbox-stage{position:relative;min-height:0;flex:1;overflow:hidden;}
 .gallery-lightbox-image{width:100%;height:100%;display:block;object-fit:contain;opacity:0;transform:scale(.992);transition:opacity .28s ease,transform .45s cubic-bezier(.33,0,.2,1);}
 .gallery-lightbox-image.is-ready{opacity:1;transform:scale(1);}
+.gallery-lightbox-image.exit-next{opacity:0;transform:translateX(-28px) scale(.992);}
+.gallery-lightbox-image.exit-prev{opacity:0;transform:translateX(28px) scale(.992);}
+.gallery-lightbox-image.enter-next{opacity:0;transform:translateX(28px) scale(.992);}
+.gallery-lightbox-image.enter-prev{opacity:0;transform:translateX(-28px) scale(.992);}
 .gallery-lightbox-nav{position:absolute;z-index:2;top:0;bottom:0;width:96px;display:flex;align-items:center;padding:0 18px;opacity:.38;transition:opacity .2s ease;}
 .gallery-lightbox-nav:hover{opacity:1;}.gallery-lightbox-prev{left:0;justify-content:flex-start;}.gallery-lightbox-next{right:0;justify-content:flex-end;}
 .gallery-lightbox-nav svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:1.2;}
@@ -1190,19 +1194,39 @@ document.querySelectorAll('.js-gallery').forEach(gal => {
   let current = 0;
   let lastFocus = null;
   let touchStartX = 0;
+  let slideTimer = null;
+  let renderToken = 0;
 
-  function render(index){
+  function setSlide(index, direction){
+    const token = ++renderToken;
     current = (index + slides.length) % slides.length;
     const slide = slides[current];
-    image.classList.remove('is-ready');
+    image.classList.remove('is-ready','exit-next','exit-prev','enter-next','enter-prev');
+    if(direction) image.classList.add(direction > 0 ? 'enter-next' : 'enter-prev');
     image.onerror = () => {
       image.onerror = null;
       if(slide.fallback) image.src = slide.fallback;
     };
-    image.onload = () => requestAnimationFrame(() => image.classList.add('is-ready'));
+    image.onload = () => {
+      if(token !== renderToken) return;
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        image.classList.remove('enter-next','enter-prev');
+        image.classList.add('is-ready');
+      }));
+    };
     image.src = slide.src;
     image.alt = slide.alt;
     count.textContent = `${String(current + 1).padStart(2,'0')} / ${String(slides.length).padStart(2,'0')}`;
+  }
+  function render(index, direction = 0){
+    clearTimeout(slideTimer);
+    if(!direction || !lightbox.classList.contains('is-open')){
+      setSlide(index, 0);
+      return;
+    }
+    image.classList.remove('enter-next','enter-prev');
+    image.classList.add(direction > 0 ? 'exit-next' : 'exit-prev');
+    slideTimer = setTimeout(() => setSlide(index, direction), 180);
   }
   function open(index, trigger){
     if(!slides.length) return;
@@ -1215,6 +1239,7 @@ document.querySelectorAll('.js-gallery').forEach(gal => {
     closeBtn.focus({preventScroll:true});
   }
   function close(){
+    clearTimeout(slideTimer);
     lightbox.classList.remove('is-open');
     lightbox.setAttribute('aria-hidden','true');
     document.documentElement.classList.remove('gallery-lightbox-open');
@@ -1237,18 +1262,18 @@ document.querySelectorAll('.js-gallery').forEach(gal => {
     });
   });
   closeBtn.addEventListener('click', close);
-  prevBtn.addEventListener('click', () => render(current - 1));
-  nextBtn.addEventListener('click', () => render(current + 1));
+  prevBtn.addEventListener('click', () => render(current - 1, -1));
+  nextBtn.addEventListener('click', () => render(current + 1, 1));
   document.addEventListener('keydown', e => {
     if(!lightbox.classList.contains('is-open')) return;
     if(e.key === 'Escape') close();
-    if(e.key === 'ArrowLeft') render(current - 1);
-    if(e.key === 'ArrowRight') render(current + 1);
+    if(e.key === 'ArrowLeft') render(current - 1, -1);
+    if(e.key === 'ArrowRight') render(current + 1, 1);
   });
   lightbox.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].clientX; }, {passive:true});
   lightbox.addEventListener('touchend', e => {
     const dx = e.changedTouches[0].clientX - touchStartX;
-    if(Math.abs(dx) > 45) render(current + (dx < 0 ? 1 : -1));
+    if(Math.abs(dx) > 45) render(current + (dx < 0 ? 1 : -1), dx < 0 ? 1 : -1);
   }, {passive:true});
 })();
 
