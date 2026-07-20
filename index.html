@@ -264,7 +264,7 @@ a[href^="sms:"]{
    MOBILE STAGE (≤1024px) — 390 기준 좌표를 vw 단위로 변환
    플로우 레이아웃
    ===================================================== */
-.stage-mo{display:none;position:relative;width:100%;background:var(--cream);padding-bottom:calc(24 * var(--mo-vw));--mo-vw:0.2564102564vw;}
+.stage-mo{display:none;position:relative;width:100%;background:var(--cream);padding-bottom:calc(40 * var(--mo-vw));--mo-vw:0.2564102564vw;}
 
 /* KV */
 .mo-kv{
@@ -362,8 +362,8 @@ a[href^="sms:"]{
 .mo-loc-addr{display:flex;flex-direction:column;gap:calc(6 * var(--mo-vw));font-size:calc(14 * var(--mo-vw));line-height:1.5;color:#736C62;margin-bottom:calc(32 * var(--mo-vw));}
 .mo-loc-map{width:100%;height:calc(167 * var(--mo-vw));margin-bottom:calc(32 * var(--mo-vw));}
 .mo-loc-btns{width:100%;display:flex;flex-direction:row;gap:calc(4 * var(--mo-vw));}
-.stage-mo .map-btn{width:33.333%;min-width:0;flex:1 1 0;padding:calc(12 * var(--mo-vw)) calc(4 * var(--mo-vw));justify-content:center;gap:calc(3 * var(--mo-vw));border:calc(1 * var(--mo-vw)) solid var(--black);font-size:calc(13 * var(--mo-vw));white-space:nowrap;}
-.stage-mo .map-btn-ic{width:calc(24 * var(--mo-vw));height:calc(24 * var(--mo-vw));}
+.stage-mo .map-btn{width:33.333%;min-width:0;flex:1 1 0;display:flex;align-items:center;justify-content:center;text-align:center;padding:calc(7 * var(--mo-vw)) calc(4 * var(--mo-vw));gap:calc(3 * var(--mo-vw));border:calc(1 * var(--mo-vw)) solid var(--black);font-size:calc(13 * var(--mo-vw));white-space:nowrap;}
+.stage-mo .map-btn-ic{width:calc(24 * var(--mo-vw));height:calc(24 * var(--mo-vw));flex:0 0 calc(24 * var(--mo-vw));display:flex;align-items:center;justify-content:center;}
 .stage-mo .map-btn-ic img{width:calc(18 * var(--mo-vw));height:calc(18 * var(--mo-vw));display:block;object-fit:contain;}
 
 /* 마음 전하실 곳 */
