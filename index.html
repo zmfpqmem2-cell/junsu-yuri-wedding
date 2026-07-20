@@ -23,19 +23,9 @@
 <meta name="twitter:title" content="Junsu & Yuri Wedding">
 <meta name="twitter:description" content="2026년 10월 11일 일요일 오후 12시 30분 여수 한옥호텔 오동재, 준수와 유리의 결혼식에 초대합니다.">
 <meta name="twitter:image" content="https://zmfpqmem2-cell.github.io/junsu-yuri-wedding/images/og.jpg?v=20260720">
-<link rel="preload" as="image" href="images/webp/kv.webp" type="image/webp" media="(min-width: 1025px)" fetchpriority="high">
-<link rel="preload" as="image" href="images/webp/m_kv.webp" type="image/webp" media="(max-width: 1024px)" fetchpriority="high">
+<link rel="preload" as="image" href="images/kv.png" type="image/png" media="(min-width: 1025px)" fetchpriority="high">
+<link rel="preload" as="image" href="images/m_kv.png" type="image/png" media="(max-width: 1024px)" fetchpriority="high">
 <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.23/dist/lenis.css">
-<script>
-/* WebP를 불러오지 못하는 환경에서는 기존 원본 이미지로 자동 전환 */
-document.addEventListener('error', (event) => {
-  const img = event.target;
-  if(!(img instanceof HTMLImageElement) || !img.dataset.fallbackSrc) return;
-  const fallback = img.dataset.fallbackSrc;
-  img.removeAttribute('data-fallback-src');
-  img.src = fallback;
-}, true);
-</script>
 <style>
 /* =====================================================
    FONT FACE
@@ -203,7 +193,7 @@ a[href^="sms:"]{
 .couple-1-wrap,.couple-2-wrap{width:100%;height:auto;position:relative;}
 .couple-1{width:calc(1406 * var(--vw));height:calc(870 * var(--vw));margin-top:calc(227 * var(--vw));overflow:visible;}
 .couple-2{width:calc(1418 * var(--vw));height:calc(877 * var(--vw));margin:calc(200 * var(--vw)) 0 0 auto;overflow:visible;}
-.gallery{width:100%;height:calc(284 * var(--vw));margin-top:calc(200 * var(--vw));overflow:hidden;}
+.gallery{width:100%;height:calc(284 * var(--vw));margin-top:calc(240 * var(--vw));overflow:hidden;}
 .gallery .marquee{display:flex;align-items:center;width:max-content;gap:calc(100 * var(--vw));padding-left:calc(100 * var(--vw));animation:gallery-scroll 40s linear infinite;}
 .gallery .cell{flex:0 0 auto;width:calc(213 * var(--vw));height:calc(284 * var(--vw));opacity:.4;mix-blend-mode:luminosity;transition:opacity .6s ease, mix-blend-mode .6s ease;cursor:pointer;}
 .gallery .cell:hover{opacity:1;mix-blend-mode:normal;}
@@ -246,7 +236,7 @@ a[href^="sms:"]{
 .copy-btn{border:calc(1 * var(--vw)) solid var(--black);padding:calc(4 * var(--vw)) calc(12 * var(--vw));background:transparent;font-family:var(--f-mapo);font-size:calc(16 * var(--vw));line-height:1.5;color:var(--black);cursor:pointer;white-space:nowrap;transition:background .18s,color .18s;}
 .copy-btn:hover{background:rgba(0,0,0,.06);}
 .copy-btn.done{background:var(--black);color:var(--cream);}
-.qr-block{display:flex;flex-direction:column;gap:calc(16 * var(--vw));align-items:center;width:100%;}
+.qr-block{display:flex;flex-direction:column;gap:calc(16 * var(--vw));align-items:center;width:100%;margin-top:calc(40 * var(--vw)) }
 .qr-slot{width:calc(220 * var(--vw));height:calc(220 * var(--vw));}
 .qr-note{font-size:calc(18 * var(--vw));line-height:1.5;text-align:center;width:100%;}
 .time-block{display:flex;flex-direction:column;gap:calc(12 * var(--vw));align-items:center;width:100%;}
@@ -338,21 +328,9 @@ a[href^="sms:"]{
 
 /* 갤러리 3×3 */
 .mo-gallery{margin-top:calc(80 * var(--mo-vw));display:flex;flex-direction:column;gap:calc(1 * var(--mo-vw));}
-.mo-gallery.reveal,.mo-gallery.reveal.pre,.mo-gallery.reveal.visible{opacity:1;transform:none;transition:none;}
 .mo-g-row{display:flex;gap:calc(1 * var(--mo-vw));}
 .mo-gallery .cell{flex:1;aspect-ratio:129.42/172.57;opacity:.4;mix-blend-mode:luminosity;transition:opacity .6s ease, mix-blend-mode .6s ease;cursor:pointer;}
 .mo-gallery .cell.active,.mo-gallery .cell:hover{opacity:1;mix-blend-mode:normal;}
-.mo-gallery.gallery-sequence-ready .cell{opacity:0;mix-blend-mode:luminosity;transition:opacity .8s cubic-bezier(.33,0,.2,1);}
-.mo-gallery.gallery-sequence-ready.gallery-sequence-in .cell{opacity:.4;}
-.mo-gallery.gallery-sequence-ready .mo-g-row:nth-child(1) .cell:nth-child(1){transition-delay:0s;}
-.mo-gallery.gallery-sequence-ready .mo-g-row:nth-child(1) .cell:nth-child(2){transition-delay:.32s;}
-.mo-gallery.gallery-sequence-ready .mo-g-row:nth-child(1) .cell:nth-child(3){transition-delay:.64s;}
-.mo-gallery.gallery-sequence-ready .mo-g-row:nth-child(2) .cell:nth-child(1){transition-delay:.96s;}
-.mo-gallery.gallery-sequence-ready .mo-g-row:nth-child(2) .cell:nth-child(2){transition-delay:1.28s;}
-.mo-gallery.gallery-sequence-ready .mo-g-row:nth-child(2) .cell:nth-child(3){transition-delay:1.6s;}
-.mo-gallery.gallery-sequence-ready .mo-g-row:nth-child(3) .cell:nth-child(1){transition-delay:1.92s;}
-.mo-gallery.gallery-sequence-ready .mo-g-row:nth-child(3) .cell:nth-child(2){transition-delay:2.24s;}
-.mo-gallery.gallery-sequence-ready .mo-g-row:nth-child(3) .cell:nth-child(3){transition-delay:2.56s;}
 
 /* 오시는 길 */
 .mo-loc{margin:calc(100 * var(--mo-vw)) calc(12 * var(--mo-vw)) 0;display:flex;flex-direction:column;align-items:center;text-align:center;}
@@ -424,7 +402,7 @@ html.gallery-lightbox-open,body.gallery-lightbox-open{overflow:hidden;overscroll
 .gallery-lightbox{position:fixed;inset:0;z-index:1000;display:flex;flex-direction:column;background:rgba(43,38,34,.2);-webkit-backdrop-filter:blur(40px);backdrop-filter:blur(40px);color:var(--cream);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .35s ease,visibility 0s linear .35s;}
 .gallery-lightbox.is-open{opacity:1;visibility:visible;pointer-events:auto;transition-delay:0s;}
 .gallery-lightbox-head{height:80px;flex:0 0 80px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;}
-.gallery-lightbox-title{font-family:var(--f-dutch);font-size:18px;letter-spacing:.04em;}
+.gallery-lightbox-title{font-family:var(--f-mapo);font-size:18px;letter-spacing:0.16666667em;}
 .gallery-lightbox-close,.gallery-lightbox-nav{border:0;background:transparent;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;}
 .gallery-lightbox-close{width:44px;height:44px;display:grid;place-items:center;padding:0;}
 .gallery-lightbox-close::before,.gallery-lightbox-close::after{content:"";position:absolute;width:26px;height:1px;background:currentColor;}
@@ -433,16 +411,15 @@ html.gallery-lightbox-open,body.gallery-lightbox-open{overflow:hidden;overscroll
 .gallery-lightbox-track{position:relative;width:100%;height:100%;}
 .gallery-lightbox-slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;will-change:transform,opacity;}
 .gallery-lightbox-slide img{max-width:100%;max-height:100%;object-fit:contain;display:block;pointer-events:none;user-select:none;-webkit-user-drag:none;}
-.gallery-lightbox-nav{position:absolute;z-index:2;top:0;bottom:0;width:96px;display:flex;align-items:center;padding:0 18px;opacity:.38;transition:opacity .2s ease;}
+.gallery-lightbox-nav{position:absolute;z-index:20;top:0;bottom:0;width:clamp(64px,5vw,128px);display:flex;align-items:center;padding:0 clamp(12px,.9375vw,24px);opacity:.38;transition:opacity .2s ease;}
 .gallery-lightbox-nav:hover{opacity:1;}.gallery-lightbox-prev{left:0;justify-content:flex-start;}.gallery-lightbox-next{right:0;justify-content:flex-end;}
-.gallery-lightbox-nav svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:1.2;}
-.gallery-lightbox-foot{height:58px;flex:0 0 58px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;}
-.gallery-lightbox-count{opacity:.68;}.gallery-lightbox-label{opacity:.48;}
+.gallery-lightbox-nav svg{width:clamp(80px,5.2083vw,120px);height:clamp(80px,5.2083vw,120px);fill:none;stroke:currentColor;stroke-width:1;}
+.gallery-lightbox-foot{height:58px;flex:0 0 58px;display:flex;align-items:center;justify-content:center;padding:0 22px;font-size:12px;letter-spacing:.4em;text-transform:uppercase;}
 .gallery .cell,.mo-gallery .cell{cursor:zoom-in;}
-.gallery .cell:focus-visible,.mo-gallery .cell:focus-visible{outline:2px solid var(--black);outline-offset:-2px;}
+.gallery .cell:focus-visible,.mo-gallery .cell:focus-visible{outline:none;}
 @media (max-width:1024px){
   .gallery-lightbox-head{height:64px;flex-basis:64px;padding:0 12px;}
-  .gallery-lightbox-title{font-size:15px;}
+  .gallery-lightbox-title{font-size:13px;letter-spacing:.4em}
   .gallery-lightbox-close{width:40px;height:40px;}
   .gallery-lightbox-nav{width:56px;padding:0 10px;opacity:.5;}
   .gallery-lightbox-nav svg{width:23px;height:23px;}
@@ -496,7 +473,7 @@ html.gallery-lightbox-open,body.gallery-lightbox-open{overflow:hidden;overscroll
   <!-- ═══ KV ═══ -->
   <section class="kv">
     <!-- REPLACE: KV 배경 -->
-    <div class="slot kv-bg" data-label="KV 배경 사진"><img fetchpriority="high" decoding="async" class="parallax-img" data-parallax-speed="0.14" src="images/webp/kv.webp" data-fallback-src="images/kv.png"></div>
+    <div class="slot kv-bg" data-label="KV 배경 사진"><img fetchpriority="high" decoding="async" class="parallax-img" data-parallax-speed="0.14" src="images/kv.png"></div>
     <!-- KV 로고 3요소를 하나의 그룹으로 묶어 100vh 기준 수직중앙 배치 -->
     <div class="kv-logo-group" id="kvLogoGroup">
       <div class="kv-logo-stack">
@@ -525,7 +502,7 @@ html.gallery-lightbox-open,body.gallery-lightbox-open{overflow:hidden;overscroll
   <section class="info-name">
     <div class="info">
       <!-- REPLACE: 꽃 장식 -->
-      <div class="slot info-deco" data-label="꽃"><img loading="lazy" decoding="async" src="images/webp/cat.webp" data-fallback-src="images/cat.png"></div>
+      <div class="slot info-deco" data-label="꽃"><img loading="lazy" decoding="async" src="images/cat.png"></div>
       <p class="info-tit">소중한 분들을 결혼식에 초대합니다</p>
       <p class="info-sub">저희 두 사람이 하나가 되는 특별한 날,
  인생에서 가장 아름다운 순간을 함께 축복해 주시길 바랍니다.
@@ -546,7 +523,7 @@ html.gallery-lightbox-open,body.gallery-lightbox-open{overflow:hidden;overscroll
       </div>
       <div class="name-and">
       <!-- REPLACE: 반지 이미지 -->
-      <div class="slot" data-label="반지"><img loading="lazy" decoding="async" src="images/webp/ring.webp" data-fallback-src="images/ring.png" alt="반지"></div>
+      <div class="slot" data-label="반지"><img loading="lazy" decoding="async" src="images/ring.png" alt="반지"></div>
     </div>
     </div>
   </section>
@@ -554,14 +531,14 @@ html.gallery-lightbox-open,body.gallery-lightbox-open{overflow:hidden;overscroll
   <!-- ═══ 신부 앉은 사진 (첫 사진, 좌측 바깥 + Pick1 데코) ═══ -->
   <!-- REPLACE: 신부 앉은 사진 (나무 배경) -->
   <div class="slot bride-seated" data-label="신부 앉은 사진">
-    <img loading="lazy" decoding="async" src="images/webp/img1.webp" data-fallback-src="images/img1.png">
+    <img loading="lazy" decoding="async" src="images/img1.png">
     <div class="pick pick1" data-label="pick1"><img loading="lazy" decoding="async" src="images/pick1.svg"></div>
   </div>
 
   <!-- ═══ 신부 서있는 사진 + 메시지(Junsu say) + Pick2 데코 ═══ -->
   <section class="groom-row">
     <!-- REPLACE: 신부 서있는 사진 -->
-    <div class="slot groom-photo" data-label="신부 서있는 사진"><img loading="lazy" decoding="async" src="images/webp/img2.webp" data-fallback-src="images/img2.png"></div>
+    <div class="slot groom-photo" data-label="신부 서있는 사진"><img loading="lazy" decoding="async" src="images/img2.png"></div>
     <div class="groom-txt">
       <div class="say-kr">
         <p>서로 다른 길을 걸어온 두 사람이<br>이제 같은 방향을 바라보며<br>평생을 함께하고자 합니다.</p>
@@ -571,26 +548,26 @@ html.gallery-lightbox-open,body.gallery-lightbox-open{overflow:hidden;overscroll
     <div class="pick pick2" data-label="pick2"><img loading="lazy" decoding="async" src="images/pick2.svg"></div>
   </section>
   <!-- REPLACE: 데코 꽃 1 -->
-  <div class="slot deco-flower-1" data-label="데코"><img loading="lazy" decoding="async" src="images/webp/bird.webp" data-fallback-src="images/bird.png"></div>
+  <div class="slot deco-flower-1" data-label="데코"><img loading="lazy" decoding="async" src="images/bird.png"></div>
 
   <!-- ═══ 추가 사진 new-01 + Pick3 데코 ═══ -->
   <div class="slot new-photo" data-label="추가 사진 ①">
     <!-- REPLACE: 추가 사진 1 -->
-    <img loading="lazy" decoding="async" src="images/webp/img3.webp" data-fallback-src="images/img3.png">
+    <img loading="lazy" decoding="async" src="images/img3.png">
     <div class="pick pick3" data-label="pick3"><img loading="lazy" decoding="async" src="images/pick3.svg"></div>
   </div>
 
   <!-- ═══ FULLBLEED 1 + Pick4 데코 ═══ -->
   <!-- REPLACE: 전체 사진 1 -->
   <div class="pic-anchor">
-    <div class="slot full1" data-label="전체 사진 ①"><img loading="lazy" decoding="async" class="parallax-img" data-parallax-speed="0.12" src="images/webp/img4.webp" data-fallback-src="images/img4.png"></div>
+    <div class="slot full1" data-label="전체 사진 ①"><img loading="lazy" decoding="async" class="parallax-img" data-parallax-speed="0.12" src="images/img4.png"></div>
     <div class="pick pick4" data-label="pick4"><img loading="lazy" decoding="async" src="images/pick4.svg"></div>
   </div>
 
   <!-- ═══ CENTER PORTRAIT + Pick5 데코 ═══ -->
   <!-- REPLACE: 포트레이트 -->
   <div class="slot portrait" data-label="포트레이트 사진">
-    <img loading="lazy" decoding="async" src="images/webp/img5.webp" data-fallback-src="images/img5.png">
+    <img loading="lazy" decoding="async" src="images/img5.png">
     <div class="pick pick5" data-label="pick5"><img loading="lazy" decoding="async" src="images/pick5.svg"></div>
   </div>
   <!-- REPLACE: 데코 꽃 2 -->
@@ -599,7 +576,7 @@ html.gallery-lightbox-open,body.gallery-lightbox-open{overflow:hidden;overscroll
   <!-- ═══ FULLBLEED 2 + Pick6 데코 ═══ -->
   <!-- REPLACE: 전체 사진 2 -->
   <div class="pic-anchor">
-    <div class="slot full2" data-label="전체 사진 ②"><img loading="lazy" decoding="async" class="parallax-img" data-parallax-speed="0.08" src="images/webp/img6.webp" data-fallback-src="images/img6.png"></div>
+    <div class="slot full2" data-label="전체 사진 ②"><img loading="lazy" decoding="async" class="parallax-img" data-parallax-speed="0.08" src="images/img6.png"></div>
     <div class="pick pick6" data-label="pick6"><img loading="lazy" decoding="async" src="images/pick6.svg"></div>
   </div>
 
@@ -610,28 +587,28 @@ html.gallery-lightbox-open,body.gallery-lightbox-open{overflow:hidden;overscroll
       <p>새로운 시작의 순간에 함께해 주시어<br>따뜻한 축복을 나눠주시면 감사하겠습니다.</p>
     </div>
     <!-- REPLACE: 신부 사진 -->
-    <div class="slot bride-photo" data-label="신부 사진"><img loading="lazy" decoding="async" src="images/webp/img7.webp" data-fallback-src="images/img7.png"></div>
+    <div class="slot bride-photo" data-label="신부 사진"><img loading="lazy" decoding="async" src="images/img7.png"></div>
     <div class="pick pick7" data-label="pick7"><img loading="lazy" decoding="async" src="images/pick7.svg"></div>
   </section>
 
   <!-- ═══ 신랑 단독 사진(좌) + Pick8 데코 ═══ -->
   <!-- REPLACE: 신랑 단독 사진 -->
   <div class="slot groom-solo" data-label="신랑 단독 사진">
-    <img loading="lazy" decoding="async" src="images/webp/img8.webp" data-fallback-src="images/img8.png">
+    <img loading="lazy" decoding="async" src="images/img8.png">
     <div class="pick pick8" data-label="pick8"><img loading="lazy" decoding="async" src="images/pick8.svg"></div>
   </div>
 
   <!-- ═══ 추가 사진 new-02 + Pick9 데코 ═══ -->
   <div class="slot new-photo" data-label="추가 사진 ②">
     <!-- REPLACE: 추가 사진 2 -->
-    <img loading="lazy" decoding="async" src="images/webp/img9.webp" data-fallback-src="images/img9.png">
+    <img loading="lazy" decoding="async" src="images/img9.png">
     <div class="pick pick9" data-label="pick9"><img loading="lazy" decoding="async" src="images/pick9.svg"></div>
   </div>
 
   <!-- ═══ FULLBLEED 3 + Pick10 데코 ═══ -->
   <!-- REPLACE: 전체 사진 3 -->
   <div class="pic-anchor">
-    <div class="slot full3" data-label="전체 사진 ③"><img loading="lazy" decoding="async" class="parallax-img" data-parallax-speed="0.06" src="images/webp/img10.webp" data-fallback-src="images/img10.png"></div>
+    <div class="slot full3" data-label="전체 사진 ③"><img loading="lazy" decoding="async" class="parallax-img" data-parallax-speed="0.06" src="images/img10.png"></div>
     <div class="pick pick10" data-label="pick10"><img loading="lazy" decoding="async" src="images/pick10.svg"></div>
   </div>
 
@@ -639,7 +616,7 @@ html.gallery-lightbox-open,body.gallery-lightbox-open{overflow:hidden;overscroll
   <section class="couple-1-wrap">
     <!-- REPLACE: 커플 사진 1 -->
     <div class="slot couple-1" data-label="커플 사진 ①">
-      <img loading="lazy" decoding="async" src="images/webp/img11.webp" data-fallback-src="images/img11.png">
+      <img loading="lazy" decoding="async" src="images/img11.png">
       <!-- REPLACE: Pick 11 데코 -->
       <div class="pick pick11" data-label="pick11"><img loading="lazy" decoding="async" src="images/pick11.svg"></div>
     </div>
@@ -649,7 +626,7 @@ html.gallery-lightbox-open,body.gallery-lightbox-open{overflow:hidden;overscroll
   <section class="couple-2-wrap">
     <!-- REPLACE: 커플 사진 2 -->
     <div class="slot couple-2" data-label="커플 사진 ②">
-      <img loading="lazy" decoding="async" src="images/webp/img12.webp" data-fallback-src="images/img12.png">
+      <img loading="lazy" decoding="async" src="images/img12.png">
       <!-- REPLACE: Pick 12 데코 -->
       <div class="pick pick12" data-label="pick12"><img loading="lazy" decoding="async" src="images/pick12.svg"></div>
     </div>
@@ -660,25 +637,25 @@ html.gallery-lightbox-open,body.gallery-lightbox-open{overflow:hidden;overscroll
     <!-- REPLACE: 갤러리 6장 → 9장 반복 마퀴 (원본 세트 + 복제 세트로 무한 루프) -->
     <div class="marquee">
       <!-- 원본 세트 (9장: 6장을 반복해 채움) -->
-      <div class="slot cell" data-label="1"><img loading="lazy" decoding="async" src="images/webp/gallery1.webp" data-fallback-src="images/gallery1.png"></div>
-      <div class="slot cell" data-label="2"><img loading="lazy" decoding="async" src="images/webp/gallery2.webp" data-fallback-src="images/gallery2.png"></div>
-      <div class="slot cell" data-label="3"><img loading="lazy" decoding="async" src="images/webp/gallery3.webp" data-fallback-src="images/gallery3.png"></div>
-      <div class="slot cell" data-label="4"><img loading="lazy" decoding="async" src="images/webp/gallery4.webp" data-fallback-src="images/gallery4.png"></div>
-      <div class="slot cell" data-label="5"><img loading="lazy" decoding="async" src="images/webp/gallery5.webp" data-fallback-src="images/gallery5.png"></div>
-      <div class="slot cell" data-label="6"><img loading="lazy" decoding="async" src="images/webp/gallery6.webp" data-fallback-src="images/gallery6.png"></div>
-      <div class="slot cell" data-label="7"><img loading="lazy" decoding="async" src="images/webp/gallery7.webp" data-fallback-src="images/gallery7.png"></div>
-      <div class="slot cell" data-label="8"><img loading="lazy" decoding="async" src="images/webp/gallery8.webp" data-fallback-src="images/gallery8.png"></div>
-      <div class="slot cell" data-label="9"><img loading="lazy" decoding="async" src="images/webp/gallery9.webp" data-fallback-src="images/gallery9.png"></div>
+      <div class="slot cell" data-label="1"><img loading="lazy" decoding="async" src="images/gallery1.png"></div>
+      <div class="slot cell" data-label="2"><img loading="lazy" decoding="async" src="images/gallery2.png"></div>
+      <div class="slot cell" data-label="3"><img loading="lazy" decoding="async" src="images/gallery3.png"></div>
+      <div class="slot cell" data-label="4"><img loading="lazy" decoding="async" src="images/gallery4.png"></div>
+      <div class="slot cell" data-label="5"><img loading="lazy" decoding="async" src="images/gallery5.png"></div>
+      <div class="slot cell" data-label="6"><img loading="lazy" decoding="async" src="images/gallery6.png"></div>
+      <div class="slot cell" data-label="7"><img loading="lazy" decoding="async" src="images/gallery7.png"></div>
+      <div class="slot cell" data-label="8"><img loading="lazy" decoding="async" src="images/gallery8.png"></div>
+      <div class="slot cell" data-label="9"><img loading="lazy" decoding="async" src="images/gallery9.png"></div>
       <!-- 복제 세트 (seamless loop용, 화면엔 이어지는 동일 이미지) -->
-      <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/webp/gallery1.webp" data-fallback-src="images/gallery1.png"></div>
-      <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/webp/gallery2.webp" data-fallback-src="images/gallery2.png"></div>
-      <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/webp/gallery3.webp" data-fallback-src="images/gallery3.png"></div>
-      <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/webp/gallery4.webp" data-fallback-src="images/gallery4.png"></div>
-      <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/webp/gallery5.webp" data-fallback-src="images/gallery5.png"></div>
-      <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/webp/gallery6.webp" data-fallback-src="images/gallery6.png"></div>
-      <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/webp/gallery7.webp" data-fallback-src="images/gallery7.png"></div>
-      <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/webp/gallery8.webp" data-fallback-src="images/gallery8.png"></div>
-      <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/webp/gallery9.webp" data-fallback-src="images/gallery9.png"></div>
+      <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/gallery1.png"></div>
+      <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/gallery2.png"></div>
+      <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/gallery3.png"></div>
+      <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/gallery4.png"></div>
+      <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/gallery5.png"></div>
+      <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/gallery6.png"></div>
+      <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/gallery7.png"></div>
+      <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/gallery8.png"></div>
+      <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/gallery9.png"></div>
     </div>
   </section>
 
@@ -697,7 +674,7 @@ html.gallery-lightbox-open,body.gallery-lightbox-open{overflow:hidden;overscroll
           </div>
         </div>
         <!-- REPLACE: 지도 -->
-        <div class="slot loc-map" data-label="지도"><img loading="lazy" decoding="async" src="images/webp/map.webp" data-fallback-src="images/map.png"></div>
+        <div class="slot loc-map" data-label="지도"><img loading="lazy" decoding="async" src="images/map.png"></div>
         <div class="loc-btns">
           <button class="map-btn" onclick="window.open('https://map.naver.com/p/search/여수+오동재+한옥호텔')">
             <span class="map-btn-ic"><img loading="lazy" decoding="async" src="images/naverm.svg" alt=""></span>네이버맵
@@ -744,7 +721,7 @@ html.gallery-lightbox-open,body.gallery-lightbox-open{overflow:hidden;overscroll
       <!-- MAP -->
       <div class="qr-block">
         <!-- REPLACE: MAP -->
-        <div class="slot qr-slot" data-label="MAP"><img loading="lazy" decoding="async" src="images/webp/flower.webp" data-fallback-src="images/flower.png"></div>
+        <div class="slot qr-slot" data-label="MAP"><img loading="lazy" decoding="async" src="images/flower.png"></div>
         <p class="qr-note">*축하의 마음만 감사히 받겠습니다.<br>화환은 정중히 사양합니다.</p>
       </div>
     </div>
@@ -780,7 +757,7 @@ html.gallery-lightbox-open,body.gallery-lightbox-open{overflow:hidden;overscroll
   <!-- ═══ KV ═══ -->
   <section class="mo-kv">
     <!-- REPLACE: KV 배경 (모바일) -->
-    <div class="slot kv-bg" data-label="KV 배경 사진"><img fetchpriority="high" decoding="async" class="parallax-img" data-parallax-speed="0.14" src="images/webp/m_kv.webp" data-fallback-src="images/m_kv.png"></div>
+    <div class="slot kv-bg" data-label="KV 배경 사진"><img fetchpriority="high" decoding="async" class="parallax-img" data-parallax-speed="0.14" src="images/m_kv.png"></div>
     <div class="abs kv-logo">
       <svg viewBox="0 0 340 95" xmlns="http://www.w3.org/2000/svg" aria-label="Wedding day">
         <defs><clipPath id="wdClipM"><rect class="wd-reveal" x="0" y="0" width="0" height="95"/></clipPath></defs>
@@ -801,7 +778,7 @@ html.gallery-lightbox-open,body.gallery-lightbox-open{overflow:hidden;overscroll
   <section class="mo-info-name reveal">
     <div class="mo-info">
       <!-- REPLACE: 꽃 장식 -->
-      <div class="slot mo-info-deco" data-label="꽃"><img loading="lazy" decoding="async" src="images/webp/cat.webp" data-fallback-src="images/cat.png"></div>
+      <div class="slot mo-info-deco" data-label="꽃"><img loading="lazy" decoding="async" src="images/cat.png"></div>
       <p class="mo-info-tit">소중한 분들을 결혼식에 초대합니다</p>
       <p class="mo-info-sub">저희 두 사람이 하나가 되는 특별한 날,<br>인생에서 가장 아름다운 순간을 함께<br>축복해 주시길 바랍니다.</p>
     </div>
@@ -818,20 +795,20 @@ html.gallery-lightbox-open,body.gallery-lightbox-open{overflow:hidden;overscroll
       </div>
       <div class="mo-name-and">
         <!-- REPLACE: 반지 이미지 -->
-        <div class="slot" data-label="반지"><img loading="lazy" decoding="async" src="images/webp/ring.webp" data-fallback-src="images/ring.png" alt="반지"></div>
+        <div class="slot" data-label="반지"><img loading="lazy" decoding="async" src="images/ring.png" alt="반지"></div>
       </div>
     </div>
   </section>
 
   <!-- ═══ 신부 앉은 사진 (우측) + Pick1 데코 ═══ -->
   <div class="slot mo-photo-r reveal" data-label="신부 앉은 사진">
-    <img loading="lazy" decoding="async" src="images/webp/m_img1.webp" data-fallback-src="images/m_img1.png">
+    <img loading="lazy" decoding="async" src="images/m_img1.png">
     <div class="pick pick1" data-label="pick1"><img loading="lazy" decoding="async" src="images/pick1.svg"></div>
   </div>
 
   <!-- ═══ 신부 서있는 사진 (좌측) + Junsu say + Pick2 데코 ═══ -->
   <div class="slot mo-photo-l reveal" data-label="신부 서있는 사진">
-    <img loading="lazy" decoding="async" src="images/webp/m_img2.webp" data-fallback-src="images/m_img2.png">
+    <img loading="lazy" decoding="async" src="images/m_img2.png">
     <div class="pick pick2" data-label="pick2"><img loading="lazy" decoding="async" src="images/pick2.svg"></div>
   </div>
   <div class="mo-say reveal">
@@ -844,37 +821,37 @@ html.gallery-lightbox-open,body.gallery-lightbox-open{overflow:hidden;overscroll
   <!-- ═══ 추가 사진 new-01 + Pick3 데코 ═══ -->
   <div class="slot mo-photo-r reveal" data-label="추가 사진 ①">
     <!-- REPLACE: 추가 사진 1 (모바일) -->
-    <img loading="lazy" decoding="async" src="images/webp/m_img3.webp" data-fallback-src="images/m_img3.png">
+    <img loading="lazy" decoding="async" src="images/m_img3.png">
     <div class="pick pick3" data-label="pick3"><img loading="lazy" decoding="async" src="images/pick3.svg"></div>
   </div>
 
   <!-- ═══ FULLBLEED 1 + Pick4 데코 ═══ -->
   <div class="pic-anchor">
-    <div class="slot mo-full reveal" data-label="전체 사진 ①"><img loading="lazy" decoding="async" class="parallax-img" data-parallax-speed="0.12" src="images/webp/m_img4.webp" data-fallback-src="images/m_img4.png"></div>
+    <div class="slot mo-full reveal" data-label="전체 사진 ①"><img loading="lazy" decoding="async" class="parallax-img" data-parallax-speed="0.12" src="images/m_img4.png"></div>
     <div class="pick pick4" data-label="pick4"><img loading="lazy" decoding="async" src="images/pick4.svg"></div>
   </div>
 
   <!-- ═══ CENTER PORTRAIT + Pick5 데코 ═══ -->
   <div class="slot mo-portrait reveal" data-label="포트레이트 사진">
-    <img loading="lazy" decoding="async" src="images/webp/m_img5.webp" data-fallback-src="images/m_img5.png">
+    <img loading="lazy" decoding="async" src="images/m_img5.png">
     <div class="pick pick5" data-label="pick5"><img loading="lazy" decoding="async" src="images/pick5.svg"></div>
   </div>
 
   <!-- ═══ FULLBLEED 2 + Pick6 데코 ═══ -->
   <div class="pic-anchor">
-    <div class="slot mo-full reveal" data-label="전체 사진 ②"><img loading="lazy" decoding="async" class="parallax-img" data-parallax-speed="0.08" src="images/webp/m_img6.webp" data-fallback-src="images/m_img6.png"></div>
+    <div class="slot mo-full reveal" data-label="전체 사진 ②"><img loading="lazy" decoding="async" class="parallax-img" data-parallax-speed="0.08" src="images/m_img6.png"></div>
     <div class="pick pick6" data-label="pick6"><img loading="lazy" decoding="async" src="images/pick6.svg"></div>
   </div>
 
   <!-- ═══ 신부 사진 (우측) + Pick7 데코 ═══ -->
   <div class="slot mo-photo-r reveal" data-label="신부 사진">
-    <img loading="lazy" decoding="async" src="images/webp/m_img7.webp" data-fallback-src="images/m_img7.png">
+    <img loading="lazy" decoding="async" src="images/m_img7.png">
     <div class="pick pick7" data-label="pick7"><img loading="lazy" decoding="async" src="images/pick7.svg"></div>
   </div>
 
   <!-- ═══ 신랑 단독 사진 (좌측) + Yuri say + Pick8 데코 ═══ -->
   <div class="slot mo-photo-l reveal" data-label="신랑 단독 사진">
-    <img loading="lazy" decoding="async" src="images/webp/m_img8.webp" data-fallback-src="images/m_img8.png">
+    <img loading="lazy" decoding="async" src="images/m_img8.png">
     <div class="pick pick8" data-label="pick8"><img loading="lazy" decoding="async" src="images/pick8.svg"></div>
   </div>
   <div class="mo-say reveal">
@@ -887,42 +864,42 @@ html.gallery-lightbox-open,body.gallery-lightbox-open{overflow:hidden;overscroll
   <!-- ═══ 추가 사진 new-02 + Pick9 데코 ═══ -->
   <div class="slot mo-photo-r reveal" data-label="추가 사진 ②">
     <!-- REPLACE: 추가 사진 2 (모바일) -->
-    <img loading="lazy" decoding="async" src="images/webp/m_img9.webp" data-fallback-src="images/m_img9.png">
+    <img loading="lazy" decoding="async" src="images/m_img9.png">
     <div class="pick pick9" data-label="pick9"><img loading="lazy" decoding="async" src="images/pick9.svg"></div>
   </div>
 
   <!-- ═══ FULLBLEED 3 + Pick10 데코 ═══ -->
   <div class="pic-anchor">
-    <div class="slot mo-full reveal" data-label="전체 사진 ③"><img loading="lazy" decoding="async" class="parallax-img" data-parallax-speed="0.06" src="images/webp/m_img10.webp" data-fallback-src="images/m_img10.png"></div>
+    <div class="slot mo-full reveal" data-label="전체 사진 ③"><img loading="lazy" decoding="async" class="parallax-img" data-parallax-speed="0.06" src="images/m_img10.png"></div>
     <div class="pick pick10" data-label="pick10"><img loading="lazy" decoding="async" src="images/pick10.svg"></div>
   </div>
 
   <!-- ═══ 커플 사진 ①②③ ═══ -->
   <div class="slot mo-couple-1 reveal" data-label="커플 사진 ①">
-    <img loading="lazy" decoding="async" src="images/webp/m_img11.webp" data-fallback-src="images/m_img11.png">
+    <img loading="lazy" decoding="async" src="images/m_img11.png">
     <div class="pick pick11" data-label="pick11"><img loading="lazy" decoding="async" src="images/pick11.svg"></div>
   </div>
   <div class="slot mo-couple-2 reveal" data-label="커플 사진 ②">
-    <img loading="lazy" decoding="async" src="images/webp/m_img12.webp" data-fallback-src="images/m_img12.png">
+    <img loading="lazy" decoding="async" src="images/m_img12.png">
     <div class="pick pick12" data-label="pick12"><img loading="lazy" decoding="async" src="images/pick12.svg"></div>
   </div>
   <!-- ═══ 갤러리 3×3 ═══ -->
   <section class="mo-gallery js-gallery reveal">
     <div class="mo-g-row">
-      <div class="slot cell" data-label="1"><img loading="lazy" decoding="async" src="images/webp/gallery1.webp" data-fallback-src="images/gallery1.png"></div>
-      <div class="slot cell" data-label="2"><img loading="lazy" decoding="async" src="images/webp/gallery2.webp" data-fallback-src="images/gallery2.png"></div>
-      <div class="slot cell" data-label="3"><img loading="lazy" decoding="async" src="images/webp/gallery3.webp" data-fallback-src="images/gallery3.png"></div>
+      <div class="slot cell" data-label="1"><img loading="lazy" decoding="async" src="images/gallery1.png"></div>
+      <div class="slot cell" data-label="2"><img loading="lazy" decoding="async" src="images/gallery2.png"></div>
+      <div class="slot cell" data-label="3"><img loading="lazy" decoding="async" src="images/gallery3.png"></div>
     </div>
     <div class="mo-g-row">
-      <div class="slot cell" data-label="4"><img loading="lazy" decoding="async" src="images/webp/gallery4.webp" data-fallback-src="images/gallery4.png"></div>
-      <div class="slot cell" data-label="5"><img loading="lazy" decoding="async" src="images/webp/gallery5.webp" data-fallback-src="images/gallery5.png"></div>
-      <div class="slot cell" data-label="6"><img loading="lazy" decoding="async" src="images/webp/gallery6.webp" data-fallback-src="images/gallery6.png"></div>
+      <div class="slot cell" data-label="4"><img loading="lazy" decoding="async" src="images/gallery4.png"></div>
+      <div class="slot cell" data-label="5"><img loading="lazy" decoding="async" src="images/gallery5.png"></div>
+      <div class="slot cell" data-label="6"><img loading="lazy" decoding="async" src="images/gallery6.png"></div>
     </div>
     <div class="mo-g-row">
       <!-- REPLACE: 갤러리 7~9 (모바일 3×3 전용 추가분) -->
-      <div class="slot cell" data-label="7"><img loading="lazy" decoding="async" src="images/webp/gallery7.webp" data-fallback-src="images/gallery7.png"></div>
-      <div class="slot cell" data-label="8"><img loading="lazy" decoding="async" src="images/webp/gallery8.webp" data-fallback-src="images/gallery8.png"></div>
-      <div class="slot cell" data-label="9"><img loading="lazy" decoding="async" src="images/webp/gallery9.webp" data-fallback-src="images/gallery9.png"></div>
+      <div class="slot cell" data-label="7"><img loading="lazy" decoding="async" src="images/gallery7.png"></div>
+      <div class="slot cell" data-label="8"><img loading="lazy" decoding="async" src="images/gallery8.png"></div>
+      <div class="slot cell" data-label="9"><img loading="lazy" decoding="async" src="images/gallery9.png"></div>
     </div>
   </section>
 
@@ -935,7 +912,7 @@ html.gallery-lightbox-open,body.gallery-lightbox-open{overflow:hidden;overscroll
       <p>Tel. 061-650-0300</p>
     </div>
     <!-- REPLACE: 지도 -->
-    <div class="slot mo-loc-map" data-label="지도"><img loading="lazy" decoding="async" src="images/webp/map.webp" data-fallback-src="images/map.png"></div>
+    <div class="slot mo-loc-map" data-label="지도"><img loading="lazy" decoding="async" src="images/map.png"></div>
     <div class="mo-loc-btns">
       <button class="map-btn" onclick="window.open('https://map.naver.com/p/search/여수+오동재+한옥호텔')">
         <span class="map-btn-ic"><img loading="lazy" decoding="async" src="images/naverm.svg" alt=""></span>네이버맵
@@ -981,7 +958,7 @@ html.gallery-lightbox-open,body.gallery-lightbox-open{overflow:hidden;overscroll
     <!-- MAP/QR -->
     <div class="mo-qr">
       <!-- REPLACE: MAP -->
-      <div class="slot mo-qr-slot" data-label="MAP"><img loading="lazy" decoding="async" src="images/webp/flower.webp" data-fallback-src="images/flower.png"></div>
+      <div class="slot mo-qr-slot" data-label="MAP"><img loading="lazy" decoding="async" src="images/flower.png"></div>
       <p class="mo-qr-note">*축하의 마음만 감사히 받겠습니다.<br>화환은 정중히 사양합니다.</p>
     </div>
 
@@ -1012,7 +989,7 @@ html.gallery-lightbox-open,body.gallery-lightbox-open{overflow:hidden;overscroll
 <!-- ───── 갤러리 전체화면 뷰어 ───── -->
 <div class="gallery-lightbox" id="galleryLightbox" role="dialog" aria-modal="true" aria-label="갤러리 크게 보기" aria-hidden="true">
   <div class="gallery-lightbox-head">
-    <div class="gallery-lightbox-title">Junsu &amp; Yuri</div>
+    <div class="gallery-lightbox-title">GALLERY</div>
     <button class="gallery-lightbox-close" type="button" aria-label="갤러리 닫기"></button>
   </div>
   <div class="gallery-lightbox-stage" id="lightboxStage">
@@ -1020,7 +997,7 @@ html.gallery-lightbox-open,body.gallery-lightbox-open{overflow:hidden;overscroll
     <button class="gallery-lightbox-nav gallery-lightbox-prev" type="button" aria-label="이전 사진"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M20 6 10 16l10 10"/></svg></button>
     <button class="gallery-lightbox-nav gallery-lightbox-next" type="button" aria-label="다음 사진"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="m12 6 10 10-10 10"/></svg></button>
   </div>
-  <div class="gallery-lightbox-foot"><span class="gallery-lightbox-count">01 / 09</span><span class="gallery-lightbox-label">Gallery</span></div>
+  <div class="gallery-lightbox-foot"><span class="gallery-lightbox-count">01 / 09</span></div>
 </div>
 
 <script>
@@ -1107,11 +1084,8 @@ document.querySelectorAll('.gallery .marquee').forEach(mq => {
 document.querySelectorAll('.js-gallery').forEach(gal => {
   const cells = [...gal.querySelectorAll('.cell')];
   if(!cells.length) return;
-  const isMobileGallery = gal.classList.contains('mo-gallery');
   let idx = 0;
   let timer = null;
-  let entranceTimer = null;
-  let entranceRaf = null;
   let hovering = false;
 
   function setActive(i){
@@ -1123,32 +1097,12 @@ document.querySelectorAll('.js-gallery').forEach(gal => {
     idx = (idx + 1) % cells.length;   // 끝에 닿으면 처음으로 루핑
   }
   function start(){
-    if(timer || entranceTimer || entranceRaf) return;
-    if(isMobileGallery && !gal.classList.contains('gallery-sequence-done')){
-      cells.forEach(c => c.classList.remove('active'));
-      gal.classList.add('gallery-sequence-ready');
-      entranceRaf = requestAnimationFrame(() => {
-        entranceRaf = null;
-        gal.classList.add('gallery-sequence-in');
-        entranceTimer = setTimeout(() => {
-          entranceTimer = null;
-          gal.classList.remove('gallery-sequence-ready','gallery-sequence-in');
-          gal.classList.add('gallery-sequence-done');
-          start();
-        }, 3400);
-      });
-      return;
-    }
+    if(timer) return;
     tick();                            // 즉시 한 번 표시
     timer = setInterval(tick, 3000);
   }
   function stop(){
     clearInterval(timer); timer = null;
-    if(entranceRaf){ cancelAnimationFrame(entranceRaf); entranceRaf = null; }
-    if(entranceTimer){ clearTimeout(entranceTimer); entranceTimer = null; }
-    if(isMobileGallery && !gal.classList.contains('gallery-sequence-done')){
-      gal.classList.remove('gallery-sequence-ready','gallery-sequence-in');
-    }
   }
 
   // 호버: 해당 셀만 활성, 자동 순환은 잠시 멈춤
@@ -1290,6 +1244,9 @@ document.querySelectorAll('.js-gallery').forEach(gal => {
     });
   });
   closeBtn.addEventListener('click', close);
+  [prevBtn, nextBtn].forEach(btn => {
+    btn.addEventListener('pointerdown', e => e.stopPropagation());
+  });
   prevBtn.addEventListener('click', () => goTo(current - 1));
   nextBtn.addEventListener('click', () => goTo(current + 1));
   document.addEventListener('keydown', e => {
