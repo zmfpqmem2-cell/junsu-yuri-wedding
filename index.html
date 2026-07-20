@@ -361,8 +361,8 @@ a[href^="sms:"]{
 .mo-loc-name{font-size:calc(18 * var(--mo-vw));line-height:1.2;margin-bottom:calc(20 * var(--mo-vw));}
 .mo-loc-addr{display:flex;flex-direction:column;gap:calc(6 * var(--mo-vw));font-size:calc(14 * var(--mo-vw));line-height:1.5;color:#736C62;margin-bottom:calc(32 * var(--mo-vw));}
 .mo-loc-map{width:100%;height:calc(167 * var(--mo-vw));margin-bottom:calc(32 * var(--mo-vw));}
-.mo-loc-btns{width:100%;display:flex;flex-direction:column;gap:calc(10 * var(--mo-vw));}
-.stage-mo .map-btn{width:100%;padding:calc(12 * var(--mo-vw)) calc(8 * var(--mo-vw));justify-content:flex-start;gap:calc(4 * var(--mo-vw));border:calc(1 * var(--mo-vw)) solid var(--black);font-size:calc(14 * var(--mo-vw));}
+.mo-loc-btns{width:100%;display:flex;flex-direction:row;gap:calc(4 * var(--mo-vw));}
+.stage-mo .map-btn{width:33.333%;min-width:0;flex:1 1 0;padding:calc(12 * var(--mo-vw)) calc(4 * var(--mo-vw));justify-content:center;gap:calc(3 * var(--mo-vw));border:calc(1 * var(--mo-vw)) solid var(--black);font-size:calc(13 * var(--mo-vw));white-space:nowrap;}
 .stage-mo .map-btn-ic{width:calc(24 * var(--mo-vw));height:calc(24 * var(--mo-vw));}
 .stage-mo .map-btn-ic img{width:calc(18 * var(--mo-vw));height:calc(18 * var(--mo-vw));display:block;object-fit:contain;}
 
@@ -938,13 +938,13 @@ html.gallery-lightbox-open,body.gallery-lightbox-open{overflow:hidden;overscroll
     <div class="slot mo-loc-map" data-label="지도"><img loading="lazy" decoding="async" src="images/webp/map.webp" data-fallback-src="images/map.png"></div>
     <div class="mo-loc-btns">
       <button class="map-btn" onclick="window.open('https://map.naver.com/p/search/여수+오동재+한옥호텔')">
-        <span class="map-btn-ic"><img loading="lazy" decoding="async" src="images/naverm.svg" alt=""></span>네이버맵으로 가기
+        <span class="map-btn-ic"><img loading="lazy" decoding="async" src="images/naverm.svg" alt=""></span>네이버맵
       </button>
       <button class="map-btn" onclick="window.open('https://map.kakao.com/?q=여수+오동재+한옥호텔')">
-        <span class="map-btn-ic"><img loading="lazy" decoding="async" src="images/kakaom.svg" alt=""></span>카카오맵으로 가기
+        <span class="map-btn-ic"><img loading="lazy" decoding="async" src="images/kakaom.svg" alt=""></span>카카오맵
       </button>
       <button class="map-btn" onclick="window.open('https://tmap.life/?q=여수+오동재+한옥호텔')">
-        <span class="map-btn-ic"><img loading="lazy" decoding="async" src="images/tmap.svg" alt=""></span>티맵으로 가기
+        <span class="map-btn-ic"><img loading="lazy" decoding="async" src="images/tmap.svg" alt=""></span>티맵
       </button>
     </div>
   </section>
@@ -1433,7 +1433,7 @@ const jpText = new Map([
   ['여수 한옥호텔 오동재','麗水 韓屋ホテル オドンジェ'],
   ['전라남도 여수시 박람회길 99, 오동재 한옥호텔','全羅南道 麗水市 博覧会ギル99、オドンジェ韓屋ホテル'],
   ['네이버맵','NAVERマップ'], ['카카오맵','Kakaoマップ'], ['티맵','T map'],
-  ['네이버맵으로 가기','NAVERマップで見る'], ['카카오맵으로 가기','Kakaoマップで見る'], ['티맵으로 가기','T mapで見る'],
+  ['네이버맵','NAVERマップ'], ['카카오맵','Kakaoマップ'], ['티맵','T map'],
   ['마음 전하실 곳','お祝いをお送りいただく方へ'],
   ['멀리서도 축하의 마음을 전하고 싶으신 분들을 위해','遠方からお祝いのお気持ちをお伝えくださる方へ'],
   ['계좌번호를 안내드립니다.','振込先口座をご案内いたします。'],
