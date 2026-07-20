@@ -1,6 +1,11 @@
-<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 5 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g id="icon">
-<ellipse id="Ellipse 2" cx="2.5" cy="4" rx="2.5" ry="4" fill="var(--fill-0, #4B4941)"/>
-<ellipse id="Ellipse 3" cx="2.5" cy="28" rx="2.5" ry="4" fill="var(--fill-0, #4B4941)"/>
+<svg width="5" height="32" viewBox="0 0 5 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_246_134)">
+<path d="M2.5 8C3.88071 8 5 6.20914 5 4C5 1.79086 3.88071 0 2.5 0C1.11929 0 0 1.79086 0 4C0 6.20914 1.11929 8 2.5 8Z" fill="#78766B"/>
+<path d="M2.5 32C3.88071 32 5 30.2091 5 28C5 25.7909 3.88071 24 2.5 24C1.11929 24 0 25.7909 0 28C0 30.2091 1.11929 32 2.5 32Z" fill="#78766B"/>
 </g>
+<defs>
+<clipPath id="clip0_246_134">
+<rect width="5" height="32" fill="white"/>
+</clipPath>
+</defs>
 </svg>
