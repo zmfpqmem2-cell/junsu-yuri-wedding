@@ -1165,6 +1165,13 @@ document.querySelectorAll('.js-gallery').forEach(gal => {
   let pinchStartDistance = 0;
   let pinchStartZoom = 1;
   let pinching = false;
+  let panning = false;
+  let panX = 0;
+  let panY = 0;
+  let panStartX = 0;
+  let panStartY = 0;
+  let panPointerStartX = 0;
+  let panPointerStartY = 0;
   const pointers = new Map();
 
   function currentImage(){
@@ -1173,6 +1180,9 @@ document.querySelectorAll('.js-gallery').forEach(gal => {
   function resetZoom(){
     zoom = 1;
     pinching = false;
+    panning = false;
+    panX = 0;
+    panY = 0;
     pinchStartDistance = 0;
     pointers.clear();
     slides.forEach(slide => {
@@ -1182,6 +1192,10 @@ document.querySelectorAll('.js-gallery').forEach(gal => {
         img.style.transformOrigin = '';
       }
     });
+  }
+  function applyZoom(){
+    const img = currentImage();
+    if(img) img.style.transform = `translate3d(${panX}px,${panY}px,0) scale(${zoom})`;
   }
   function pointerDistance(){
     const points = [...pointers.values()];
@@ -1328,9 +1342,17 @@ document.querySelectorAll('.js-gallery').forEach(gal => {
     if(pointers.size >= 2){
       pinching = true;
       dragging = false;
+      panning = false;
       pinchStartDistance = pointerDistance() || 1;
       pinchStartZoom = zoom;
       setPinchOrigin();
+    } else if(zoom > 1){
+      panning = true;
+      dragging = false;
+      panPointerStartX = e.clientX;
+      panPointerStartY = e.clientY;
+      panStartX = panX;
+      panStartY = panY;
     } else if(zoom <= 1){
       dragging = true;
       startX = e.clientX;
@@ -1345,7 +1367,16 @@ document.querySelectorAll('.js-gallery').forEach(gal => {
     if(pinching && pointers.size >= 2){
       const img = currentImage();
       zoom = Math.max(1, Math.min(4, pinchStartZoom * pointerDistance() / pinchStartDistance));
-      if(img) img.style.transform = `scale(${zoom})`;
+      if(zoom <= 1.001){ panX = 0; panY = 0; }
+      if(img) applyZoom();
+      return;
+    }
+    if(panning && zoom > 1){
+      const maxX = stage.clientWidth * .8;
+      const maxY = stage.clientHeight * .8;
+      panX = Math.max(-maxX, Math.min(maxX, panStartX + e.clientX - panPointerStartX));
+      panY = Math.max(-maxY, Math.min(maxY, panStartY + e.clientY - panPointerStartY));
+      applyZoom();
       return;
     }
     if(!dragging) return;
@@ -1364,7 +1395,24 @@ document.querySelectorAll('.js-gallery').forEach(gal => {
   function endPointer(e){
     pointers.delete(e.pointerId);
     if(pinching){
-      if(pointers.size < 2){ pinching = false; dragging = false; }
+      if(pointers.size < 2){
+        pinching = false;
+        dragging = false;
+        if(zoom > 1 && pointers.size === 1){
+          const remaining = [...pointers.values()][0];
+          panning = true;
+          panPointerStartX = remaining.x;
+          panPointerStartY = remaining.y;
+          panStartX = panX;
+          panStartY = panY;
+        } else {
+          panning = false;
+        }
+      }
+      return;
+    }
+    if(panning){
+      panning = false;
       return;
     }
     endDrag();
