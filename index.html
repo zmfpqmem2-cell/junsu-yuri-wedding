@@ -1177,13 +1177,28 @@ document.querySelectorAll('.js-gallery').forEach(gal => {
     pointers.clear();
     slides.forEach(slide => {
       const img = slide.querySelector('img');
-      if(img) img.style.transform = '';
+      if(img){
+        img.style.transform = '';
+        img.style.transformOrigin = '';
+      }
     });
   }
   function pointerDistance(){
     const points = [...pointers.values()];
     if(points.length < 2) return 0;
     return Math.hypot(points[0].x - points[1].x, points[0].y - points[1].y);
+  }
+  function setPinchOrigin(){
+    const img = currentImage();
+    const points = [...pointers.values()];
+    if(!img || points.length < 2 || zoom > 1.001) return;
+    const rect = img.getBoundingClientRect();
+    if(!rect.width || !rect.height) return;
+    const midX = (points[0].x + points[1].x) / 2;
+    const midY = (points[0].y + points[1].y) / 2;
+    const originX = Math.max(0, Math.min(100, (midX - rect.left) / rect.width * 100));
+    const originY = Math.max(0, Math.min(100, (midY - rect.top) / rect.height * 100));
+    img.style.transformOrigin = `${originX}% ${originY}%`;
   }
   function lockPageScroll(){
     if(scrollLocked || !window.matchMedia('(max-width:1024px)').matches) return;
@@ -1315,6 +1330,7 @@ document.querySelectorAll('.js-gallery').forEach(gal => {
       dragging = false;
       pinchStartDistance = pointerDistance() || 1;
       pinchStartZoom = zoom;
+      setPinchOrigin();
     } else if(zoom <= 1){
       dragging = true;
       startX = e.clientX;
