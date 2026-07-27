@@ -106,7 +106,7 @@ a[href^="sms:"]{
 .music-eq span:nth-child(4){height:7px;animation-delay:.36s;}
 @keyframes eq{from{transform:scaleY(.5);}to{transform:scaleY(1);}}
 .music-label{font-family:var(--f-mapo);font-size:14px;color:#fff;white-space:nowrap;line-height:1.2;}
-.lang-toggle{position:absolute;top:21px;right:78px;display:flex;gap:6px;pointer-events:auto;transition:opacity .4s;}
+.lang-toggle{position:absolute;top:21px;right:24px;display:flex;gap:6px;pointer-events:auto;transition:opacity .4s;}
 .lang-toggle.hide{opacity:0;}
 .lang-btn{font-family:var(--f-mapo);font-size:14px;color:#fff;background:transparent;border:1px solid #fff;height:24px;padding:0 12px;cursor:pointer;line-height:1.2;transition:background .2s;}
 .lang-btn:hover{background:rgba(255,255,255,.18);}
@@ -145,7 +145,7 @@ a[href^="sms:"]{
 .info{display:flex;flex-direction:column;gap:calc(32 * var(--vw));align-items:center;width:100%;}
 .info-deco{width:calc(80 * var(--vw));height:calc(80 * var(--vw));}
 .info-tit{font-size:calc(24 * var(--vw));line-height:1.2;text-align:center;width:100%;}
-.info-sub{font-size:calc(18 * var(--vw));line-height:1.5;text-align:center;width:100%;white-space:pre-wrap;}
+.info-sub{font-size:calc(18 * var(--vw));line-height:1.8;text-align:center;width:100%;white-space:pre-wrap;}
 .name-row{display:flex;height:calc(106 * var(--vw));align-items:center;width:100%;position:relative;}
 .name-set{display:flex;width:100%;align-items:center;}
 .name-col{width:50%;display:flex;flex-direction:column;gap:calc(12 * var(--vw));align-items:center;}
@@ -169,7 +169,7 @@ a[href^="sms:"]{
 .groom-photo{width:calc(940 * var(--vw));height:calc(1178 * var(--vw));}
 .groom-txt{width:calc(692 * var(--vw));display:flex;flex-direction:column;gap:calc(32 * var(--vw));}
 .say-en{font-family:var(--f-dutch);font-size:calc(24 * var(--vw));line-height:1;}
-.say-kr{font-size:calc(20 * var(--vw));line-height:1.6;}
+.say-kr{font-size:calc(20 * var(--vw));line-height:1.8;}
 .say-kr p+p{margin-top:1.6em;}
 .new-photo{width:calc(940 * var(--vw));height:calc(1178 * var(--vw));margin:calc(200 * var(--vw)) calc(120 * var(--vw)) 0 auto;overflow:visible;}
 .pick3{width:calc(65 * var(--vw));height:calc(32 * var(--vw));right:100%;margin-right:calc(16 * var(--vw));bottom:0;}
@@ -218,7 +218,7 @@ a[href^="sms:"]{
 .map-btn-ic img{width:calc(18 * var(--vw));height:calc(18 * var(--vw));display:block;object-fit:contain;}
 .acc-block{display:flex;flex-direction:column;gap:calc(64 * var(--vw));width:100%;}
 .acc-title{font-size:calc(30 * var(--vw));line-height:1.2;text-align:center;width:100%;}
-.acc-desc{display:flex;flex-direction:column;gap:calc(24 * var(--vw));text-align:center;font-size:calc(18 * var(--vw));line-height:1.5;}
+.acc-desc{display:flex;flex-direction:column;gap:calc(24 * var(--vw));text-align:center;font-size:calc(18 * var(--vw));line-height:1.8;}
 .acc-table{display:flex;flex-direction:column;width:100%;border-bottom:calc(1 * var(--vw)) solid var(--black);}
 .acc-head{display:flex;justify-content:space-between;align-items:center;padding:calc(16 * var(--vw)) 0;border-top:calc(1 * var(--vw)) solid var(--black);cursor:pointer;user-select:none;}
 .acc-head:hover{background:rgba(0,0,0,.015);}
@@ -238,7 +238,7 @@ a[href^="sms:"]{
 .copy-btn.done{background:var(--black);color:var(--cream);}
 .qr-block{display:flex;flex-direction:column;gap:calc(16 * var(--vw));align-items:center;width:100%;margin-top:calc(40 * var(--vw)) }
 .qr-slot{width:calc(220 * var(--vw));height:calc(220 * var(--vw));}
-.qr-note{font-size:calc(18 * var(--vw));line-height:1.5;text-align:center;width:100%;}
+.qr-note{font-size:calc(18 * var(--vw));line-height:1.8;text-align:center;width:100%;}
 .time-block{display:flex;flex-direction:column;gap:calc(12 * var(--vw));align-items:center;width:100%;}
 .time-nums{display:flex;gap:calc(20 * var(--vw));align-items:center;}
 .time-num{font-family:var(--f-dutch);font-size:calc(64 * var(--vw));line-height:1;color:#78766B;text-align:center;width:calc(70 * var(--vw));}
@@ -549,7 +549,7 @@ html.gallery-lightbox-open,body.gallery-lightbox-open{overflow:hidden;overscroll
     <div class="slot groom-photo" data-label="신부 서있는 사진"><img loading="lazy" decoding="async" src="images/img2.png"></div>
     <div class="groom-txt">
       <div class="say-kr">
-        <p>서로 다른 길을 걸어온 두 사람이<br>이제 같은 방향을 바라보며<br>평생을 함께하고자 합니다.</p>
+        <p>2021년 9월 15일, 우연처럼 시작된 인연이<br>서로에게 가장 소중한 사람이 되어<br>평생을 함께하기로 약속했습니다.</p>
       </div>
     </div>
     <div class="pick pick2" data-label="pick2"><img loading="lazy" decoding="async" src="images/pick2.svg"></div>
@@ -590,7 +590,7 @@ html.gallery-lightbox-open,body.gallery-lightbox-open{overflow:hidden;overscroll
   <!-- ═══ 신부 사진(우) + 메시지(좌) + Pick7 데코 ═══ -->
   <section class="bride-row">
     <div class="bride-say-kr">
-      <p>새로운 시작의 순간에<br>소중한 걸음으로 함께하시어<br>따뜻한 축복을 나눠주시면 감사하겠습니다.</p>
+      <p>새로운 시작을 맞이하는 저희에게<br>앞으로의 계절마다 오래도록 머물<br>따뜻한 마음을 전해주시면 감사하겠습니다.</p>
     </div>
     <!-- REPLACE: 신부 사진 -->
     <div class="slot bride-photo" data-label="신부 사진"><img loading="lazy" decoding="async" src="images/img7.png"></div>
@@ -819,8 +819,7 @@ html.gallery-lightbox-open,body.gallery-lightbox-open{overflow:hidden;overscroll
   </div>
   <div class="mo-say reveal">
     <div class="mo-say-kr">
-      <p>서로 다른 길을 걸어온 두 사람이<br>이제 같은 방향을 바라보며<br>평생을 함께하고자 합니다.</p>
-      <p>새로운 시작의 순간에 함께해 주시어<br>따뜻한 축복을 나눠주시면 감사하겠습니다.</p>
+      <p>2021년 9월 15일, 우연처럼 시작된 인연이<br>서로에게 가장 소중한 사람이 되어<br>평생을 함께하기로 약속했습니다.</p>
     </div>
   </div>
 
@@ -862,8 +861,7 @@ html.gallery-lightbox-open,body.gallery-lightbox-open{overflow:hidden;overscroll
   </div>
   <div class="mo-say reveal">
     <div class="mo-say-kr">
-      <p>서로 다른 길을 걸어온 두 사람이<br>이제 같은 방향을 바라보며<br>평생을 함께하고자 합니다.</p>
-      <p>새로운 시작의 순간에 함께해 주시어<br>따뜻한 축복을 나눠주시면 감사하겠습니다.</p>
+      <p>새로운 시작을 맞이하는 저희에게<br>앞으로의 계절마다 오래도록 머물<br>따뜻한 마음을 전해주시면 감사하겠습니다.</p>
     </div>
   </div>
 
@@ -1528,13 +1526,12 @@ const jpText = new Map([
   ['탁준수','タク・ジュンス'], ['김진배','キム・ジンベ'],
   ['구와하라 치카','クワハラ・チカ'], ['김유리','キム・ユリ'],
   ['의 아들','の息子'], ['의 딸','の娘'],
-  ['서로 다른 길을 걸어온 두 사람이','異なる道を歩んできた二人が'],
-  ['이제 같은 방향을 바라보며','これから同じ未来を見つめ'],
-  ['평생을 함께하고자 합니다.','生涯を共に歩んでまいります。'],
-  ['새로운 시작의 순간에','新たな門出の瞬間に'],
-  ['소중한 걸음으로 함께하시어','お立ち会いいただき'],
-  ['새로운 시작의 순간에 함께해 주시어','新たな門出の瞬間にお立ち会いいただき'],
-  ['따뜻한 축복을 나눠주시면 감사하겠습니다.','温かい祝福を賜りましたら幸いです。'],
+  ['2021년 9월 15일, 우연처럼 시작된 인연이','2021年9月15日、偶然のように始まったご縁が'],
+  ['서로에게 가장 소중한 사람이 되어','お互いにとってかけがえのない存在となり'],
+  ['평생을 함께하기로 약속했습니다.','生涯を共に歩むことを誓いました。'],
+  ['새로운 시작을 맞이하는 저희에게','新たな門出を迎える私たちのために'],
+  ['앞으로의 계절마다 오래도록 머물','これから重ねる季節の中でいつまでも心に残る'],
+  ['따뜻한 마음을 전해주시면 감사하겠습니다.','温かいお気持ちをお寄せいただけましたら幸いです。'],
   ['오시는 길','アクセス'],
   ['여수 한옥호텔 오동재','麗水 韓屋ホテル オドンジェ'],
   ['전라남도 여수시 박람회길 99, 오동재 한옥호텔','全羅南道 麗水市 博覧会通り99、韓屋ホテル オドンジェ'],
