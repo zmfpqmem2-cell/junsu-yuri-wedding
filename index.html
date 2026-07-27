@@ -375,6 +375,14 @@ a[href^="sms:"]{
 .mo-footer-logo .slot{width:100%;height:calc(68.4 * var(--mo-vw));background:transparent;}
 .mo-footer-logo .slot img{object-fit:contain;}
 
+/* 일본어 버전에서는 계좌 안내만 숨김 (카운트다운 유지) */
+html[lang="ja"] .stage .acc-block,
+html[lang="ja"] .stage-mo .mo-acc > .mo-sec-title,
+html[lang="ja"] .stage-mo .mo-acc > .mo-acc-desc,
+html[lang="ja"] .stage-mo .mo-acc > .acc-table,
+html[lang="ja"] .stage-mo .mo-acc > .mo-qr{display:none;}
+html[lang="ja"] .stage-mo .mo-time{margin-top:0;}
+
 /* ── 1024px 이하: 모바일 스테이지로 전환 ── */
 @media (max-width:1024px){
   .stage{display:none;}
@@ -446,8 +454,8 @@ html.gallery-lightbox-open,body.gallery-lightbox-open{overflow:hidden;overscroll
       <div class="music-label">Sweet Pumpkin - Samara Joy</div>
     </div>
     <div class="lang-toggle" id="langToggle">
-      <button class="lang-btn" onclick="setLang('KR',this)">KR</button>
-      <button class="lang-btn ghost" onclick="setLang('JP',this)">JP</button>
+      <button class="lang-btn" type="button" aria-pressed="true" onclick="setLang('KR',this)">KR</button>
+      <button class="lang-btn ghost" type="button" aria-pressed="false" onclick="setLang('JP',this)">JP</button>
     </div>
   </div>
 </div>
@@ -542,7 +550,6 @@ html.gallery-lightbox-open,body.gallery-lightbox-open{overflow:hidden;overscroll
     <div class="groom-txt">
       <div class="say-kr">
         <p>서로 다른 길을 걸어온 두 사람이<br>이제 같은 방향을 바라보며<br>평생을 함께하고자 합니다.</p>
-        <p>새로운 시작의 순간에 함께해 주시어<br>따뜻한 축복을 나눠주시면 감사하겠습니다.</p>
       </div>
     </div>
     <div class="pick pick2" data-label="pick2"><img loading="lazy" decoding="async" src="images/pick2.svg"></div>
@@ -583,8 +590,7 @@ html.gallery-lightbox-open,body.gallery-lightbox-open{overflow:hidden;overscroll
   <!-- ═══ 신부 사진(우) + 메시지(좌) + Pick7 데코 ═══ -->
   <section class="bride-row">
     <div class="bride-say-kr">
-      <p>서로 다른 길을 걸어온 두 사람이<br>이제 같은 방향을 바라보며<br>평생을 함께하고자 합니다.</p>
-      <p>새로운 시작의 순간에 함께해 주시어<br>따뜻한 축복을 나눠주시면 감사하겠습니다.</p>
+      <p>새로운 시작의 순간에<br>소중한 걸음으로 함께하시어<br>따뜻한 축복을 나눠주시면 감사하겠습니다.</p>
     </div>
     <!-- REPLACE: 신부 사진 -->
     <div class="slot bride-photo" data-label="신부 사진"><img loading="lazy" decoding="async" src="images/img7.png"></div>
@@ -641,9 +647,9 @@ html.gallery-lightbox-open,body.gallery-lightbox-open{overflow:hidden;overscroll
       <div class="slot cell" data-label="2"><img loading="lazy" decoding="async" src="images/gallery2.png"></div>
       <div class="slot cell" data-label="3"><img loading="lazy" decoding="async" src="images/gallery3.png"></div>
       <div class="slot cell" data-label="4"><img loading="lazy" decoding="async" src="images/gallery4.png"></div>
-      <div class="slot cell" data-label="5"><img loading="lazy" decoding="async" src="images/gallery5.png"></div>
+      <div class="slot cell" data-label="5"><img loading="lazy" decoding="async" src="images/webp/gallery5.webp"></div>
       <div class="slot cell" data-label="6"><img loading="lazy" decoding="async" src="images/gallery6.png"></div>
-      <div class="slot cell" data-label="7"><img loading="lazy" decoding="async" src="images/gallery7.png"></div>
+      <div class="slot cell" data-label="7"><img loading="lazy" decoding="async" src="images/webp/gallery7.webp"></div>
       <div class="slot cell" data-label="8"><img loading="lazy" decoding="async" src="images/gallery8.png"></div>
       <div class="slot cell" data-label="9"><img loading="lazy" decoding="async" src="images/gallery9.png"></div>
       <!-- 복제 세트 (seamless loop용, 화면엔 이어지는 동일 이미지) -->
@@ -651,9 +657,9 @@ html.gallery-lightbox-open,body.gallery-lightbox-open{overflow:hidden;overscroll
       <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/gallery2.png"></div>
       <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/gallery3.png"></div>
       <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/gallery4.png"></div>
-      <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/gallery5.png"></div>
+      <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/webp/gallery5.webp"></div>
       <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/gallery6.png"></div>
-      <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/gallery7.png"></div>
+      <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/webp/gallery7.webp"></div>
       <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/gallery8.png"></div>
       <div class="slot cell" aria-hidden="true"><img loading="lazy" decoding="async" src="images/gallery9.png"></div>
     </div>
@@ -892,12 +898,12 @@ html.gallery-lightbox-open,body.gallery-lightbox-open{overflow:hidden;overscroll
     </div>
     <div class="mo-g-row">
       <div class="slot cell" data-label="4"><img loading="lazy" decoding="async" src="images/gallery4.png"></div>
-      <div class="slot cell" data-label="5"><img loading="lazy" decoding="async" src="images/gallery5.png"></div>
+      <div class="slot cell" data-label="5"><img loading="lazy" decoding="async" src="images/webp/gallery5.webp"></div>
       <div class="slot cell" data-label="6"><img loading="lazy" decoding="async" src="images/gallery6.png"></div>
     </div>
     <div class="mo-g-row">
       <!-- REPLACE: 갤러리 7~9 (모바일 3×3 전용 추가분) -->
-      <div class="slot cell" data-label="7"><img loading="lazy" decoding="async" src="images/gallery7.png"></div>
+      <div class="slot cell" data-label="7"><img loading="lazy" decoding="async" src="images/webp/gallery7.webp"></div>
       <div class="slot cell" data-label="8"><img loading="lazy" decoding="async" src="images/gallery8.png"></div>
       <div class="slot cell" data-label="9"><img loading="lazy" decoding="async" src="images/gallery9.png"></div>
     </div>
@@ -1518,18 +1524,22 @@ const jpText = new Map([
   ['저희 두 사람이 하나가 되는 특별한 날,','私たち二人がひとつになる特別な日、'],
   ['인생에서 가장 아름다운 순간을 함께','人生で最も美しい瞬間を共に'],
   ['축복해 주시길 바랍니다.','祝福していただけましたら幸いです。'],
+  ['탁영래','タク・ヨンレ'], ['박미녀','パク・ミニョ'],
+  ['탁준수','タク・ジュンス'], ['김진배','キム・ジンベ'],
+  ['구와하라 치카','クワハラ・チカ'], ['김유리','キム・ユリ'],
   ['의 아들','の息子'], ['의 딸','の娘'],
   ['서로 다른 길을 걸어온 두 사람이','異なる道を歩んできた二人が'],
   ['이제 같은 방향을 바라보며','これから同じ未来を見つめ'],
   ['평생을 함께하고자 합니다.','生涯を共に歩んでまいります。'],
+  ['새로운 시작의 순간에','新たな門出の瞬間に'],
+  ['소중한 걸음으로 함께하시어','お立ち会いいただき'],
   ['새로운 시작의 순간에 함께해 주시어','新たな門出の瞬間にお立ち会いいただき'],
   ['따뜻한 축복을 나눠주시면 감사하겠습니다.','温かい祝福を賜りましたら幸いです。'],
   ['오시는 길','アクセス'],
   ['여수 한옥호텔 오동재','麗水 韓屋ホテル オドンジェ'],
-  ['전라남도 여수시 박람회길 99, 오동재 한옥호텔','全羅南道 麗水市 博覧会ギル99、オドンジェ韓屋ホテル'],
+  ['전라남도 여수시 박람회길 99, 오동재 한옥호텔','全羅南道 麗水市 博覧会通り99、韓屋ホテル オドンジェ'],
   ['네이버맵','NAVERマップ'], ['카카오맵','Kakaoマップ'], ['티맵','T map'],
-  ['네이버맵','NAVERマップ'], ['카카오맵','Kakaoマップ'], ['티맵','T map'],
-  ['마음 전하실 곳','お祝いをお送りいただく方へ'],
+  ['마음 전하실 곳','お祝いのお気持ち'],
   ['멀리서도 축하의 마음을 전하고 싶으신 분들을 위해','遠方からお祝いのお気持ちをお伝えくださる方へ'],
   ['계좌번호를 안내드립니다.','振込先口座をご案内いたします。'],
   ['소중한 축하를 보내주셔서 감사드리며,','温かいお祝いをお寄せいただき、'],
@@ -1551,10 +1561,14 @@ function collectI18nTextNodes(el){
   });
 }
 collectI18nTextNodes(document.body);
-function setLang(lang,el){
+function applyLang(lang,el){
   currentLang = lang;
   document.documentElement.lang = lang === 'JP' ? 'ja' : 'ko';
-  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('ghost',b!==el));
+  document.querySelectorAll('.lang-btn').forEach(b=>{
+    const isActive = b === el;
+    b.classList.toggle('ghost',!isActive);
+    b.setAttribute('aria-pressed',String(isActive));
+  });
   i18nTextNodes.forEach(({node,original,key}) => {
     if(lang === 'KR') node.nodeValue = original;
     else {
@@ -1564,6 +1578,34 @@ function setLang(lang,el){
     }
   });
   document.querySelectorAll('.copy-btn:not(.done)').forEach(btn=>btn.textContent=lang === 'JP' ? 'コピー' : '복사');
+  document.querySelectorAll('.gallery .cell, .mo-gallery .cell').forEach(cell=>{
+    const index = indexForCellLabel(cell);
+    cell.setAttribute('aria-label',lang === 'JP' ? `ギャラリー写真 ${index}を拡大表示` : `갤러리 ${index} 크게 보기`);
+  });
+}
+
+function setLang(lang,el){
+  if(lang !== currentLang){
+    sessionStorage.setItem('weddingLang',lang);
+    window.location.reload();
+    return;
+  }
+  applyLang(lang,el);
+}
+
+function indexForCellLabel(cell){
+  const label = cell.dataset.label;
+  if(label) return label;
+  const src = cell.querySelector('img')?.getAttribute('src') || '';
+  const match = src.match(/gallery(\d+)\./);
+  return match ? match[1] : '1';
+}
+
+const savedWeddingLang = sessionStorage.getItem('weddingLang');
+if(savedWeddingLang === 'JP'){
+  applyLang('JP',document.querySelector('.lang-btn[onclick*="JP"]'));
+} else if(savedWeddingLang === 'KR'){
+  applyLang('KR',document.querySelector('.lang-btn[onclick*="KR"]'));
 }
 
 /* ───── BGM 재생/정지 토글 ───── */
